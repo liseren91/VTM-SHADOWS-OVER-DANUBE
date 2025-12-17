@@ -748,6 +748,42 @@ export const TRANSLATIONS: Record<Language, Content> = {
           ]
         },
         {
+          id: 'investigations',
+          title: 'Investigation Rules',
+          icon: 'book',
+          content: [
+            {
+              text: 'Use this to fact-check a character from YOUR Sect (an infiltrator counts as a member of the Sect they infiltrated). Examples: confirm their cover, Disciplines, sire/lineage, generation, or reputation. Declare an “investigation” action to the Investigation ST with a clear question.'
+            },
+            {
+              subtitle: 'Process',
+              list: [
+                'The Investigation ST sets N counter-questions about any other characters in the game (not necessarily tied to your target).',
+                'You gather answers in in-character conversations, then return to the Investigation ST.',
+                'The ST checks how many answers are correct: all correct = you receive the info; incorrect answers are reported by quantity.',
+                'You may “buy out” each incorrect or missing answer for 1 in-game $.',
+                'You may skip fact-finding and immediately buy out unanswered questions.'
+              ]
+            },
+            {
+              subtitle: 'Bonuses',
+              list: [
+                'Each Nosferatu (and any character with the Detective skill) may buy out one unanswered question for free.'
+              ],
+              listType: 'check'
+            },
+            {
+              subtitle: 'Required component',
+              text: 'Bring a physical folder with newspaper clippings related to the investigation target plus 3 photos of the target in three different places, shot outside public Kindred spots (no Elysium photos).',
+              list: [
+                'Example: Ivan wants to learn where Ventrue Vasiliy was embraced — clippings about Vasiliy opening a business center, signing deals where he is a founder, etc.',
+                'Photos must be taken in non-public locations away from Kindred gatherings.'
+              ],
+              listType: 'bullet'
+            }
+          ]
+        },
+        {
           id: 'forbidden',
           title: 'Prohibitions',
           icon: 'shield',
@@ -836,7 +872,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         },
         {
           q: 'How much does it cost?',
-          a: 'We are tentatively expecting a cost of 40 euros.''
+          a: 'We are tentatively expecting a cost of 40 euros.'
         },
         {
           q: 'What is the application deadline?',
@@ -1538,6 +1574,42 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Сферы Влияния',
               text: 'Бюрократия, Церковь, Финансы, Здравоохранение, Высшее Общество, Промышленность, Закон, Медиа, Оккультизм, Полиция, Политика, Криминал, Университет, Улица, Транспорт.',
+              listType: 'bullet'
+            }
+          ]
+        },
+        {
+          id: 'investigations',
+          title: 'Правила по расследованиям',
+          icon: 'book',
+          content: [
+            {
+              text: 'Используйте это, чтобы узнать факт о Персонаже из ВАШЕЙ Секты (инфильтратор считается членом секты, в которую он внедрён). Можно подтвердить легенду, дисциплины, сирра/линию, поколение или известность. Заявите мастеру по расследованиям действие «расследование» с чётким вопросом.'
+            },
+            {
+              subtitle: 'Процесс',
+              list: [
+                'Мастер по расследованиям назначает N встречных вопросов про любых других персонажей в игре (не обязательно связанных с целью).',
+                'Вы выясняете ответы в игровых беседах и возвращаетесь к мастеру.',
+                'Мастер определяет, сколько ответов верны: если все — выдаёт искомую информацию; при ошибках сообщает лишь количество неверных.',
+                'Неверные или отсутствующие ответы можно «выкупить» по курсу 1 игровой $ за каждый.',
+                'Можно сразу выкупить неотвеченные вопросы, не проводя расследование.'
+              ]
+            },
+            {
+              subtitle: 'Бонусы',
+              list: [
+                'Каждый Носферату (и персонаж с навыком Детектив) может выкупить один неотвеченный вопрос без траты игровых $.'
+              ],
+              listType: 'check'
+            },
+            {
+              subtitle: 'Материальный компонент',
+              text: 'Нужна папка с газетными вырезками по объекту расследования и 3 фото цели в трёх местах, сделанные не в публичных местах сородичей (фото в Элизиуме не подходят).',
+              list: [
+                'Пример: Иван хочет узнать, где был становлен вентру Василий — ищет вырезки про открытие бизнес-центра с участием Василия, сделки с компаниями, где он учредитель и т.д.',
+                'Фотографии должны быть из разных непубличных локаций, вдали от мест скопления сородичей.'
+              ],
               listType: 'bullet'
             }
           ]
