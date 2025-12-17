@@ -425,53 +425,81 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'sword',
           content: [
             {
-              subtitle: 'Type: Live Action Role Play (LARP) combat.',
-              text: 'Combat is played in light-touch mode. Strikes and grapples are simulated, not actually inflicted. Success is determined by a combination of declared abilities and roleplay. In disputes, a Storyteller is called.',
+              subtitle: 'Basics',
+              text: 'Rules are standard — please refresh them. We use the “step outside” marker to move conflict away from crowds.',
             },
             {
-              subtitle: 'Allowed ✅',
+              subtitle: 'Core rules',
               list: [
-                'Roleplayed strikes and grapples (no real contact)',
-                'Use of Disciplines (declared aloud)',
-                'Tactical retreat',
-                'Use of environment (cover, height)',
-                'Melee weapons (safe LARP replicas)'
-              ],
-              listType: 'check'
+                'Each player has 3 hits; some characters may have extra.',
+                'Hit zone: torso and limbs. Do NOT hit head, hands, feet, or groin.',
+                'Damage only with unpainted Nerf blasters or foam/protector weapons marked “in game item”.',
+                'Follow weapon safety. The less realistic your weapon looks, the fewer problems on city streets.',
+                'Without Celerity you cannot dual‑wield.',
+                'After combat, read the Discipline rules — they are linked.'
+              ]
             },
             {
-              subtitle: 'Forbidden ❌',
+              subtitle: 'Taking wounds',
+              text: 'Each hit to a valid zone removes 1 hit and assigns a wound status.',
               list: [
-                'Real physical contact beyond light touch',
-                'Firearms (even replicas) — strictly declared by voice',
-                'Raids on player havens without consent',
-                'Attacks on players during off-game time'
-              ],
-              listType: 'cross'
+                'Light — may move at a fast walk; may carry a wounded only at a walk.',
+                'Medium — only walking; cannot carry others.',
+                'Heavy — no self‑movement. Can be carried in arms or by two people under the shoulders.'
+              ]
             },
             {
-              subtitle: 'Health Levels (V20)',
+              subtitle: 'While wounded',
               list: [
-                'Healthy',
-                'Bruised',
-                'Hurt (-1 penalty)',
-                'Injured (-1 penalty)',
-                'Wounded (-2 penalty)',
-                'Mauled (-2 penalty)',
-                'Crippled (-5 penalty)',
-                'Incapacitated (Unconscious)',
-                'Torpor/Death'
-              ],
-              listType: 'bullet'
+                'Must roleplay pain (groans, cries, etc.).',
+                'Running is forbidden with any wound.',
+                'Every 15 minutes you restore 1 hit and downgrade to light/normal; 2 hits take 30 minutes.',
+                'Losing the 3rd hit and going heavy blocks regen without a “helping hand”.'
+              ]
             },
             {
-              subtitle: 'Damage Types',
+              subtitle: 'Death',
               list: [
-                'Bashing: Heals quickly',
-                'Lethal: Dangerous, requires blood to heal',
-                'Aggravated: Fire, sunlight, werewolf claws/fangs, magic — heals very slowly'
-              ],
-              listType: 'warning'
+                'Losing the 3rd hit puts you in heavy, then death if no help arrives.',
+                'After death: stay for 10 minutes roleplaying a corpse (longer if the scene needs it).',
+                'You may tell others the nature of your wounds.',
+                'Then contact STs to get a new role.'
+              ]
+            },
+            {
+              subtitle: 'Attack & defense',
+              list: [
+                'Each hit removes a hit: 1st and 2nd give light then medium wounds.',
+                '3rd hit puts you into heavy. You have 15 minutes for a “helping hand”, otherwise death.',
+                'Helping hand = extracting the wounded from the clash; once at safe distance they heal 1 hit per 15 minutes.',
+                'Urban safety: leave the fight area for 10 minutes or 1–1.5 km to count as safe.',
+                'While helped the character remains heavy and obeys heavy limitations.'
+              ]
+            },
+            {
+              subtitle: 'Physical interaction',
+              listType: 'warning',
+              list: [
+                'No grappling or real violence.',
+                'Any contact must be mutually agreed and clearly understood.',
+                'Be gentle; do not raid player havens without agreement.'
+              ]
+            },
+            {
+              subtitle: 'Attack process (“step outside”)',
+              list: [
+                'In crowded places attacker touches the victim and says “Let’s step outside”. In quiet places you may attack normally.',
+                'The victim may try to solve it verbally, but attacker can repeat the marker and insist.',
+                'Victim chooses: surrender (follow attacker, accept search/wound/death) or fight and go find a proper spot.'
+              ]
+            },
+            {
+              subtitle: 'Marker “Let’s step outside”',
+              list: [
+                'If you hear it and feel a hand on your shoulder — that is a punch.',
+                'First marker gives you a chance to talk your way out.',
+                'On the second marker you must follow to a safe place for the fight or surrender.'
+              ]
             }
           ]
         },
@@ -481,30 +509,160 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'flame',
           content: [
             {
-              text: 'We use V20 Disciplines adapted for LARP. Usage: Declare name and level, spend blood (if needed), roleplay the effect.',
-            },
-            {
-              subtitle: 'Clan Disciplines',
+              text: 'There are three types of Disciplines:',
               list: [
-                'Brujah: Potence, Celerity, Presence',
-                'Gangrel: Animalism, Fortitude, Protean',
-                'Malkavian: Auspex, Dementation, Obfuscate',
-                'Nosferatu: Animalism, Obfuscate, Potence',
-                'Toreador: Auspex, Celerity, Presence',
-                'Tremere: Auspex, Dominate, Thaumaturgy',
-                'Ventrue: Dominate, Fortitude, Presence'
+                'activated',
+                'mental',
+                'passive'
               ],
               listType: 'bullet'
             },
             {
-              subtitle: 'Important Rules',
+              subtitle: 'Usage rules',
               list: [
-                'Dominate does not work on characters with Auspex of equal or higher level.',
-                'Obfuscate breaks upon aggressive actions.',
-                'Thaumaturgy requires ST approval for every ritual.',
-                'Disciplines do not make you invincible — roleplay and tactics matter more.'
+                'Each Discipline has 2 levels.',
+                'To activate: announce the power name and dots; for mental powers also state your status; meet required conditions (touch, cover, etc.) or it fails.',
+                'In combat each dot can be used no more than once (passives are continuous).',
+                'If Hungry you can use only passive Disciplines and rituals.',
+                'Mental powers work only on targets not above your status: Ghoul → mortals/ghouls; Neonate → mortals/ghouls/neonates; Ancilla → mortals/ghouls/neonates/ancillae; Elder → everyone.',
+                'A higher-status target may say “block, <status>”, and the effect fails (they may also pretend to be affected).',
+                'The same mental dot can affect the same target at most twice per night.',
+                'While a dot’s effect is on a target, you cannot use that dot on others; you may end your own effect at any time.',
+                'Passive Disciplines are always on at your highest available dot.',
+                'For “on a target” effects, state the in-game name so they know it’s on them.',
+                'Miscalling status/level/effects or skipping conditions may be penalized by STs.',
+                'Non-clan Disciplines from the list below cannot be taken at start; they are only gained via diablerie.'
+              ]
+            },
+            {
+              subtitle: 'Discipline spread by status',
+              list: [
+                'Neonate: one clan Discipline at level 1 and one clan Discipline at level 2, or all three clan Disciplines at level 1.',
+                'Ancilla: one clan Discipline at level 2, two clan Disciplines at level 1, and one non-clan Discipline at level 1.',
+                'Base spread may change by sect specifics.'
               ],
-              listType: 'warning'
+              listType: 'bullet'
+            },
+            {
+              subtitle: 'Clan Disciplines',
+              list: [
+                'Ventrue: Dominate, Fortitude, Presence.',
+                'Tremere: Thaumaturgy, Auspex, Dominate.',
+                'Toreador: Presence, Auspex, Celerity.',
+                'Malkavian: Dementation, Auspex, Obfuscate.',
+                'Brujah: Potence, Celerity, Presence.',
+                'Nosferatu: Obfuscate, Animalism, Potence.',
+                'Gangrel (rural): Animalism, Fortitude, Protean.',
+                'Gangrel (urban): Celerity, Obfuscate, Protean.'
+              ],
+              listType: 'bullet'
+            },
+            {
+              subtitle: 'Disciplines',
+              subsections: [
+                {
+                  title: 'Obfuscate (activated)',
+                  text: 'Invisibility: visible only to characters with Auspex; firearms cannot be used; attacks, powers, or obvious noise break it.',
+                  list: [
+                    'Marker: white sash over the shoulder. No marker — no effect.',
+                    'Activate by donning the sash and declaring; remove anytime. Re-enter only after the combat scene and not sooner than 1 minute; cannot enter mid-attack/defense.',
+                    'Cloak of Shadows (dot 1): must first leave line of sight. Walk only; noise, collisions, dropped objects reveal you. Cameras do not see you.',
+                    'Unseen Presence (dot 2): may vanish in plain sight; can speak and move without dropping the effect, otherwise as Cloak of Shadows.',
+                    'Mask of a Thousand Faces is mandatory for Nosferatu off-scene. In Elysium they may remove it; leaving the scene they must put it back. Can be used to hide deformity for strategic actions.'
+                  ]
+                },
+                {
+                  title: 'Potence (passive)',
+                  text: 'Physical dominance and holds.',
+                  list: [
+                    'Hold: hand on shoulder, say “hold, Potence X”. If your Potence is higher, target is immobilized but may use Disciplines; if equal/higher, release them.',
+                    'Hold is not used in combat.',
+                    'Dot 1: allows carrying immobilized players in-game (they move under own power following you).',
+                    'Dot 2 (red ribbon on wrist): melee hit removes 2 hits (works vs Fortitude 2) + dot 1 effects.'
+                  ]
+                },
+                {
+                  title: 'Animalism (activated)',
+                  text: 'Bond with the Beast.',
+                  list: [
+                    'Whispers to the Beast (dot 1): once per night removes “Hunger” from self or another (not Ventrue; touch required). Grants one investigation answer but puts you into Hunger.',
+                    'Quell/Bestial Influence (dot 2, mental if attacking): remove or inflict frenzy/rotschreck. Line of sight, no touch. Can be blocked by Humanity/Path 3+ or mental rules. Max 2 uses per night and 1 per target per night.'
+                  ]
+                },
+                {
+                  title: 'Fortitude (passive)',
+                  text: 'Toughness boost.',
+                  list: [
+                    'Dot 1: +1 hit; immune to staking by characters without Potence.',
+                    'Dot 2: +2 hits; immune to firearms (red head marker recommended); immune to stakes from Potence 1.'
+                  ]
+                },
+                {
+                  title: 'Dominate (mental)',
+                  text: 'Overrides Blood Bonds, Vinculum, and Presence while active. Victim perceives the order as their own decision and won’t realize they were influenced.',
+                  list: [
+                    'Hypnosis (dot 1, touch + eye contact, not in combat): immediate single command or one trigger for the night. No direct suicide orders. If target sees an attack coming, effect ends. Ongoing simple actions last 1 minute.',
+                    'Oblivion (dot 2, touch + eye contact, not in combat): 5 minutes of memory reading with truthful answers. Can erase/replace memories of the current night with facts (cannot change feelings/goals). Victim forgets the influence. If harmed during use, effect ends but implanted memories stay; conversation cannot end before 5 minutes.'
+                  ]
+                },
+                {
+                  title: 'Auspex (passive/mental)',
+                  text: 'See the hidden and block any Obfuscate level.',
+                  list: [
+                    'Heightened Senses/See the Unseen (dot 1, passive): perceives beings in Obfuscate/invisibility, ghosts, illusions; detects hidden presence.',
+                    'Telepathy (dot 2, mental, not in combat): converse at least a minute. Learn thoughts/plans; target cannot lie but can evade. Lasts 5 minutes; target cannot leave early. Harm ends effect. Can read residual auras from items (info from ST).'
+                  ]
+                },
+                {
+                  title: 'Presence (mental)',
+                  text: 'Emotional sway.',
+                  list: [
+                    'Awe (dot 1, touch, not in combat): for 2 hours target is a willing servant within line of sight/50 m, obeying non–self-harm orders. Cannot override 3rd Blood Bond. Dangerous orders may be refused with warning. Target forgets the effect but may suspect.',
+                    'Summon (dot 2): may summon anyone seen this night, any distance. Target must drop everything and come quickly without courting certain death; cannot attack summoner until arrival. Only one Summon at a time; can cancel. A second Summon from elsewhere won’t take effect. If scene is in a public spot, move it by “step outside”.'
+                  ]
+                },
+                {
+                  title: 'Celerity (passive/activated)',
+                  text: 'Super-speed.',
+                  list: [
+                    'Dot 1: passive dual-wield allowed. Active: declare “Celerity 1” to exit combat; only Celerity 1 can chase, declaring it.',
+                    'Dot 2: passive immunity to firearms (blue head marker recommended). Active: “Celerity 2”; only Celerity 2 can chase.'
+                  ]
+                },
+                {
+                  title: 'Thaumaturgy — Path of Blood (activated)',
+                  text: 'Blood manipulation.',
+                  list: [
+                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by ST.',
+                    'Blood Might (dot 2, touch): for the night raises one vampire’s status (or self) by +1. Number of Disciplines doesn’t grow, but mental powers use new status. Humans don’t become ghouls; ghouls don’t become neonates; elders stay elders.'
+                  ]
+                },
+                {
+                  title: 'Thaumaturgy — Path of Flames (activated)',
+                  text: 'Removes rotschreck from the caster; their fireballs do not cause rotschreck in others.',
+                  list: [
+                    'Flame (dot 1): red prop ball as fireball, on hit deals 2 hits. One fireball per combat.',
+                    'Inferno (dot 2): same effect, but two fireballs per combat.'
+                  ]
+                },
+                {
+                  title: 'Protean (activated)',
+                  text: 'Beast forms.',
+                  list: [
+                    'Claws (dot 1, wear claw gloves): last until dawn or deactivation. Hit deals 1 hit (Potence bonuses apply). Cannot use other weapons, but may block. Can attack with both hands without Celerity.',
+                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Auspex/Presence/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. While active, claws deal 2 hits.'
+                  ]
+                },
+                {
+                  title: 'Dementation (mental)',
+                  text: 'Manipulating madness.',
+                  list: [
+                    'Eyes of Chaos (dot 1, see target, not in combat): learn clan, derangements, diablerie, Humanity/Path; may track target’s location/actions (via ST). Track only one at a time. Cooldown 1 hour after ending.',
+                    'Total Madness (dot 2, see target): inflicts 3 random derangements until end of strategic cycle/dawn. 2 uses per night; works on a target once per night. Derangements chosen by ST.',
+                    'Possible derangements include: blood bulimia, anatidaephobia, agoraphobia, aversion to blood, acrophobia, memory loss, spectrophobia, fixation on an item, paranoia, Tourette’s, androphobia, bibliomania, Fregoli syndrome, nomophobia, schizophrenia, and others per ST.'
+                  ]
+                }
+              ]
             }
           ]
         },
