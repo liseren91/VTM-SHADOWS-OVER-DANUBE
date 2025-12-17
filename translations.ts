@@ -791,9 +791,8 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Absolute Bans 🚫',
               list: [
-                'Raiding player havens without consent',
+                'Raiding player havens',
                 'Attacking players during off-game time',
-                'Ignoring safe words',
                 'Real violence',
                 'Cheating'
               ],
@@ -806,7 +805,6 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Siring (Only with Prince permission, violation = Final Death)',
                 'Masquerade Breach (Big trouble if mortals find out)',
                 'Violence in Elysium (Punishable by death)',
-                'Killing PCs (Possible, but needs reason and consequences)'
               ],
               listType: 'warning'
             },
@@ -1620,9 +1618,8 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Абсолютные Запреты 🚫',
               list: [
-                'Рейды на убежища игроков без согласия',
+                'Рейды на убежища игроков',
                 'Нападение на игроков во внеигровое время',
-                'Игнорирование стоп-слов',
                 'Реальное насилие',
                 'Читерство'
               ],
@@ -1635,7 +1632,6 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Создание потомства (Только с разрешения Принца, нарушение = Окончательная Смерть)',
                 'Нарушение Маскарада (Большие проблемы, если смертные узнают)',
                 'Насилие в Элизиуме (Карается смертью)',
-                'Убийство ПК (Возможно, но нужна причина и последствия)'
               ],
               listType: 'warning'
             },
