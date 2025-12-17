@@ -836,7 +836,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         },
         {
           q: 'How much does it cost?',
-          a: '40 Euro'
+          a: 'We are tentatively expecting a cost of 40 euros.''
         },
         {
           q: 'What is the application deadline?',
@@ -1631,7 +1631,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         },
         {
           q: 'Сколько стоит участие?',
-          a: '40 евро'
+          a: 'Приедворительно, мы рассчитваем на стоимость 40 евро'
         },
         {
           q: 'До какого числа принимаются заявки?',
