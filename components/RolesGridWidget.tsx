@@ -2,16 +2,58 @@ import React, { useEffect, useRef } from 'react';
 
 const RolesGridWidget: React.FC = () => {
   const mounted = useRef(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (mounted.current) return;
     mounted.current = true;
+    let cancelled = false;
+    const setContent = (html: string) => {
+      if (cancelled) return;
+      const container =
+        containerRef.current || document.getElementById("allrpgRolesListDiv");
+      if (container) container.innerHTML = html;
+    };
 
     const scriptUrl = "https://www.allrpg.info/js/roles.min.js";
+    const container =
+      containerRef.current || document.getElementById("allrpgRolesListDiv");
+
+    if (container) {
+      container.innerHTML = '<div class="text-gray-400 text-sm">Загрузка ролей...</div>';
+    }
     
+    const fetchFallback = async () => {
+      try {
+        const formData = new FormData();
+        formData.append("action", "get_roles_list");
+        formData.append("command", "create");
+        formData.append("project_id", "1365");
+        formData.append("obj_type", "group");
+        formData.append("obj_id", "all");
+
+        const res = await fetch("https://www.allrpg.info/roles/", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await res.json();
+        if (data?.response === "success" && data.response_data) {
+          setContent(data.response_data);
+        } else {
+          setContent('<div class="text-red-400 text-sm">Не удалось загрузить роли (fallback). Попробуйте позже.</div>');
+        }
+      } catch (err) {
+        setContent('<div class="text-red-400 text-sm">Сервис ролей недоступен. Попробуйте позже.</div>');
+      }
+    };
+
     const initWidget = () => {
       if ((window as any).allrpgRolesList) {
-        (window as any).allrpgRolesList("create");
+        (window as any)
+          .allrpgRolesList("create")
+          .catch(fetchFallback);
+      } else {
+        fetchFallback();
       }
     };
 
@@ -23,22 +65,131 @@ const RolesGridWidget: React.FC = () => {
       script.type = "text/javascript";
       script.async = true;
       script.onload = initWidget;
+      script.onerror = fetchFallback;
       document.head.appendChild(script);
     } else {
       initWidget();
     }
+    
+    const timeoutId = window.setTimeout(() => {
+      const html = container?.innerHTML || "";
+      if (html.includes("Загрузка ролей")) {
+        fetchFallback();
+      }
+    }, 3000);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <div className="bg-white/5 rounded-lg p-4 overflow-x-auto min-h-[300px] border border-white/10">
       {/* @ts-ignore */}
-      <div id="allrpgRolesListDiv" project_id="1365"></div>
+      <div ref={containerRef} id="allrpgRolesListDiv" project_id="1365"></div>
       <style>{`
-        /* Minimal style overrides for the external widget to fit the dark theme better if possible */
-        #allrpgRolesListDiv table { width: 100%; border-collapse: collapse; color: #d4d4d4; }
-        #allrpgRolesListDiv th, #allrpgRolesListDiv td { padding: 8px; border-bottom: 1px solid #333; }
-        #allrpgRolesListDiv a { color: #8a0b0b; text-decoration: none; }
-        #allrpgRolesListDiv a:hover { text-decoration: underline; }
+        #allrpgRolesListDiv {
+          color: #e5e7eb;
+          font-size: 15px;
+          line-height: 1.5;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroup {
+          border: 1px solid #2a2a2a;
+          border-radius: 10px;
+          margin-bottom: 16px;
+          background: rgba(255,255,255,0.03);
+          overflow: hidden;
+          box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupHeader {
+          padding: 14px 16px;
+          background: linear-gradient(90deg, rgba(45,45,45,0.9), rgba(30,30,30,0.9));
+          border-bottom: 1px solid #2f2f2f;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupName a {
+          color: #fca5a5;
+          font-weight: 700;
+          text-decoration: none;
+          letter-spacing: 0.3px;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupName a:hover {
+          color: #fecaca;
+          text-decoration: underline;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupNamePath {
+          margin-top: 4px;
+          color: #94a3b8;
+          font-size: 13px;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupNamePath a {
+          color: #cbd5e1;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupNamePathSeparator {
+          margin: 0 6px;
+          color: #64748b;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupDescription {
+          margin-top: 6px;
+          color: #cbd5e1;
+        }
+        #allrpgRolesListDiv .allrpgRolesListGroupDescriptionImage {
+          margin-top: 8px;
+        }
+        #allrpgRolesListDiv .allrpgRolesListStrings {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+        #allrpgRolesListDiv .allrpgRolesListString {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 12px;
+          padding: 14px 16px;
+          border-top: 1px solid #2a2a2a;
+          align-items: flex-start;
+        }
+        #allrpgRolesListDiv .allrpgRolesListStringOdd {
+          background: rgba(255,255,255,0.02);
+        }
+        #allrpgRolesListDiv .allrpgRolesListStringEven {
+          background: rgba(255,255,255,0.01);
+        }
+        #allrpgRolesListDiv .allrpgRolesListCharacterName a {
+          color: #f8fafc;
+          font-weight: 600;
+          text-decoration: none;
+        }
+        #allrpgRolesListDiv .allrpgRolesListCharacterName a:hover {
+          color: #fca5a5;
+          text-decoration: underline;
+        }
+        #allrpgRolesListDiv .allrpgRolesListCharacterDescription {
+          color: #94a3b8;
+          margin-top: 4px;
+        }
+        #allrpgRolesListDiv .allrpgRolesListApplication,
+        #allrpgRolesListDiv .allrpgRolesListApplicationsList {
+          color: #e5e7eb;
+          font-size: 14px;
+          text-align: right;
+        }
+        #allrpgRolesListDiv .allrpgRolesListLoading::after {
+          content: 'Загрузка...';
+          display: block;
+          padding: 12px 0;
+          color: #94a3b8;
+          font-size: 14px;
+          text-align: center;
+        }
+        @media (max-width: 768px) {
+          #allrpgRolesListDiv .allrpgRolesListString {
+            grid-template-columns: 1fr;
+          }
+          #allrpgRolesListDiv .allrpgRolesListApplication,
+          #allrpgRolesListDiv .allrpgRolesListApplicationsList {
+            text-align: left;
+          }
+        }
       `}</style>
     </div>
   );

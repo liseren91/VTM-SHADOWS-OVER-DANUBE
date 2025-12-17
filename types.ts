@@ -66,6 +66,11 @@ export interface SettingContent {
     title: string;
     locations: LocationItem[];
   };
+  traditions: {
+    title: string;
+    intro: string;
+    traditions: { name: string; description: string }[];
+  };
   clans: {
     title: string;
     intro: string;

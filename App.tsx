@@ -9,7 +9,8 @@ import AboutView from './components/AboutView';
 import CastingView from './components/CastingView';
 import Navbar from './components/Navbar';
 import { TRANSLATIONS } from './translations';
-import { Moon, ChevronDown, Calendar, MapPin, User, Crown, Flame, Plus, Minus } from 'lucide-react';
+import { APPLICATION_URL } from './constants';
+import { Moon, ChevronDown, Calendar, MapPin, User, Flame, Plus, Minus } from 'lucide-react';
 
 // Define valid views corresponding to hash
 type View = 'home' | 'setting' | 'rules' | 'about' | 'casting';
@@ -23,7 +24,6 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     e.preventDefault();
@@ -130,8 +130,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
               {content.pitch.question}
             </p>
             <a 
-              href="#casting" 
-              onClick={(e) => handleLinkClick(e, '#casting')}
+              href={APPLICATION_URL} 
+              target="_blank"
+              rel="noreferrer"
               className="inline-block px-12 py-5 bg-transparent border-2 border-blood-red text-blood-red font-serif text-xl font-bold tracking-[0.2em] hover:bg-blood-red hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(138,11,11,0.3)] hover:shadow-[0_0_40px_rgba(138,11,11,0.6)]"
             >
               {content.pitch.cta}
@@ -171,53 +172,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
         </div>
       </Section>
 
-      {/* Rules Section (The Six Traditions) */}
-      <Section id="traditions" title={content.rules.title}>
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="inline-block mb-6">
-             <Crown className="w-12 h-12 text-blood-red mx-auto opacity-80" />
-          </div>
-          <p className="text-xl md:text-2xl text-gray-300 font-serif leading-relaxed italic border-x-2 border-blood-red/20 px-8 py-4 bg-white/5 rounded-lg">
-            {content.rules.intro}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {content.rules.traditions.map((rule: any, idx: number) => (
-            <div 
-              key={idx} 
-              className="relative p-8 bg-gradient-to-br from-neutral-900 to-black border border-white/10 hover:border-blood-red/50 transition-all duration-500 group overflow-hidden"
-            >
-              <div className="absolute -right-4 -bottom-8 text-[120px] font-serif font-bold text-white/5 select-none pointer-events-none group-hover:text-blood-red/10 transition-colors">
-                {ROMAN_NUMERALS[idx]}
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex items-baseline gap-3 mb-4 border-b border-blood-red/30 pb-3">
-                  <span className="text-blood-red font-serif font-bold text-xl">{ROMAN_NUMERALS[idx]}.</span>
-                  <h3 className="text-xl font-serif text-white tracking-wider uppercase group-hover:text-blood-red transition-colors">
-                    {rule.name}
-                  </h3>
-                </div>
-                <p className="text-gray-400 text-sm md:text-base leading-relaxed font-sans">
-                  {rule.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="text-center mt-12">
-            <a 
-                href="#rules"
-                onClick={(e) => handleLinkClick(e, '#rules')}
-                className="text-blood-red hover:text-white border-b border-blood-red pb-1 transition-colors font-serif tracking-widest inline-block"
-            >
-                {content.hero.buttonRules} &rarr;
-            </a>
-        </div>
-      </Section>
-
       {/* Call to Action */}
       <Section id="apply" title={content.apply.title} isAlternate>
         <div className="text-center max-w-2xl mx-auto">
@@ -228,8 +182,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
             {content.apply.text2}
           </p>
           <a 
-            href="#casting"
-            onClick={(e) => handleLinkClick(e, '#casting')}
+            href={APPLICATION_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-block px-12 py-4 bg-blood-red hover:bg-red-800 text-white font-serif text-lg tracking-widest shadow-[0_0_20px_rgba(138,11,11,0.5)] hover:shadow-[0_0_40px_rgba(138,11,11,0.7)] transition-all transform hover:-translate-y-1"
           >
             {content.apply.button}

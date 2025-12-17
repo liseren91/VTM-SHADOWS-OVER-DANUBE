@@ -2,6 +2,7 @@ import React from 'react';
 import { CastingPageContent } from '../types';
 import RolesGridWidget from './RolesGridWidget';
 import { ArrowLeft, Send, Users, PenTool, Camera, MapPin, Shirt } from 'lucide-react';
+import { APPLICATION_URL } from '../constants';
 
 interface CastingViewProps {
   content: CastingPageContent;
@@ -95,7 +96,9 @@ const CastingView: React.FC<CastingViewProps> = ({ content, onBack }) => {
 
                 <div className="text-center md:text-left">
                     <a 
-                        href="#" 
+                        href={APPLICATION_URL}
+                        target="_blank"
+                        rel="noreferrer"
                         className="inline-block px-12 py-4 bg-blood-red text-white font-serif text-lg tracking-widest hover:bg-red-800 transition-all border border-red-500 shadow-[0_0_20px_rgba(138,11,11,0.6)] hover:shadow-[0_0_30px_rgba(220,20,60,0.8)] transform hover:-translate-y-1"
                     >
                         {content.applyButton}

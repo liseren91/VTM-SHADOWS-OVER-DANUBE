@@ -38,11 +38,6 @@ interface Content {
     adviceFooter: string;
     items: ScheduleItem[];
   };
-  rules: {
-    title: string;
-    intro: string;
-    traditions: { name: string; description: string }[];
-  };
   apply: {
     title: string;
     text1: string;
@@ -260,6 +255,18 @@ export const TRANSLATIONS: Record<Language, Content> = {
           { name: 'Fruška Gora', description: 'National park with forests and monasteries to the south. Beautiful, secluded, but not just ordinary wolves roam there.' }
         ]
       },
+      traditions: {
+        title: 'The Six Traditions',
+        intro: 'Vampires of the Camarilla swear to uphold the six legendary Traditions of Caine — laws that Caine supposedly bequeathed to his descendants. Like other laws, the Traditions are often ignored, twisted, or outright broken.',
+        traditions: [
+          { name: 'The Masquerade', description: 'Thou shall not reveal thy true nature to those not of the Blood. Doing such shall renounce thy claims of Blood.' },
+          { name: 'The Domain', description: 'Thy domain is thine own concern. All others owe thee respect while in it. None may challenge thy word while in thy domain.' },
+          { name: 'The Progeny', description: 'Thou shall only Sire another with the permission of thine Elder. If thou createst another without thine Elder\'s leave, both thou and thy Progeny shall be slain.' },
+          { name: 'The Accounting', description: 'Those thou create are thine own children. Until thy Progeny shall be Released, thou shall command them in all things. Their sins are thine to endure.' },
+          { name: 'The Hospitality', description: 'Honor one another\'s domain. When thou comest to a foreign city, thou shall present thyself to the one who ruleth there. Without the word of acceptance, thou art nothing.' },
+          { name: 'The Destruction', description: 'Thou art forbidden to destroy another of thy kind. The right of destruction belongeth only to thine Elder. Only the Eldest among thee shall call the Blood Hunt.' }
+        ]
+      },
       clans: {
         title: 'Clans and Roles',
         intro: 'All characters are Neonates belonging to one of the seven Camarilla clans.',
@@ -272,7 +279,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Potence, Celerity, Presence',
             weakness: 'Harder to resist Frenzy. The Beast is close to the surface.',
             roles: ['Enforcers and Bodyguards', 'Activists and Ideologues', 'Street Fighters', 'War Survivors'],
-            image: 'https://images.unsplash.com/photo-1560298803-1d998f6b5249?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/brujah.png',
             link: 'https://wod.su/vampire/clans/camarilla/brujah'
           },
           {
@@ -283,7 +290,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Animalism, Fortitude, Protean',
             weakness: 'Gain animal features with every Frenzy.',
             roles: ['Scouts and Trackers', 'Wilderness Liaisons', 'Lone Hunters', 'Apolitical Drifters'],
-            image: 'https://images.unsplash.com/photo-1542353436-312f0e1f67ff?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/gangrel.png',
             link: 'https://wod.su/vampire/clans/camarilla/gangrel'
           },
           {
@@ -294,7 +301,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Auspex, Dementation, Obfuscate',
             weakness: 'Insanity. Every Malkavian has a specific derangement that never fades.',
             roles: ['Informants and Spies', 'Advisors (Strange but accurate)', 'Seers', 'Unpredictable Elements'],
-            image: 'https://images.unsplash.com/photo-1504199367641-aba8151af406?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/malkavian.png',
             link: 'https://wod.su/vampire/clans/camarilla/malkavian'
           },
           {
@@ -305,7 +312,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Animalism, Obfuscate, Potence',
             weakness: 'Horrific appearance (App 0). Cannot pass as human, even with magic.',
             roles: ['Information Brokers', 'Spies and Saboteurs', 'Underground Controllers', 'Secret Keepers'],
-            image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/nosferatu.png',
             link: 'https://wod.su/vampire/clans/camarilla/nosferatu'
           },
           {
@@ -316,7 +323,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Auspex, Celerity, Presence',
             weakness: 'Transfixed by beauty. Can become entranced and immobile when witnessing something truly beautiful.',
             roles: ['Social Manipulators', 'Elysium Hosts', 'Harpies', 'Seducers'],
-            image: 'https://images.unsplash.com/photo-1502323707151-cd29615a1375?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/toreador.png',
             link: 'https://wod.su/vampire/clans/camarilla/toreador'
           },
           {
@@ -327,7 +334,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Auspex, Dominate, Thaumaturgy',
             weakness: 'Blood Bond to the Clan. Must drink the blood of the Council of Seven.',
             roles: ['Ritualists', 'Occult Researchers', 'Clan Politicians', 'Magic Solvers'],
-            image: 'https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/tremere.png',
             link: 'https://wod.su/vampire/clans/camarilla/tremere'
           },
           {
@@ -338,7 +345,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Dominate, Fortitude, Presence',
             weakness: 'Selective palate. Can only drink from a specific type of mortal (e.g., only nobility, only soldiers, only blondes).',
             roles: ['Leaders and Organizers', 'Politicians and Diplomats', 'Business Managers', 'Power Seekers'],
-            image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/ventrue.png',
             link: 'https://wod.su/vampire/clans/camarilla/ventrue'
           }
         ]
@@ -636,18 +643,6 @@ export const TRANSLATIONS: Record<Language, Content> = {
         { time: '02:00 - Dawn', title: 'The Long Night', description: 'Personal plots, dangerous deals. We try not to send you to your death this late, but be careful.', type: 'downtime' }
       ]
     },
-    rules: {
-      title: 'The Six Traditions',
-      intro: 'Vampires of the Camarilla swear to uphold the six legendary Traditions of Caine — laws that Caine supposedly bequeathed to his descendants. Like other laws, the Traditions are often ignored, twisted, or outright broken.',
-      traditions: [
-        { name: 'The Masquerade', description: 'Thou shall not reveal thy true nature to those not of the Blood. Doing such shall renounce thy claims of Blood.' },
-        { name: 'The Domain', description: 'Thy domain is thine own concern. All others owe thee respect while in it. None may challenge thy word while in thy domain.' },
-        { name: 'The Progeny', description: 'Thou shall only Sire another with the permission of thine Elder. If thou createst another without thine Elder\'s leave, both thou and thy Progeny shall be slain.' },
-        { name: 'The Accounting', description: 'Those thou create are thine own children. Until thy Progeny shall be Released, thou shall command them in all things. Their sins are thine to endure.' },
-        { name: 'The Hospitality', description: 'Honor one another\'s domain. When thou comest to a foreign city, thou shall present thyself to the one who ruleth there. Without the word of acceptance, thou art nothing.' },
-        { name: 'The Destruction', description: 'Thou art forbidden to destroy another of thy kind. The right of destruction belongeth only to thine Elder. Only the Eldest among thee shall call the Blood Hunt.' }
-      ]
-    },
     apply: {
       title: 'Become Part of the Story',
       text1: 'Know the lore? Want to create cinematic moments for others rather than seeking glory for yourself?',
@@ -831,7 +826,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     castingPage: {
       title: 'Кастинг',
-      description: 'Проверьте доступные роли и текущий статус кастинга в официальном реестре.',
+      description: 'Проверьте доступные роли.',
       teamSection: {
         title: 'Мастерская Группа',
         members: [
@@ -846,8 +841,8 @@ export const TRANSLATIONS: Record<Language, Content> = {
         intro: 'Если вы хотите помочь с организацией, у нас есть роли для:',
         roles: [
           'Помощников по локациям',
-          'Координаторов по костюмам',
-          'Фотографов / Видеографов',
+          'Техническую помощь',
+          'Фотографов',
           'Игротехников (особенно со знанием лора)'
         ],
         cta: 'Отметьте в заявке, если готовы помочь!'
@@ -897,6 +892,18 @@ export const TRANSLATIONS: Record<Language, Content> = {
           { name: 'Фрушка-Гора', description: 'Национальный парк с лесами и монастырями на юге. Красиво, уединенно, но там бродят не только обычные волки.' }
         ]
       },
+      traditions: {
+        title: 'Шесть Традиций',
+        intro: 'Вампиры Камарильи клянутся соблюдать шесть легендарных Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
+        traditions: [
+          { name: 'Маскарад', description: 'Ты не будешь открывать свою истинную природу тем, кто не Твоей Крови. Сделав это, ты отречешься от своих прав Крови.' },
+          { name: 'Домен', description: 'Твой домен — твоя забота. Все остальные обязаны уважать тебя, пока находятся в нем. Никто не может оспаривать твое слово в твоем домене.' },
+          { name: 'Потомство', description: 'Ты будешь создавать других только с разрешения твоего Старейшины. Если ты создашь другого без дозволения Старейшины, и ты, и твое Потомство будете убиты.' },
+          { name: 'Ответственность', description: 'Те, кого ты создаешь — твои собственные дети. Пока твое Потомство не будет Освобождено, ты будешь командовать ими во всем. Их грехи — твои, чтобы их терпеть.' },
+          { name: 'Гостеприимство', description: 'Уважай домен другого. Когда ты приходишь в чужой город, ты должен представиться тому, кто правит там. Без слова принятия ты — ничто.' },
+          { name: 'Уничтожение', description: 'Тебе запрещено уничтожать других твоего вида. Право уничтожения принадлежит только твоему Старейшине. Только Старейший среди вас призовет Кровавую Охоту.' }
+        ]
+      },
       clans: {
         title: 'Кланы и Роли',
         intro: 'Все персонажи — Неонаты, принадлежащие к одному из семи кланов Камарильи.',
@@ -909,7 +916,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Могущество, Стремительность, Присутствие',
             weakness: 'Труднее сопротивляться Безумию. Зверь близко к поверхности.',
             roles: ['Бойцы и Телохранители', 'Активисты и Идеологи', 'Уличные Бойцы', 'Пережившие Войну'],
-            image: 'https://images.unsplash.com/photo-1560298803-1d998f6b5249?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/brujah.png',
             link: 'https://wod.su/vampire/clans/camarilla/brujah'
           },
           {
@@ -920,7 +927,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Анимализм, Стойкость, Превращение',
             weakness: 'Получают черты животного после каждого Безумия.',
             roles: ['Разведчики и Следопыты', 'Связь с Дикой Природой', 'Одинокие Охотники', 'Аполитичные Бродяги'],
-            image: 'https://images.unsplash.com/photo-1542353436-312f0e1f67ff?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/gangrel.png',
             link: 'https://wod.su/vampire/clans/camarilla/gangrel'
           },
           {
@@ -931,7 +938,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Прорицание, Помешательство, Затемнение',
             weakness: 'Безумие. У каждого Малкавиана есть специфический психоз, который никогда не проходит.',
             roles: ['Информаторы и Шпионы', 'Советники (Странные, но точные)', 'Провидцы', 'Непредсказуемые Элементы'],
-            image: 'https://images.unsplash.com/photo-1504199367641-aba8151af406?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/malkavian.png',
             link: 'https://wod.su/vampire/clans/camarilla/malkavian'
           },
           {
@@ -942,7 +949,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Анимализм, Затемнение, Могущество',
             weakness: 'Ужасающая внешность (App 0). Не могут сойти за человека, даже с магией.',
             roles: ['Торговцы Информацией', 'Шпионы и Диверсанты', 'Контролеры Подполья', 'Хранители Секретов'],
-            image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/nosferatu.png',
             link: 'https://wod.su/vampire/clans/camarilla/nosferatu'
           },
           {
@@ -953,7 +960,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Прорицание, Стремительность, Присутствие',
             weakness: 'Заворожены красотой. Могут впасть в транс и застыть, наблюдая что-то по-настоящему прекрасное.',
             roles: ['Социальные Манипуляторы', 'Хозяева Элизиума', 'Гарпии', 'Соблазнители'],
-            image: 'https://images.unsplash.com/photo-1502323707151-cd29615a1375?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/toreador.png',
             link: 'https://wod.su/vampire/clans/camarilla/toreador'
           },
           {
@@ -964,7 +971,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Прорицание, Доминирование, Тауматургия',
             weakness: 'Узы Крови с Кланом. Обязаны пить кровь Совета Семи.',
             roles: ['Ритуалисты', 'Исследователи Оккультизма', 'Клановые Политики', 'Решатели Магических Проблем'],
-            image: 'https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/tremere.png',
             link: 'https://wod.su/vampire/clans/camarilla/tremere'
           },
           {
@@ -975,7 +982,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             disciplines: 'Доминирование, Стойкость, Присутствие',
             weakness: 'Избирательный вкус. Могут пить только от определенного типа смертных (напр., только знать, только солдаты, только блондины).',
             roles: ['Лидеры и Организаторы', 'Политики и Дипломаты', 'Бизнес-Управляющие', 'Искатели Власти'],
-            image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=1000',
+            image: '/clan-portraits/ventrue.png',
             link: 'https://wod.su/vampire/clans/camarilla/ventrue'
           }
         ]
@@ -1273,23 +1280,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
         { time: '02:00 - Рассвет', title: 'Долгая Ночь', description: 'Личные сюжеты, опасные сделки. Мы стараемся не отправлять вас на смерть так поздно, но будьте осторожны.', type: 'downtime' }
       ]
     },
-    rules: {
-      title: 'Шесть Традиций',
-      intro: 'Вампиры Камарильи клянутся соблюдать шесть легендарных Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
-      traditions: [
-        { name: 'Маскарад', description: 'Ты не будешь открывать свою истинную природу тем, кто не Твоей Крови. Сделав это, ты отречешься от своих прав Крови.' },
-        { name: 'Домен', description: 'Твой домен — твоя забота. Все остальные обязаны уважать тебя, пока находятся в нем. Никто не может оспаривать твое слово в твоем домене.' },
-        { name: 'Потомство', description: 'Ты будешь создавать других только с разрешения твоего Старейшины. Если ты создашь другого без дозволения Старейшины, и ты, и твое Потомство будете убиты.' },
-        { name: 'Ответственность', description: 'Те, кого ты создаешь — твои собственные дети. Пока твое Потомство не будет Освобождено, ты будешь командовать ими во всем. Их грехи — твои, чтобы их терпеть.' },
-        { name: 'Гостеприимство', description: 'Уважай домен другого. Когда ты приходишь в чужой город, ты должен представиться тому, кто правит там. Без слова принятия ты — ничто.' },
-        { name: 'Уничтожение', description: 'Тебе запрещено уничтожать других твоего вида. Право уничтожения принадлежит только твоему Старейшине. Только Старейший среди вас призовет Кровавую Охоту.' }
-      ]
-    },
     apply: {
       title: 'Стать частью истории',
       text1: 'Знаешь лор? Хочешь создавать кинематографичные моменты для других, а не искать славы для себя?',
-      text2: 'Мы ищем посвященных рассказчиков на роли Двора (NPC). Мы скоординируем ваше появление, триггеры и секреты.',
-      button: 'ПОДАТЬ ЗАЯВКУ НА NPC'
+      text2: 'Мы ищем посвященных игротехников на роли примогенов и других персонажей игры. Мы вместе с вами создадим уникальную историю для всех игроков.',
+      button: 'ПОДАТЬ ЗАЯВКУ НА ИГРОТЕХНИКА'
     },
     faq: {
       title: 'FAQ',

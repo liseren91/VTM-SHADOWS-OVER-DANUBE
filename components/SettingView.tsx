@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { SettingContent } from '../types';
-import { ArrowLeft, MapPin, BookOpen, Clock, AlertTriangle, Users, Sparkles, RefreshCw, Zap, AlertOctagon, Quote, Crosshair, Trash2 } from 'lucide-react';
-import { generateClanPortrait } from '../services/geminiService';
+import { ArrowLeft, MapPin, BookOpen, Clock, AlertTriangle, Users, Zap, AlertOctagon, Quote, Crosshair, Trash2, Crown } from 'lucide-react';
 
 interface SettingViewProps {
   content: SettingContent;
@@ -11,7 +10,7 @@ interface SettingViewProps {
 
 const SettingView: React.FC<SettingViewProps> = ({ content, onBack }) => {
   const [generatedImages, setGeneratedImages] = useState<Record<string, string>>({});
-  const [loadingImages, setLoadingImages] = useState<Record<string, boolean>>({});
+  const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 
   // Load saved images from localStorage on mount
   useEffect(() => {
@@ -24,27 +23,6 @@ const SettingView: React.FC<SettingViewProps> = ({ content, onBack }) => {
       }
     }
   }, []);
-
-  const handleGenerateImage = async (clanName: string, stereotype: string, description: string) => {
-    if (loadingImages[clanName]) return;
-
-    setLoadingImages(prev => ({ ...prev, [clanName]: true }));
-    
-    try {
-      const base64Image = await generateClanPortrait(clanName, stereotype, description);
-      if (base64Image) {
-        setGeneratedImages(prev => {
-          const newState = { ...prev, [clanName]: base64Image };
-          localStorage.setItem('vtm_clan_images', JSON.stringify(newState));
-          return newState;
-        });
-      }
-    } catch (e) {
-      console.error("Failed to generate image for", clanName);
-    } finally {
-      setLoadingImages(prev => ({ ...prev, [clanName]: false }));
-    }
-  };
 
   const handleResetImage = (e: React.MouseEvent, clanName: string) => {
     e.stopPropagation();
@@ -112,6 +90,43 @@ const SettingView: React.FC<SettingViewProps> = ({ content, onBack }) => {
         </div>
       </section>
 
+      {/* The Six Traditions */}
+      <section className="mb-24 px-6 max-w-6xl mx-auto">
+        <div className="flex items-center gap-3 mb-8">
+          <Crown className="w-6 h-6 text-blood-red" />
+          <h2 className="text-2xl font-serif text-gray-200 tracking-wider uppercase">{content.traditions.title}</h2>
+        </div>
+
+        <p className="text-xl text-white italic mb-12 font-serif text-center md:text-left border-l-4 border-blood-red pl-6 py-2">
+          {content.traditions.intro}
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {content.traditions.traditions.map((rule, idx) => (
+            <div 
+              key={idx} 
+              className="relative p-8 bg-gradient-to-br from-neutral-900 to-black border border-white/10 hover:border-blood-red/50 transition-all duration-500 overflow-hidden"
+            >
+              <div className="absolute -right-4 -bottom-8 text-[120px] font-serif font-bold text-white/5 select-none pointer-events-none">
+                {ROMAN_NUMERALS[idx]}
+              </div>
+              
+              <div className="relative z-10">
+                <div className="flex items-baseline gap-3 mb-4 border-b border-blood-red/30 pb-3">
+                  <span className="text-blood-red font-serif font-bold text-xl">{ROMAN_NUMERALS[idx]}.</span>
+                  <h3 className="text-xl font-serif text-white tracking-wider uppercase">
+                    {rule.name}
+                  </h3>
+                </div>
+                <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                  {rule.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Clans Section - Redesigned */}
       <section className="mb-24 px-6 max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-10">
@@ -143,9 +158,9 @@ const SettingView: React.FC<SettingViewProps> = ({ content, onBack }) => {
                       }`}
                   />
 
-                  {/* Buttons Overlay */}
-                  <div className="absolute top-4 right-4 z-30 flex gap-2 opacity-0 group-hover/image:opacity-100 transition-opacity">
-                    {generatedImages[clan.name] && (
+                  {/* Reset overlay (only shown when a generated image exists) */}
+                  {generatedImages[clan.name] && (
+                    <div className="absolute top-4 right-4 z-30 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={(e) => handleResetImage(e, clan.name)}
                         className="bg-black/60 hover:bg-red-900/80 text-white p-2 rounded-sm border border-white/20 backdrop-blur-md transition-all"
@@ -153,23 +168,8 @@ const SettingView: React.FC<SettingViewProps> = ({ content, onBack }) => {
                       >
                         <Trash2 className="w-5 h-5" />
                       </button>
-                    )}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleGenerateImage(clan.name, clan.stereotype, clan.description);
-                      }}
-                      disabled={loadingImages[clan.name]}
-                      className="bg-black/60 hover:bg-blood-red/80 text-white p-2 rounded-sm border border-white/20 backdrop-blur-md transition-all group/btn"
-                      title={generatedImages[clan.name] ? "Regenerate AI Portrait" : "Generate AI Portrait"}
-                    >
-                      {loadingImages[clan.name] ? (
-                        <RefreshCw className="w-5 h-5 animate-spin" />
-                      ) : (
-                        <Sparkles className="w-5 h-5 group-hover/btn:text-yellow-200" />
-                      )}
-                    </button>
-                  </div>
+                    </div>
+                  )}
 
                   {/* Clan Title Overlay on Image (Mobile only) */}
                   <div className="absolute bottom-4 left-4 z-20 md:hidden">
