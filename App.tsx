@@ -329,7 +329,11 @@ const App: React.FC = () => {
         )}
         {currentView === 'casting' && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <CastingView content={content.castingPage} onBack={() => window.location.hash = ''} />
+                <CastingView 
+                  content={content.castingPage} 
+                  lang={lang}
+                  onBack={() => window.location.hash = ''} 
+                />
             </div>
         )}
       </main>
