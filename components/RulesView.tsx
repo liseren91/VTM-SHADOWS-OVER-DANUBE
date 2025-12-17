@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RulesPageContent } from '../types';
-import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown } from 'lucide-react';
 
 interface RulesViewProps {
   content: RulesPageContent;
@@ -8,6 +8,8 @@ interface RulesViewProps {
 }
 
 const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
+  const [openSubsections, setOpenSubsections] = useState<Record<string, boolean>>({});
+
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'scroll': return <Scroll className="w-6 h-6" />;
@@ -19,6 +21,10 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
       case 'shield': return <Shield className="w-6 h-6" />;
       default: return <Scroll className="w-6 h-6" />;
     }
+  };
+
+  const toggleSubsection = (key: string) => {
+    setOpenSubsections(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
   const scrollToSection = (id: string) => {
@@ -105,6 +111,44 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                             </li>
                                         ))}
                                     </ul>
+                                )}
+
+                                {block.subsections && (
+                                  <div className="space-y-3 mt-4">
+                                    {block.subsections.map((sub, subIdx) => {
+                                      const key = `${section.id}-${idx}-${subIdx}`;
+                                      const isOpen = !!openSubsections[key];
+                                      return (
+                                        <div key={key} className="border border-white/10 rounded bg-white/5 overflow-hidden">
+                                          <button
+                                            onClick={() => toggleSubsection(key)}
+                                            className="w-full flex items-center justify-between px-4 py-3 text-left text-gray-200 hover:text-white hover:bg-white/5 transition-colors"
+                                          >
+                                            <span className="font-serif text-lg">{sub.title}</span>
+                                            <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-blood-red' : 'text-gray-400'}`} />
+                                          </button>
+                                          {isOpen && (
+                                            <div className="border-t border-white/10 p-4 space-y-3 animate-in fade-in">
+                                              {sub.text && (
+                                                <p className="text-gray-400 leading-relaxed text-base">
+                                                  {sub.text}
+                                                </p>
+                                              )}
+                                              {sub.list && (
+                                                <ul className="space-y-2">
+                                                  {sub.list.map((item, listIdx) => (
+                                                    <li key={listIdx} className="flex items-start gap-3 p-3 rounded bg-black/40 border border-white/5">
+                                                      <span className="text-gray-300">{item}</span>
+                                                    </li>
+                                                  ))}
+                                                </ul>
+                                              )}
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
                                 )}
                             </div>
                         ))}

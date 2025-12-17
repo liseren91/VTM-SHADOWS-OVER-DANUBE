@@ -34,13 +34,26 @@ const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
     <div className="animate-in fade-in duration-700">
       {/* Hero Section */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-10000 hover:scale-105"
-          style={{ 
-            backgroundImage: 'url(https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80&w=2074)', 
-            opacity: 0.9
-          }} 
-        />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-10000 hover:scale-105"
+            style={{ 
+              backgroundImage: 'url(https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80&w=2074)', 
+              opacity: 0.9
+            }} 
+          />
+          <div className="absolute inset-0">
+            <iframe
+              className="w-full h-full pointer-events-none scale-110"
+              style={{ opacity: 0.2 }}
+              src="https://www.youtube.com/embed/5aYSV8IsB4w?autoplay=1&controls=0&rel=0&mute=1&loop=1&playlist=5aYSV8IsB4w&modestbranding=1"
+              title="Landing background video"
+              loading="lazy"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black z-10" />
         
         <div className="relative z-20 text-center px-4 max-w-6xl mx-auto mt-10">
