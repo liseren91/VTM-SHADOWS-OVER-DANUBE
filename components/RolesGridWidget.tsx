@@ -1,13 +1,17 @@
 import React, { useEffect, useRef } from 'react';
+import { Language } from '../types';
+import { translateTexts } from '../services/geminiService';
 
-const RolesGridWidget: React.FC = () => {
-  const mounted = useRef(false);
+interface RolesGridWidgetProps {
+  lang: Language;
+}
+
+const RolesGridWidget: React.FC<RolesGridWidgetProps> = ({ lang }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (mounted.current) return;
-    mounted.current = true;
     let cancelled = false;
+
     const setContent = (html: string) => {
       if (cancelled) return;
       const container =
@@ -15,15 +19,49 @@ const RolesGridWidget: React.FC = () => {
       if (container) container.innerHTML = html;
     };
 
-    const scriptUrl = "https://www.allrpg.info/js/roles.min.js";
-    const container =
-      containerRef.current || document.getElementById("allrpgRolesListDiv");
+    const translateHtmlIfNeeded = async (html: string) => {
+      if (lang !== 'en') return html;
+      if (!html.trim()) return html;
 
-    if (container) {
-      container.innerHTML = '<div class="text-gray-400 text-sm">Загрузка ролей...</div>';
-    }
-    
-    const fetchFallback = async () => {
+      try {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+
+        const textNodes: Text[] = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode as Text;
+          const value = node.nodeValue?.trim();
+          if (value) textNodes.push(node);
+        }
+
+        if (!textNodes.length) return html;
+
+        const originalTexts = textNodes.map((node) => node.nodeValue || '');
+        const translated = await translateTexts(originalTexts, 'en');
+
+        if (translated && translated.length === textNodes.length) {
+          textNodes.forEach((node, idx) => {
+            node.nodeValue = translated[idx];
+          });
+          return doc.body.innerHTML;
+        }
+
+        return html;
+      } catch (error) {
+        console.error("Roles translation failed:", error);
+        return html;
+      }
+    };
+
+    const fetchRoles = async () => {
+      const container =
+        containerRef.current || document.getElementById("allrpgRolesListDiv");
+
+      if (container) {
+        container.innerHTML = `<div class="text-gray-400 text-sm">${lang === 'en' ? 'Loading roles...' : 'Загрузка ролей...'}</div>`;
+      }
+
       try {
         const formData = new FormData();
         formData.append("action", "get_roles_list");
@@ -36,53 +74,33 @@ const RolesGridWidget: React.FC = () => {
           method: "POST",
           body: formData,
         });
+
         const data = await res.json();
         if (data?.response === "success" && data.response_data) {
-          setContent(data.response_data);
+          const translatedHtml = await translateHtmlIfNeeded(data.response_data);
+          setContent(translatedHtml);
         } else {
-          setContent('<div class="text-red-400 text-sm">Не удалось загрузить роли (fallback). Попробуйте позже.</div>');
+          setContent(
+            `<div class="text-red-400 text-sm">${lang === 'en'
+              ? 'Failed to load roles. Try again later.'
+              : 'Не удалось загрузить роли. Попробуйте позже.'}</div>`
+          );
         }
       } catch (err) {
-        setContent('<div class="text-red-400 text-sm">Сервис ролей недоступен. Попробуйте позже.</div>');
+        setContent(
+          `<div class="text-red-400 text-sm">${lang === 'en'
+            ? 'Roles service is unavailable. Please try later.'
+            : 'Сервис ролей недоступен. Попробуйте позже.'}</div>`
+        );
       }
     };
 
-    const initWidget = () => {
-      if ((window as any).allrpgRolesList) {
-        (window as any)
-          .allrpgRolesList("create")
-          .catch(fetchFallback);
-      } else {
-        fetchFallback();
-      }
-    };
-
-    let script = document.querySelector(`script[src="${scriptUrl}"]`) as HTMLScriptElement;
-    
-    if (!script) {
-      script = document.createElement("script");
-      script.src = scriptUrl;
-      script.type = "text/javascript";
-      script.async = true;
-      script.onload = initWidget;
-      script.onerror = fetchFallback;
-      document.head.appendChild(script);
-    } else {
-      initWidget();
-    }
-    
-    const timeoutId = window.setTimeout(() => {
-      const html = container?.innerHTML || "";
-      if (html.includes("Загрузка ролей")) {
-        fetchFallback();
-      }
-    }, 3000);
+    fetchRoles();
 
     return () => {
       cancelled = true;
-      window.clearTimeout(timeoutId);
     };
-  }, []);
+  }, [lang]);
 
   return (
     <div className="bg-white/5 rounded-lg p-4 overflow-x-auto min-h-[300px] border border-white/10">

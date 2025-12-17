@@ -66,6 +66,93 @@ export const sendMessageToGemini = async (
   }
 };
 
+const decodeHtmlEntities = (text: string) => {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = text;
+  return textarea.value;
+};
+
+const getTranslateApiKey = () => {
+  const key = process.env.GOOGLE_TRANSLATE_API_KEY;
+  if (!key) {
+    console.error("GOOGLE_TRANSLATE_API_KEY is not set");
+    return null;
+  }
+  return key;
+};
+
+/**
+ * Translate an array of strings while keeping order via Google Translate API.
+ * Returns null if translation fails (callers can fall back to source text).
+ */
+export const translateTexts = async (
+  texts: string[],
+  targetLang: Language = 'en'
+): Promise<string[] | null> => {
+  try {
+    const apiKey = getTranslateApiKey();
+    if (!apiKey || texts.length === 0) {
+      return null;
+    }
+
+    const target = targetLang === 'ru' ? 'ru' : 'en';
+    const source = target === 'en' ? 'ru' : 'en';
+
+    // Google Translate API allows up to 128 strings per request; chunk to be safe.
+    const chunkSize = 90;
+    const chunks: string[][] = [];
+    for (let i = 0; i < texts.length; i += chunkSize) {
+      chunks.push(texts.slice(i, i + chunkSize));
+    }
+
+    const results: string[] = [];
+
+    for (const chunk of chunks) {
+      const response = await fetch(
+        `https://translation.googleapis.com/language/translate/v2?key=${encodeURIComponent(apiKey)}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            q: chunk,
+            target,
+            source,
+            format: 'text',
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        console.error("Translation API HTTP error:", response.status, response.statusText);
+        return null;
+      }
+
+      const data = await response.json();
+      const translations = data?.data?.translations;
+
+      if (!Array.isArray(translations) || translations.length !== chunk.length) {
+        console.error("Translation API unexpected payload shape");
+        return null;
+      }
+
+      translations.forEach((item: any) =>
+        results.push(
+          decodeHtmlEntities(typeof item?.translatedText === 'string' ? item.translatedText : '')
+        )
+      );
+    }
+
+    if (results.length === texts.length) {
+      return results;
+    }
+
+    return null;
+  } catch (error) {
+    console.error("Translation Error:", error);
+    return null;
+  }
+};
+
 export const generateClanPortrait = async (
   clanName: string,
   stereotype: string,

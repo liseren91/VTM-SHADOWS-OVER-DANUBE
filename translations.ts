@@ -85,7 +85,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         whereLabel: 'Where',
         where: 'Novi Sad',
         mgLabel: 'MG',
-        mg: 'Ptitsa, Kaire, Til & Max Gorin @GorinMY'
+        mg: 'PtiCA, Kaire, Til & Max Gorin @GorinMY'
       },
       buttonRules: 'READ THE LAWS',
       buttonJoin: 'JOIN THE COURT',
@@ -189,11 +189,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     castingPage: {
       title: 'Casting',
-      description: 'Check the available roles and current casting status in the official registry.',
+      description: 'Check the available roles and current casting status in the official registry. The casting is loading slowly for the first time, please wait.',
       teamSection: {
         title: 'Master Group',
         members: [
-          { name: 'Ptitsa', role: 'Head Master, Plot, Mechanics', telegram: '@liseren' },
+          { name: 'Ptiсa', role: 'Head Master, Plot, Mechanics', telegram: '@liseren' },
           { name: 'Kaire', role: 'Plot, Atmosphere', telegram: '@kyirevanity' },
           { name: 'Til', role: 'IT and MG Support', telegram: '' },
           { name: 'Max Gorin', role: 'Logistics Master (AHCH)', telegram: '@GorinMY' }
@@ -204,9 +204,9 @@ export const TRANSLATIONS: Record<Language, Content> = {
         intro: 'If you want to help with the organization, we have roles for:',
         roles: [
           'Location Assistants',
-          'Costume Coordinators',
-          'Photographers / Videographers',
-          'Game Techs (especially with Lore knowledge)'
+          'Game Coordinators',
+          'Photographers',
+          'Game Techs (especi/ally with Lore knowledge)'
         ],
         cta: 'Mark in the application if you are ready to help!'
       },

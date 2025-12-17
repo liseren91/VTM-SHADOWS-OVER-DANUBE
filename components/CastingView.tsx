@@ -1,15 +1,16 @@
 import React from 'react';
-import { CastingPageContent } from '../types';
+import { CastingPageContent, Language } from '../types';
 import RolesGridWidget from './RolesGridWidget';
 import { ArrowLeft, Send, Users, PenTool, Camera, MapPin, Shirt } from 'lucide-react';
 import { APPLICATION_URL } from '../constants';
 
 interface CastingViewProps {
   content: CastingPageContent;
+  lang: Language;
   onBack: () => void;
 }
 
-const CastingView: React.FC<CastingViewProps> = ({ content, onBack }) => {
+const CastingView: React.FC<CastingViewProps> = ({ content, onBack, lang }) => {
   return (
     <div className="pt-24 pb-20 min-h-screen bg-black">
       {/* Header */}
@@ -31,7 +32,7 @@ const CastingView: React.FC<CastingViewProps> = ({ content, onBack }) => {
         
         {/* Roles Grid Widget */}
         <section className="bg-black/50 border border-white/10 rounded-sm overflow-hidden">
-           <RolesGridWidget />
+           <RolesGridWidget lang={lang} />
         </section>
 
         {/* Team Section */}
