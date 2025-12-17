@@ -252,7 +252,6 @@ export const TRANSLATIONS: Record<Language, Content> = {
           { name: 'Petrovaradin Fortress', description: 'Ancient fortress on the hill. Rumors say its dungeons still hold Sabbat secrets.' },
           { name: 'Danube Banks', description: 'Bars, clubs, nightlife. Convenient hunting grounds and places for "no strings attached" meetings.' },
           { name: 'Industrial Zone & Outskirts', description: 'Abandoned factories, warehouses, slums. Might makes right here. Sometimes the mighty aren\'t vampires.' },
-          { name: 'Fruška Gora', description: 'National park with forests and monasteries to the south. Beautiful, secluded, but not just ordinary wolves roam there.' }
         ]
       },
       traditions: {
