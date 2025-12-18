@@ -37,6 +37,7 @@ interface Content {
     adviceText: string;
     adviceFooter: string;
     items: ScheduleItem[];
+    hidden?: boolean;
   };
   apply: {
     title: string;
@@ -78,17 +79,17 @@ export const TRANSLATIONS: Record<Language, Content> = {
     hero: {
       titleStart: 'VTM:',
       titleEnd: 'SHADOWS OVER DANUBE',
-      subtitle: 'Urban LARP. Mystical detective & action based on World of Darkness.',
+      subtitle: 'Urban LARP.\n Mystical detective & action based on World of Darkness.',
       details: {
         whenLabel: 'When',
         when: 'November 11 - 15, 2026',
         whereLabel: 'Where',
         where: 'Novi Sad',
-        mgLabel: 'MG',
-        mg: 'PtiCA, Kaire, Til & Max Gorin @GorinMY'
+        mgLabel: 'Team',
+        mg: 'Ptica, Kaire, Til & Max Gorin'
       },
-      buttonRules: 'READ THE LAWS',
-      buttonJoin: 'JOIN THE COURT',
+      buttonRules: 'READ THE RULES',
+      buttonJoin: 'JOIN THE GAME',
     },
     pitch: {
       title: 'The Aftermath',
@@ -102,7 +103,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       title: 'About the Game',
       intro: {
         title: 'Novi Sad. 2026.',
-        text: 'A city on the Danube, where old bridges remember more than they should. Three years ago, there was war. The Camarilla, led by the Prince of Budapest, drove the Sabbat out. Barricades were dismantled, bodies removed, the Masquerade restored. Now the Laws of Traditions rule here, and everything is relatively calm. Relatively.',
+        text: 'A city on the Danube, where old bridges remember more than they should. Three years ago, there was war. The Camarilla, led by the Knez of Budapest, drove the Sabbat out. Barricades were dismantled, bodies removed, the Masquerade restored. Now the Laws of Traditions rule here, and everything is relatively calm. Relatively.',
         subText: 'You are a neonate. Perhaps recently embraced, still adjusting to the Hunger. Or maybe you survived the war and seek your place in the new order. The city is open to the ambitious. Or it will devour those who are not careful.'
       },
       atmosphere: {
@@ -113,6 +114,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
           'Shadows of the past: not all Sabbat followers have left.',
           'Hunger, politics, survival.'
         ]
+      },
+      video: {
+        title: 'Watch the Teaser',
+        description: 'Short mood piece for VTM: Shadows over Danube.',
+        url: 'https://www.youtube.com/embed/x6w9RNsL0GE'
       },
       expectations: {
         title: 'What to Expect',
@@ -142,7 +148,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         npc: {
           title: 'The Court',
           subtitle: 'NON-PLAYER CHARACTERS',
-          list: 'Prince, Seneschal, Harpy, Elders & Ancillae',
+          list: 'Knez, Seneschal, Harpy, Elders & Ancillae',
           desc: 'These potentates are Tech Characters (NPCs). They serve the narrative. They do not strive to "win" the game, nor do they play favorites to ensure their friends win. They have triggers, secrets, and modes of operation, but they exist to provide a backdrop for YOUR story.',
           quote: '"Killing an Elder requires more than a sharp stake. You will likely need the aid of another Elder, powerful artifacts, or a very long night."'
         },
@@ -822,6 +828,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     schedule: {
       title: "Rhythm of the Night",
+      hidden: true,
       description: "The game lasts from sunset to sunrise. While personal intrigues are eternal, the City demands your service during specific hours. Do not miss mandatory gatherings.",
       adviceTitle: "Keeper's Advice",
       adviceText: "\"Events can be adapted to your coterie or personal story. We are not villains; we won't drag you into the abyss right before dawn... usually. But remember: The City won't wait for you to get ready.\"",
@@ -906,21 +913,21 @@ export const TRANSLATIONS: Record<Language, Content> = {
     hero: {
       titleStart: 'VTM:',
       titleEnd: 'ТЕНИ НАД ДУНАЕМ',
-      subtitle: 'Городской ЛАРП. Мистический детектив и экшн по Миру Тьмы.',
+      subtitle: 'Городская Ролевая Игра.\nМистический детектив и экшн на основе Мира Тьмы.',
       details: {
         whenLabel: 'Когда',
         when: '11 - 15 Ноября 2026',
         whereLabel: 'Где',
         where: 'Нови-Сад',
         mgLabel: 'МГ',
-        mg: 'Птица, Кайре, Тиль и Макс Горин @GorinMY'
+        mg: 'Птица, Кайре, Тиль и Макс Горин'
       },
-      buttonRules: 'ЧИТАТЬ ЗАКОНЫ',
-      buttonJoin: 'ВСТУПИТЬ ВО ДВОР',
+      buttonRules: 'ЧИТАТЬ ПРАВИЛА',
+      buttonJoin: 'ВСТУПИТЬ В ИГРУ',
     },
     pitch: {
       title: 'Последствия',
-      context: 'Три года назад Камарилья отбила Нови-Сад у Шабаша. Война закончена, но город все еще помнит вкус крови.',
+      context: 'Три года назад Камарилья отбила Нови-Сад у Шабаша.Война закончена, но город все еще помнит вкус крови.',
       role: 'Ты — Неонат. Вчерашний птенец или опытный хищник? Город полон возможностей для тех, кто готов платить цену.',
       genre: 'Детектив, экшн или мрачные интриги — ты сам выбираешь свой путь. Никаких рельс. Только твои решения, их последствия и реакция мира.',
       question: 'На что ты готов ради своей цели?',
@@ -930,7 +937,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       title: 'Об Игре',
       intro: {
         title: 'Нови-Сад. 2026.',
-        text: 'Город на Дунае, где старые мосты помнят больше, чем должны. Три года назад здесь была война. Камарилья во главе с Принцем Будапешта выбила Шабаш. Баррикады разобрали, тела убрали, Маскарад восстановили. Теперь здесь правят Законы Традиций, и все относительно спокойно. Относительно.',
+        text: 'Город на Дунае, где старые мосты помнят больше, чем должны. Три года назад здесь была война. Камарилья во главе с Князем Будапешта выбила Шабаш. Баррикады разобрали, тела убрали, Маскарад восстановили. Теперь здесь правят Законы Традиций, и все относительно спокойно. Относительно.',
         subText: 'Вы — неонат. Возможно, недавно обращенный, еще привыкающий к Голоду. Или, может быть, вы пережили войну и ищете свое место в новом порядке. Город открыт для амбициозных. Или пожрет тех, кто неосторожен.'
       },
       atmosphere: {
@@ -941,6 +948,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
           'Тени прошлого: не все последователи Шабаша ушли.',
           'Голод, политика, выживание.'
         ]
+      },
+      video: {
+        title: 'Смотри тизер',
+        description: 'Короткое атмосферное видео к «VTM:Тени над Дунаем».',
+        url: 'https://www.youtube.com/embed/BZgbzV9rcn4'
       },
       expectations: {
         title: 'Чего Ожидать',
@@ -1016,7 +1028,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       }
     },
     castingPage: {
-      title: 'Кастинг',
+      title: 'Сетка Ролей',
       description: 'Проверьте доступные роли.',
       teamSection: {
         title: 'Мастерская Группа',
@@ -1047,29 +1059,29 @@ export const TRANSLATIONS: Record<Language, Content> = {
         intro: 'Краткая История',
         timeline: [
           {
-            year: 'До 2010-х',
+            year: 'До 2020-х',
             title: 'Меч Каина',
-            description: 'Нови-Сад под контролем Шабаша. Город служил оплотом Меча Каина на Балканах — точильным камнем, где тактика оттачивалась против Камарильи.'
+            description: 'Нови-Сад держал Шабаш. Город был одной из их балканских баз — тут обкатывали тактику против Камарильи, тут готовили кадры.'
           },
           {
             year: 'Осень 2023',
             title: 'Война за Город',
-            description: 'Камарилья, во главе с Принцем Будапешта, начала масштабную операцию по зачистке города. Война была короткой, но кровавой. Последователи Шабаша либо пали, либо отступили, либо... ушли в подполье.'
+            description: 'Камарилья решила вычистить город. Князь Будапешта лично возглавил операцию. Месяц боёв — и Шабаш сломлен. Кто-то погиб, кто-то отступил на юг, а кто-то... просто исчез с радаров.'
           },
           {
             year: 'Зима 2023',
             title: 'Домен Камарильи',
-            description: 'Нови-Сад официально вошел в домен Камарильи. Князь Будапешта отправил своего потомка на княжение. Он должен защищать город и его границы.'
+            description: 'Нови-Сад перешёл под контроль Камарильи. Князь Будапешта назначил Князем своего птенца. Теперь его задача — держать город и не дать старым врагам вернуться..'
           },
           {
             year: '2024-2025',
-            title: 'Восстановление',
-            description: 'Новый Шериф и его команда навели порядок. Традиции были установлены, остатки Шабаша выслежены, а Маскарад восстановлен после хаоса войны. Начали прибывать Неонаты из других доменов — молодые, амбициозные, жаждущие куска нового пирога.'
+            title: 'Наведение порядка',
+            description: 'Новый Шериф взялся за дело всерьёз. Традиции ввели, Маскарад восстановили после военного беспредела, остатки Шабаша повыловили. К середине 2025-го в город начали подтягиваться Неонаты из соседних доменов — молодняк, который хочет урвать своё в новом месте.'
           },
           {
             year: 'Ноябрь 2026',
-            title: 'Новый Порядок',
-            description: 'Относительное спокойствие воцарилось. Иерархия установлена, Элизиум функционирует, Традиции соблюдаются. Но старые обиды не забыты. Странные банды бродят по окраинам. Находят тела со знакомыми метками. Параноики шепчут, что некоторые "новообращенные" Камарильи знают ритуалы Шабаша слишком хорошо.'
+            title: 'Мы здесь',
+            description: 'Вроде как утряслось. Иерархия работает, Элизиум функционирует, правила соблюдаются. Но не всё чисто. На окраинах шастают странные банды. Иногда находят трупы с узнаваемым почерком. Есть слухи, что некоторые "новые" Камарильцы слишком хорошо знают ритуалы Шабаша. Старые враги не забывают обид.'
           }
         ]
       },
@@ -1084,7 +1096,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       },
       traditions: {
         title: 'Шесть Традиций',
-        intro: 'Вампиры Камарильи клянутся соблюдать шесть легендарных Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
+        intro: 'Вампиры Камарильи клянутся соблюдать шесть Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
         traditions: [
           { name: 'Маскарад', description: 'Ты не будешь открывать свою истинную природу тем, кто не Твоей Крови. Сделав это, ты отречешься от своих прав Крови.' },
           { name: 'Домен', description: 'Твой домен — твоя забота. Все остальные обязаны уважать тебя, пока находятся в нем. Никто не может оспаривать твое слово в твоем домене.' },
@@ -1168,7 +1180,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             name: 'Вентру',
             nickname: 'Голубая Кровь',
             stereotype: 'Короли, лидеры, аристократия Камарильи.',
-            description: 'Считают себя правителями общества вампиров. Большинство Принцев — Вентру. Они контролируют, организуют и управляют. Они ценят порядок, традиции и стабильность. Они привыкли командовать — и обычно хороши в этом. Но их высокомерие — их слабость.',
+            description: 'Считают себя правителями общества вампиров. Большинство Князей — Вентру. Они контролируют, организуют и управляют. Они ценят порядок, традиции и стабильность. Они привыкли командовать — и обычно хороши в этом. Но их высокомерие — их слабость.',
             disciplines: 'Доминирование, Стойкость, Присутствие',
             weakness: 'Избирательный вкус. Могут пить только от определенного типа смертных (напр., только знать, только солдаты, только блондины).',
             roles: ['Лидеры и Организаторы', 'Политики и Дипломаты', 'Бизнес-Управляющие', 'Искатели Власти'],
@@ -1204,7 +1216,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
           },
           {
             term: 'Иерархия',
-            definition: 'Принц (Правитель), Примоген (Совет), Шериф (Исполнитель), Гарпии (Арбитры Статуса), Бич (Охотник на чужаков). Вы — Неонат в самом низу.'
+            definition: 'Князь (Правитель), Примоген (Совет), Шериф (Исполнитель), Гарпии (Арбитры Статуса), Бич (Охотник на чужаков). Вы — Неонат в самом низу.'
           },
           {
             term: 'Враги',
@@ -1628,7 +1640,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Игровые Ограничения ⚠️',
               list: [
                 'Диаблери (Возможно, но с тяжелыми последствиями)',
-                'Создание потомства (Только с разрешения Принца, нарушение = Окончательная Смерть)',
+                'Создание потомства (Только с разрешения Князя, нарушение = Окончательная Смерть)',
                 'Нарушение Маскарада (Большие проблемы, если смертные узнают)',
                 'Насилие в Элизиуме (Карается смертью)',
               ],
@@ -1649,13 +1661,14 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     schedule: {
       title: "Ритм Ночи",
+      hidden: true,
       description: "Игра длится от заката до рассвета. Личные интриги вечны, но Город требует вашей службы в определенные часы. Не пропускайте обязательные собрания.",
       adviceTitle: "Совет Хранителя",
       adviceText: "\"События могут быть адаптированы под вашу котерию или личную историю. Мы не злодеи; мы не потащим вас в бездну прямо перед рассветом... обычно. Но помните: Город не будет ждать, пока вы соберетесь.\"",
       adviceFooter: "* Уточняйте местоположение Элизиума у Гарпии.",
       items: [
         { time: 'Закат - 20:00', title: 'Пробуждение', description: 'Подъем. Сбор в Элизиуме. Обмен слухами и подготовка к ночи.', type: 'downtime' },
-        { time: '20:00 - 22:00', title: 'Мандат Принца', description: 'Обязательные групповые события. Шериф или Примоген раздадут задачи. Отсутствие будет замечено.', type: 'mandatory' },
+        { time: '20:00 - 22:00', title: 'Мандат Князя', description: 'Обязательные групповые события. Шериф или Примоген раздадут задачи. Отсутствие будет замечено.', type: 'mandatory' },
         { time: '22:00 - 00:00', title: 'Тени и Секреты', description: 'Свободное время. Преследуйте личные цели, торгуйте информацией или плетите интриги в углах Элизиума.', type: 'optional' },
         { time: '00:00 - 02:00', title: 'Час Ведьм', description: 'Вторая волна обязательных операций. Город спит, но Сородичи работают.', type: 'mandatory' },
         { time: '02:00 - Рассвет', title: 'Долгая Ночь', description: 'Личные сюжеты, опасные сделки. Мы стараемся не отправлять вас на смерть так поздно, но будьте осторожны.', type: 'downtime' }
@@ -1680,7 +1693,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         },
         {
           q: 'Насколько опасна игра? Может ли мой персонаж умереть?',
-          a: 'Да, смерть возможна. Но мы не убиваем персонажей просто так — всегда есть способы избежать фатала, если ты играешь осторожно или находишь союзников.'
+          a: 'Да, смерть возможна. Но мы не убиваем персонажей просто так — всегда есть способы избежать смерти, если ты играешь осторожно или находишь союзников.'
         },
         {
           q: 'Как проходит игра по времени?',

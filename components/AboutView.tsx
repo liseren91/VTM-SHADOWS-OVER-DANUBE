@@ -1,6 +1,6 @@
 import React from 'react';
 import { AboutPageContent } from '../types';
-import { ArrowLeft, Sparkles, CheckCircle2, XCircle, Hourglass, User, Info, Scale, Target, Map } from 'lucide-react';
+import { ArrowLeft, Sparkles, CheckCircle2, XCircle, Hourglass, User, Scale, Target, Map, PlayCircle } from 'lucide-react';
 
 interface AboutViewProps {
   content: AboutPageContent;
@@ -54,6 +54,32 @@ const AboutView: React.FC<AboutViewProps> = ({ content, onBack }) => {
                 </ul>
             </div>
         </section>
+
+        {content.video && (
+          <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <PlayCircle className="w-8 h-8 text-blood-red" />
+                <h3 className="text-2xl font-serif text-white tracking-widest uppercase">
+                  {content.video.title}
+                </h3>
+              </div>
+              {content.video.description && (
+                <p className="text-gray-300">{content.video.description}</p>
+              )}
+            </div>
+            <div className="w-full aspect-video bg-black/40 border border-white/10 rounded-sm overflow-hidden shadow-lg shadow-black/40">
+              <iframe
+                className="w-full h-full"
+                src={content.video.url}
+                title={content.video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </section>
+        )}
 
         {/* Expectations Grid */}
         <section className="grid md:grid-cols-2 gap-8 md:gap-16">

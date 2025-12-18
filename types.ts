@@ -148,6 +148,11 @@ export interface AboutPageContent {
     title: string;
     list: string[];
   };
+  video?: {
+    title: string;
+    description?: string;
+    url: string;
+  };
   expectations: {
     title: string;
     items: string[];
