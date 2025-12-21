@@ -99,18 +99,43 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                     </p>
                                 )}
 
+                                {block.image && (
+                                    <div className="mt-4 mb-6">
+                                        <img 
+                                            src={block.image} 
+                                            alt={block.subtitle || "Rule illustration"} 
+                                            className="max-w-full h-auto rounded border border-white/10 shadow-lg shadow-blood-red/5"
+                                        />
+                                    </div>
+                                )}
+
                                 {block.list && (
                                     <ul className="space-y-3 mt-4">
-                                        {block.list.map((item, i) => (
-                                            <li key={i} className={`flex items-start gap-3 p-3 rounded bg-white/5 ${
-                                                block.listType === 'check' ? 'border-l-4 border-green-500/50' :
-                                                block.listType === 'cross' ? 'border-l-4 border-red-500/50' :
-                                                block.listType === 'warning' ? 'border-l-4 border-yellow-500/50' :
-                                                'border-l-4 border-gray-600'
-                                            }`}>
-                                                <span className="text-gray-300">{item}</span>
-                                            </li>
-                                        ))}
+                                        {block.list.map((item, i) => {
+                                            const itemText = typeof item === 'string' ? item : item.text;
+                                            const itemImage = typeof item === 'object' ? item.image : null;
+                                            
+                                            return (
+                                                <li key={i} className={`flex flex-col gap-3 p-3 rounded bg-white/5 ${
+                                                    block.listType === 'check' ? 'border-l-4 border-green-500/50' :
+                                                    block.listType === 'cross' ? 'border-l-4 border-red-500/50' :
+                                                    block.listType === 'warning' ? 'border-l-4 border-yellow-500/50' :
+                                                    'border-l-4 border-gray-600'
+                                                }`}>
+                                                    <span className="text-gray-300">{itemText}</span>
+                                                    {itemImage && (
+                                                        <div className="mt-2">
+                                                            <img 
+                                                                src={itemImage} 
+                                                                alt={itemText} 
+                                                                className="max-w-full md:max-w-md h-auto rounded border border-white/10"
+                                                                loading="lazy"
+                                                            />
+                                                        </div>
+                                                    )}
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
                                 )}
 
@@ -135,13 +160,37 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                                   {sub.text}
                                                 </p>
                                               )}
+                                              {sub.image && (
+                                                <div className="mt-4 mb-4">
+                                                  <img 
+                                                    src={sub.image} 
+                                                    alt={sub.title} 
+                                                    className="max-w-full h-auto rounded border border-white/5 shadow-md shadow-blood-red/5"
+                                                  />
+                                                </div>
+                                              )}
                                               {sub.list && (
                                                 <ul className="space-y-2">
-                                                  {sub.list.map((item, listIdx) => (
-                                                    <li key={listIdx} className="flex items-start gap-3 p-3 rounded bg-black/40 border border-white/5">
-                                                      <span className="text-gray-300">{item}</span>
-                                                    </li>
-                                                  ))}
+                                                  {sub.list.map((item, listIdx) => {
+                                                    const itemText = typeof item === 'string' ? item : item.text;
+                                                    const itemImage = typeof item === 'object' ? item.image : null;
+                                                    
+                                                    return (
+                                                      <li key={listIdx} className="flex flex-col gap-3 p-3 rounded bg-black/40 border border-white/5">
+                                                        <span className="text-gray-300">{itemText}</span>
+                                                        {itemImage && (
+                                                          <div className="mt-2">
+                                                            <img 
+                                                              src={itemImage} 
+                                                              alt={itemText} 
+                                                              className="max-w-full md:max-w-md h-auto rounded border border-white/10 shadow-md"
+                                                              loading="lazy"
+                                                            />
+                                                          </div>
+                                                        )}
+                                                      </li>
+                                                    );
+                                                  })}
                                                 </ul>
                                               )}
                                             </div>

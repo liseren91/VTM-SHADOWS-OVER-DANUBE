@@ -595,8 +595,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
                     'Marker: white sash over the shoulder. No marker — no effect.',
                     'Activate by donning the sash and declaring; remove anytime. Re-enter only after the combat scene and not sooner than 1 minute; cannot enter mid-attack/defense.',
                     'Cloak of Shadows (dot 1): must first leave line of sight. Walk only; noise, collisions, dropped objects reveal you. Cameras do not see you.',
-                    'Unseen Presence (dot 2): may vanish in plain sight; can speak and move without dropping the effect, otherwise as Cloak of Shadows.',
-                    'Mask of a Thousand Faces is mandatory for Nosferatu off-scene. In Elysium they may remove it; leaving the scene they must put it back. Can be used to hide deformity for strategic actions.'
+                    {
+                      text: 'Unseen Presence (dot 2): may vanish in plain sight; can speak and move without dropping the effect, otherwise as Cloak of Shadows. Marker: see image.',
+                      image: '/white-ribbon.png'
+                    },
+                    'The Mask of a Thousand Faces is an additional effect for the Abrupt Disappearance ability—a Nosferatu appears human, and its appearance does not violate the Masquerade. Without the Mask of a Thousand Faces, you should not ride in a taxi with your face uncovered, unless you wish to violate the Traditions.'
                   ]
                 },
                 {
@@ -646,7 +649,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Emotional sway.',
                   list: [
                     'Awe (dot 1, touch, not in combat): for 2 hours target is a willing servant within line of sight/50 m, obeying non–self-harm orders. Cannot override 3rd Blood Bond. Dangerous orders may be refused with warning. Target forgets the effect but may suspect.',
-                    'Summon (dot 2): may summon anyone seen this night, any distance. Target must drop everything and come quickly without courting certain death; cannot attack summoner until arrival. Only one Summon at a time; can cancel. A second Summon from elsewhere won’t take effect. If scene is in a public spot, move it by “step outside”.'
+                    'Summoning (2 dots): Any character seen this night can be summoned to any distance. The target must arrive as quickly as possible, avoiding unnecessary suspicion among friends, endangering themselves, or committing suicidal acts. The summoning ends when the victim comes within 3 meters of the summoner or when the summoner attacks the victim. One summoning can be active at a time; it can be canceled. A second summoning from a different source will not work. If the scene is in a crowded place, GMs/players can reschedule it using the "Let\'s go outside" rule.'
                   ]
                 },
                 {
@@ -661,7 +664,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Thaumaturgy — Path of Blood (activated)',
                   text: 'Blood manipulation.',
                   list: [
-                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by ST.',
+                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by ST. Do not Create Blood Bonds.',
                     'Blood Might (dot 2, touch): for the night raises one vampire’s status (or self) by +1. Number of Disciplines doesn’t grow, but mental powers use new status. Humans don’t become ghouls; ghouls don’t become neonates; elders stay elders.'
                   ]
                 },
@@ -678,7 +681,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Beast forms.',
                   list: [
                     'Claws (dot 1, wear claw gloves): last until dawn or deactivation. Hit deals 1 hit (Potence bonuses apply). Cannot use other weapons, but may block. Can attack with both hands without Celerity.',
-                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Auspex/Presence/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. While active, claws deal 2 hits.'
+                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Auspex/Presence/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. Bonus for second dot - claws deal 2 hits.'
                   ]
                 },
                 {
@@ -1502,8 +1505,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
                     'Маркер: белая лента через плечо. Без маркера дисциплина не действует.',
                     'Активация: надеть ленту и заявить. Снять можно в любой момент; повторно включить после боевой ситуации, но не раньше чем через минуту. Войти в Затемнение прямо во время активной атаки/защиты нельзя.',
                     'Незримое присутствие (1 точка): нужно скрыться из поля зрения. Передвижение шагом; шум, столкновения, падение предметов делают видимым. Не видно на камерах.',
-                    'Внезапное исчезновение (2 точки): можно исчезнуть на глазах. Можно говорить и двигаться, не боясь снять эффект, остальное как у Незримого присутствия.',
-                    'Маска тысячи лиц обязательна для Носферату вне сцены. В Элизиуме маску можно снять; покидая сцену, нужно вернуть. Можно скрывать уродство для стратегических действий.'
+                    {
+                      text: 'Внезапное исчезновение (2 точки): можно исчезнуть на глазах. Можно говорить и двигаться, не боясь снять эффект, остальное как у Незримого присутствия. Маркер: см. изображение.',
+                      image: '/white-ribbon.png'
+                    },
+                    'Маска тысячи лиц это дополнительный эффект для Внезапного исчезновения - Носферату похож на человека, его появление не нарушает Маскарад. Без Маски Тысячи Лиц не стоит ездить на такси с открытм лицом, если не хотите нарушать Традиции.'
                   ]
                 },
                 {
@@ -1552,8 +1558,8 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Присутствие (ментальная)',
                   text: 'Эмоциональное подчинение.',
                   list: [
-                    'Восторг (1 точка, касание, вне боя): 2 часа цель — добровольный слуга в зоне прямой видимости до 50 м, выполняет приказы без прямого физического вреда. Не может нарушать 3 Уза Крови. Опасный приказ можно игнорировать, предупредив. Жертва не помнит эффекта, но может догадаться.',
-                    'Призыв (2 точки): можно призвать любого персонажа, увиденного этой ночью, на любое расстояние. Цель обязана как можно быстрее прийти, не ставя себя на верную смерть; не может атаковать призывателя до конца действия. Одновременно держится один призыв; можно отменить. Второй призыв от другого источника не сработает. Если сцена в людном месте — мастера/игроки могут перенести её по правилу "Пойдем выйдем".'
+                    'Восторг (1 точка, касание, вне боя): 2 часа цель — добровольный слуга в зоне прямой видимости до 50 м, выполняет приказы без прямого физического вреда. Не может нарушать Третьи Узы Крови. Опасный приказ можно игнорировать, предупредив. Жертва не помнит эффекта, но может догадаться.',
+                    'Призыв (2 точки): можно призвать любого персонажа, увиденного этой ночью, на любое расстояние. Цель обязана как можно быстрее прийти не создавай лишних подозрений у друзей, не подвергая себя опасности и не совершая самоубийственные действия; Призыв заканчивается после того как жертыва подошла на 3 метра к призывающему или с нападаением призывающего на жертву. Одновременно держится один призыв; можно отменить. Второй призыв от другого источника не сработает. Если сцена в людном месте — мастера/игроки могут перенести её по правилу "Пойдем выйдем".'
                   ]
                 },
                 {
@@ -1568,7 +1574,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Тауматургия — Путь крови (активируемая)',
                   text: 'Манипуляция кровью.',
                   list: [
-                    'Вкус крови (1 точка, нужна кровь цели): определяет статус, клан и раскидку дисциплин. Успех определяет мастер.',
+                    'Вкус крови (1 точка, нужна кровь цели): определяет статус, клан и раскидку дисциплин. Успех определяет мастер. Не создавайте Узы Крови.',
                     'Сила крови (2 точки, касание): до конца ночи повышает статус выбранного вампира (или себя) на +1. Количество дисциплин не растёт, но ментальные работают по новому статусу. Люди не становятся гулями, гули — не неонатами, старейшины остаются старейшинами.'
                   ]
                 },
@@ -1585,7 +1591,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Звериные формы.',
                   list: [
                     'Когти (1 точка, надеть перчатки-когти): держатся до рассвета или деактивации. Удар снимает 1 хит (бонусы от Мощи добавляются). Нельзя использовать другое оружие, но можно блокировать. Можно атаковать двумя руками без Стремительности.',
-                    'Форма тумана (2 точки): белая ткань 1x1.5 м на плечи. Нематериален, иммунен к физическому урону и дисциплинам, кроме Прорицания/Присутствия/Помешательства; уязвим к тауматургии, солнцу и огню (включая путь огней). Нельзя говорить, применять дисциплины или взаимодействовать физически; движение только шагом; можно входить/выходить в помещения (двери открывают по жизни). Длительность 1 час, кулдаун 30 минут. Во время действия когти наносят 2 хита.'
+                    'Форма тумана (2 точки): белая ткань 1x1.5 м на плечи. Нематериален, иммунен к физическому урону и дисциплинам, кроме Прорицания/Присутствия/Помешательства; уязвим к тауматургии, солнцу и огню (включая путь огней). Нельзя говорить, применять дисциплины или взаимодействовать физически; движение только шагом; можно входить/выходить в помещения (двери открывают по жизни). Длительность 1 час, кулдаун 30 минут. Бонус второй точки - когти наносят 2 хита.'
                   ]
                 },
                 {
