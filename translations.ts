@@ -437,6 +437,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Core rules',
               list: [
                 'Each player has 3 hits; some characters may have extra.',
+                'Maximum hits for most players is 5, even with armor/disciplines (unless specified otherwise by a discipline like Setite Golems or Zulo form).',
                 'Hit zone: torso and limbs. Do NOT hit head, hands, feet, or groin.',
                 'Damage only with unpainted Nerf blasters or foam/protector weapons marked “in game item”.',
                 'Follow weapon safety. The less realistic your weapon looks, the fewer problems on city streets.',
@@ -448,10 +449,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Taking wounds',
               text: 'Each hit to a valid zone removes 1 hit and assigns a wound status.',
               list: [
-                'Light — may move at a fast walk; may carry a wounded only at a walk.',
-                'Medium — only walking; cannot carry others.',
-                'Heavy — no self‑movement. Can be carried in arms or by two people under the shoulders.'
-              ]
+               'Light — no gameplay restrictions. Wound roleplaying is encouraged.',
+               'Medium — 1 hit point remaining. Walking only (unless you have Celerity 1 or a suitable enhancement); with the help of a healthy companion, you can run (Celerity 2).',
+               'Heavy — Zero hit points. Independent movement is prohibited. Carrying a seriously wounded character is only possible with two other players, unless you have Might or a suitable artifact. Conversation is permitted. The next hit puts the character into Torpor.',
+               'Torpor is a state of unconsciousness in which you cannot see, hear, or move. You can only emerge from it if you are given blood to drink.'
+              ],
             },
             {
               subtitle: 'While wounded',
@@ -459,13 +461,19 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Must roleplay pain (groans, cries, etc.).',
                 'Running is forbidden with any wound.',
                 'Every 15 minutes you restore 1 hit and downgrade to light/normal; 2 hits take 30 minutes.',
-                'Losing the 3rd hit and going heavy blocks regen without a “helping hand”.'
+                'After combat, vampires and ghouls (if not in heavy injury/torpor) restore all hits automatically if not Hungry.',
+                'Losing the 3rd hit and going heavy blocks regen without a “helping hand”.',
+                'Ghouls can be brought out of heavy injury by drinking vampire blood or surgery.',
+                'Vampires exit torpor from wounds after a period determined by their Humanity/Path level.'
               ]
             },
             {
-              subtitle: 'Death',
+              subtitle: 'Death & Finishing Off',
               list: [
                 'Losing the 3rd hit puts you in heavy, then death if no help arrives.',
+                'A character in torpor (vampire) or heavy injury (human/ghoul) can be finished off. Loudly and clearly say “Finishing off” and roleplay it with a weapon/claws.',
+                'Final killing of a Camarilla Kindred is a violation of the Tradition of Destruction unless a Blood Hunt is active.',
+                'Death conditions: Vampires in torpor die if not transported to safety by the end of the game night. Heavily injured ghouls die if not given vampire blood within an hour. Humans die if not given the Embrace/Ghouled within an hour.',
                 'After death: stay for 10 minutes roleplaying a corpse (longer if the scene needs it).',
                 'You may tell others the nature of your wounds.',
                 'Then contact STs to get a new role.'
@@ -504,6 +512,23 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'If you hear it and feel a hand on your shoulder — that is a punch.',
                 'First marker gives you a chance to talk your way out.',
                 'On the second marker you must follow to a safe place for the fight or surrender.'
+              ]
+            },
+            {
+              subtitle: 'Weapon Mechanics',
+              list: [
+                'For melee weapons and claws, a hit is a clear, amplitude touch of the target zone with a swing (wrist hits and "sewing machine" style strikes are forbidden).',
+                'For a stake, it is a clear touch of the chest or back with the HAND in which the stake is held (not the stake itself).'
+              ]
+            },
+            {
+              subtitle: 'Staking',
+              list: [
+                'A vampire stake immobilizes the target. The vampire remains in this state until the stake is removed.',
+                'In the "immobilized" state, the character cannot perform any game actions.',
+                'If you do not interact with the staked character for more than an hour, they may contact the GMs and will likely receive a sudden technical rescue.',
+                'Please use staking for gameplay, not to shove an opponent into a closet for the rest of the night.',
+                'Characters with level 2 Celerity or level 2 Fortitude are immune to firearms (see discipline rules for details).'
               ]
             }
           ]
@@ -720,8 +745,59 @@ export const TRANSLATIONS: Record<Language, Content> = {
             },
             {
               subtitle: 'Frenzy',
-              text: 'When the Beast breaks free. Triggers: Fire/Sunlight (Panic), Hunger, Provocation (Rage), Critical Humanity failure. In Frenzy, you lose control.',
-              listType: 'bullet'
+              text: 'A vampire in frenzy loses control to the Beast. Triggered by Hunger, Rage, or Critical Humanity failure.',
+              list: [
+                'The vampire must attack the nearest vampire or human, put them in torpor/heavy injury, and drink their blood.',
+                'Only melee weapons can be used.',
+                'Only physical disciplines (Potence, Fortitude, Celerity) can be used.',
+                'Immune to mental disciplines; all active mental effects fall off.',
+                'Ends when the vampire feeds from a victim or falls into torpor.'
+              ]
+            },
+            {
+              subtitle: 'Rotschreck',
+              text: 'Supernatural terror of open fire (any fire larger than the flame of a match/lighter).',
+              list: [
+                'Any vampire approaching open fire falls into uncontrolled terror and must run away at least 10 meters.',
+                'Immunity: Thaumaturges with the Path of Flames, some Sabbat members, and vampires with Humanity 3 or higher (Humanity specifically, not Path).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'blood',
+          title: 'Blood & Bonds',
+          icon: 'droplet',
+          content: [
+            {
+              subtitle: 'Blood Bonds',
+              text: 'Any vampire who drinks the blood of another vampire experiences the effect of the Blood Bond.',
+              list: [
+                '1 Sip – The character feels a strong affinity for the one whose blood they drank.',
+                '2 Sips – The character feels love and sexual attraction toward the one whose blood they drank. However, the character still values their own life, can keep secrets, and will not obey orders that directly lead to their death.',
+                '3 Sips – The character becomes a slave to the one whose blood they drank. They will tell and do anything that does not directly threaten their life.'
+              ]
+            },
+            {
+              text: 'The bond level can only increase by one step per night. Vampires sometimes voluntarily drink each other\'s blood to strengthen emotional ties or pledge mutual loyalty. The simplest way to bond a Kindred is to feed them your blood while they are in torpor.',
+            },
+            {
+              subtitle: 'Rumors',
+              list: [
+                'Rumors suggest that Sabbat vampires know how to break Blood Bonds.',
+                'It is said that the Tremere may know ways to release someone from a bond.'
+              ]
+            },
+            {
+              subtitle: 'Diablerie',
+              text: 'In the Camarilla, Diablerie (consuming another Kindred) is considered a grave crime. It is typically detected via Auspex; black streaks in the aura will surely raise questions from the Sheriff. Diablerie can be performed on a character in heavy injury or torpor.',
+              list: [
+                'The Act: Diablerie is the ultimate violation — the consumption of the soul itself. As the predator drains the last drops of the victim\'s heartblood, their essence is violently torn away and merged with the diabolist\'s own, leaving behind nothing but cold ash and a stained aura.'
+              ]
+            },
+            {
+              subtitle: 'Blood Replenishment',
+              text: 'You can replenish your blood by feeding on Tech-Characters (NPCs). A roleplayed feeding scene with an NPC allows you to restore your Hunger status to "Sated".'
             }
           ]
         },
@@ -1270,6 +1346,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Основные правила',
               list: [
                 'У каждого игрока 3 хита; некоторые персонажи могут иметь дополнительные.',
+                'Максимальное количество хитов большинства игроков — 5, если не указано иного в дисциплине (големы сеттитов и форма Зуло тзимицу).',
                 'Зона поражения: туловище и конечности. Бить нельзя по голове, кистям, стопам и паху.',
                 'Повреждения наносятся только некрашеными Nerf-бластерами или мягким оружием из протектора, маркированным как «предмет в игре».',
                 'Соблюдайте технику безопасности. Чем менее антуражно выглядит оружие, тем меньше проблем на улицах.',
@@ -1281,9 +1358,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Получение ранений',
               text: 'Каждое попадание игровым оружием в зону поражения снимает 1 хит и присваивает статус ранения.',
               list: [
-                'Лёгкое — можно идти быстрым шагом, переносить раненого только шагом.',
-                'Среднее — передвижение только шагом; переносить других нельзя.',
-                'Тяжёлое — самостоятельное движение запрещено. Переносить можно на руках или вдвоём под плечи.'
+                'Лёгкое — нет игротехнических ограничений. Приветствуется отыгрыш ранения.',
+                'Среднее — 1 хит остался. Передвижение только шагом (если нет Стремительности или подходящего усиления); при помощи здорового сородича может бежать.',
+                'Тяжёлое — ноль хитов. Самостоятельное движение запрещено. Переносить тяжелораненого можно только вдвоем, если нет Мощи или подходящего артефакта. Можно разговаривать. Следующий удар погружает персонажа в Торпор.',
+                'Торпор — это состояние бессознательное, в нем нельзя видеть, слышать и двигаться. Выйти из него можно, только если вас отпоили кровью.'
               ]
             },
             {
@@ -1292,13 +1370,19 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Обязаны имитировать боль (стон, крики и т. д.).',
                 'Бег запрещён при любом ранении.',
                 'Каждые 15 минут восстанавливается 1 хит и статус упрощается до лёгкого/нормы; два хита — за 30 минут.',
-                'Потеря третьего хита и тяжёлое ранение блокируют восстановление без «руки помощи».'
+                'По завершении боевки вампир и гуль, если не впали в тяжран/торпор, восстанавливают все хиты автоматически, если не голодны.',
+                'Потеря третьего хита и тяжёлое ранение блокируют восстановление без «руки помощи».',
+                'Гуля можно вывести из тяжрана, напоив кровью вампира или проведя операцию.',
+                'Вампиры выходят из торпора по ранению по прошествию времени, определяемого уровнем человечности/пути.'
               ]
             },
             {
-              subtitle: 'Смерть',
+              subtitle: 'Смерть и добивание',
               list: [
                 'Потеря третьего хита переводит в тяжёлое ранение, затем в смерть, если помощь не получена.',
+                'Персонажа в торпоре (вампир) или тяжелом ранении (человек/гуль) можно добить. Требуется громко и четко сказать «Добиваю» и отыграть это оружием или когтями.',
+                'Убийство Сородича Камарильи — прямое нарушение Традиции Уничтожения, если не объявлена Кровавая Охота.',
+                'Условия смерти: Вампир в торпоре умирает, если не будет транспортирован в безопасное место к концу ночи. Тяжело раненый гуль — если в течение часа не получил крови вампира. Человек — если в течение часа не получил становление/гуление.',
                 'После смерти игрок 10 минут отыгрывает труп (можно дольше ради сцены).',
                 'В это время можно сообщить другим о характере ранений.',
                 'Затем связывайтесь с Мастерами для получения новой роли.'
@@ -1337,6 +1421,23 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Если услышали фразу и почувствовали руку на плече — это удар.',
                 'Первый маркер даёт шанс уговорить нападающего не бить.',
                 'При повторном маркере нужно пойти за нападающим к безопасному месту для боёвки или сдаться.'
+              ]
+            },
+            {
+              subtitle: 'Механика ударов',
+              list: [
+                'Для холодного оружия и когтей попадание — четкое амплитудное касание поражаемой зоны, с замахом (кистевые удары, «швейная машинка» запрещена).',
+                'Для кола — четкое касание грудной клетки или спины РУКОЙ, в которой зажат кол (а не самим колом).'
+              ]
+            },
+            {
+              subtitle: 'Колирование',
+              list: [
+                'Кол вампиров обездвиживает. В таком состоянии вампир находится до тех пор, пока не вытащат кол.',
+                'В состоянии «обездвижен» персонаж не может совершать никаких игровых действий.',
+                'Если вы никак не взаимодействуете с колированным персонажем больше часа, он может написать МГ и его очень вероятно ждет внезапное игротехническое спасение.',
+                'Просим использовать кол для игры, а не для того чтобы до конца ночи запихать соперника в шкаф.',
+                'Персонажи, обладающие вторым уровнем дисциплины Стремительность или вторым уровнем дисциплины Стойкость, иммунны к огнестрелу (подробности в правилах по дисциплинам).'
               ]
             }
           ]
@@ -1553,8 +1654,59 @@ export const TRANSLATIONS: Record<Language, Content> = {
             },
             {
               subtitle: 'Безумие (Frenzy)',
-              text: 'Когда Зверь вырывается на свободу. Триггеры: Огонь/Солнце (Паника), Голод, Провокация (Ярость), Критический провал Человечности. В Безумии вы теряете контроль.',
-              listType: 'bullet'
+              text: 'Вампир, впавший в состояние френзи, теряет контроль над Зверем. Триггеры: Голод, Ярость, критический провал Человечности.',
+              list: [
+                'Обязан атаковать любого ближайшего вампира или человека, ввести его в торпор/тяжран и выпить его кровь.',
+                'Можно пользоваться только оружием ближнего боя.',
+                'Нельзя использовать никакие дисциплины, кроме Мощи, Стойкости и Стремительности.',
+                'Неуязвим к ментальным дисциплинам; все ранее висевшие ментальные воздействия спадают.',
+                'Состояние спадает, когда вампир попитается из жертвы или когда впадет в торпор.'
+              ]
+            },
+            {
+              subtitle: 'Ротшрек (Rotschreck)',
+              text: 'Состояние сверхъестественного ужаса перед открытым огнем (любой огонь, крупнее пламени спички/зажигалки).',
+              list: [
+                'Любой вампир, подошедший к открытому огню, впадает в неконтролируемый ужас и должен убежать от источника огня на расстояние около 10 метров.',
+                'Иммунитет имеют тауматурги с путем Привлечения Огней, некоторые шабашиты и вампиры с человечностью 3 или выше (именно человечностью, не путем).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'blood',
+          title: 'Кровь и Узы',
+          icon: 'droplet',
+          content: [
+            {
+              subtitle: 'Узы крови',
+              text: 'Любой вампир, испивший крови другого вампира, испытывает на себе эффект Уз Крови.',
+              list: [
+                '1 Глоток — Персонаж чувствует приязнь к тому, чьей крови он испил.',
+                '2 Глотка — Персонаж чувствует любовь и сексуальное влечение к тому, чьей крови он испил. Но персонаж все же дорожит своей жизнью, может хранить секреты и не выполнять приказы напрямую влияющие на возможность умереть.',
+                '3 Глотка — Персонаж становится рабом того, чей крови он испил. Он расскажет и выполнит все, что прямо не угрожает его жизни.'
+              ]
+            },
+            {
+              text: 'В течение одной ночи можно повысить уровень уз только на один шаг. Иногда вампиры добровольно могут испить крови друг друга для усиления эмоциональной связи или обещания взаимной верности. Самый простой способ посадить Сородича на узы — отпоить его своей кровью в состоянии торпора.',
+            },
+            {
+              subtitle: 'Слухи',
+              list: [
+                'Ходят слухи, что вампиры Шабаша умеют разрывать Узы Крови.',
+                'Говорят, что Тремеры также могут знать способы освободить от Уз.'
+              ]
+            },
+            {
+              subtitle: 'Диаблери',
+              text: 'В Камарилье Диаблери другого Сородича считается тяжким преступлением. Оно выявляется, как правило, Прорицанием; черные полосы в ауре непременно вызовут вопросы у Шерифа. Диаблери можно совершить над персонажем, находящимся в тяжране или торпоре.',
+              list: [
+                'Отыгрыш: Диаблери — это абсолютное нарушение всех законов, поглощение самой души. Когда хищник выпивает последние капли сердечной крови жертвы, её сущность насильственно вырывается и сливается с кровью диаблериста, оставляя после себя лишь холодный пепел и запятнанную ауру.'
+              ]
+            },
+            {
+              subtitle: 'Пополнение крови',
+              text: 'Вы можете пополнить запас крови, питаясь игротехническими персонажами (NPC). Отыгрыш сцены питания с NPC позволяет восстановить статус Голода до «Сыт».'
             }
           ]
         },

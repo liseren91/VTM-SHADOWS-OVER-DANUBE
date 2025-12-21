@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RulesPageContent } from '../types';
-import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown } from 'lucide-react';
+import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown, Droplets } from 'lucide-react';
 
 interface RulesViewProps {
   content: RulesPageContent;
@@ -19,6 +19,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
       case 'heart': return <Heart className="w-6 h-6" />;
       case 'coins': return <Coins className="w-6 h-6" />;
       case 'shield': return <Shield className="w-6 h-6" />;
+      case 'droplet': return <Droplets className="w-6 h-6" />;
       default: return <Scroll className="w-6 h-6" />;
     }
   };
