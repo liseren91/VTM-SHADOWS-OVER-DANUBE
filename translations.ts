@@ -452,7 +452,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                'Light — no gameplay restrictions. Wound roleplaying is encouraged.',
                'Medium — 1 hit point remaining. Walking only (unless you have Celerity 1 or a suitable enhancement); with the help of a healthy companion, you can run (Celerity 2).',
                'Heavy — Zero hit points. Independent movement is prohibited. Carrying a seriously wounded character is only possible with two other players, unless you have Might or a suitable artifact. Conversation is permitted. The next hit puts the character into Torpor.',
-               'Torpor is a state of unconsciousness in which you cannot see, hear, or move. You can only emerge from it if you are given blood to drink.'
+               'Torpor is a state of unconsciousness in which you cannot see, hear, or move. You can only emerge from it if you are given a blood pack.'
               ],
             },
             {
@@ -460,7 +460,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               list: [
                 'Must roleplay pain (groans, cries, etc.).',
                 'After combat, vampires and ghouls (if not in heavy injury/torpor) restore all hits automatically if not Hungry.',
-                'Losing the 3rd hit and going heavy blocks regen without a “helping hand”.',
+                'Losing the 3rd hit and going heavy blocks regen without a blood pack.',
                 'Ghouls can be brought out of heavy injury by drinking vampire blood or surgery.',
                 'Vampires exit torpor from wounds after a period determined by their Humanity/Path level.'
               ]
@@ -481,10 +481,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Attack & defense',
               list: [
                 'Each hit removes a hit: 1st and 2nd give light then medium wounds.',
-                '3rd hit puts you into heavy. You have 15 minutes for a “helping hand”, otherwise death.',
-                'Helping hand = extracting the wounded from the clash; once at safe distance they heal 1 hit per 15 minutes.',
+                '3rd hit puts you into heavy. You have 15 minutes to use a blood pack, otherwise Torpor.',
+                'Blood pack = a game resource obtained through hunting; once at safe distance it restores 1 hit per 15 minutes.',
                 'Urban safety: leave the fight area for 10 minutes or 1–1.5 km to count as safe.',
-                'While helped the character remains heavy and obeys heavy limitations.'
+                'While using a blood pack the character bacome healthy.'
               ]
             },
             {
@@ -1359,15 +1359,15 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Лёгкое — нет игротехнических ограничений. Приветствуется отыгрыш ранения.',
                 'Среднее — 1 хит остался. Передвижение только шагом (если нет Стремительности или подходящего усиления); при помощи здорового сородича может бежать.',
                 'Тяжёлое — ноль хитов. Самостоятельное движение запрещено. Переносить тяжелораненого можно только вдвоем, если нет Мощи или подходящего артефакта. Можно разговаривать. Следующий удар погружает персонажа в Торпор.',
-                'Торпор — это состояние бессознательное, в нем нельзя видеть, слышать и двигаться. Выйти из него можно, только если вас отпоили кровью.'
+                'Торпор — это состояние бессознательное, в нем нельзя видеть, слышать и двигаться. Выйти из него можно только при использовании блад пакета.'
               ]
             },
             {
               subtitle: 'Поведение при ранении',
               list: [
-                'Обязаны имитировать боль (стон, крики и т. д.).'
+                'Обязаны имитировать боль (стон, крики и т. д.).',
                 'По завершении боевки вампир и гуль, если не впали в тяжран/торпор, восстанавливают все хиты автоматически, если не голодны.',
-                'Потеря третьего хита и тяжёлое ранение блокируют восстановление без «руки помощи».',
+                'Потеря третьего хита и тяжёлое ранение блокируют восстановление без блад пакета.',
                 'Гуля можно вывести из тяжрана, напоив кровью вампира или проведя операцию.',
                 'Вампиры выходят из торпора по ранению по прошествию времени, определяемого уровнем человечности/пути.'
               ]
@@ -1388,10 +1388,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Нападение и защита',
               list: [
                 'Оружие снимает хиты: первое и второе попадание убирают по 1 хиту и дают лёгкое, затем среднее ранение.',
-                'Третье попадание вводит в тяжёлое ранение. Есть 15 минут на «руку помощи», иначе смерть.',
-                'Рука помощи — вывод раненого из столкновения; как только он ушёл на безопасное расстояние, хиты восстанавливаются по 1 за каждые 15 минут.',
+                'Третье попадание вводит в тяжёлое ранение. Есть 15 минут на использование блад пакета, иначе Торпор.',
+                'Блад пакет — игровой ресурс, добываемый на охоте; позволяет восстанавливать все хиты после вывода раненого из столкновения.',
                 'В городской игре безопасное удаление: 10 минут от точки боя или 1-1.5 км.',
-                'Под рукой помощи персонаж остаётся в тяжёлом ранении и соблюдает все ограничения.'
+                'При использовании блад пакета персонаж полностью вылечивается.'
               ]
             },
             {
