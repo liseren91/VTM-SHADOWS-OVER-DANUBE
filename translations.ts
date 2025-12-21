@@ -459,8 +459,6 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'While wounded',
               list: [
                 'Must roleplay pain (groans, cries, etc.).',
-                'Running is forbidden with any wound.',
-                'Every 15 minutes you restore 1 hit and downgrade to light/normal; 2 hits take 30 minutes.',
                 'After combat, vampires and ghouls (if not in heavy injury/torpor) restore all hits automatically if not Hungry.',
                 'Losing the 3rd hit and going heavy blocks regen without a “helping hand”.',
                 'Ghouls can be brought out of heavy injury by drinking vampire blood or surgery.',
@@ -1367,9 +1365,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Поведение при ранении',
               list: [
-                'Обязаны имитировать боль (стон, крики и т. д.).',
-                'Бег запрещён при любом ранении.',
-                'Каждые 15 минут восстанавливается 1 хит и статус упрощается до лёгкого/нормы; два хита — за 30 минут.',
+                'Обязаны имитировать боль (стон, крики и т. д.).'
                 'По завершении боевки вампир и гуль, если не впали в тяжран/торпор, восстанавливают все хиты автоматически, если не голодны.',
                 'Потеря третьего хита и тяжёлое ранение блокируют восстановление без «руки помощи».',
                 'Гуля можно вывести из тяжрана, напоив кровью вампира или проведя операцию.',
