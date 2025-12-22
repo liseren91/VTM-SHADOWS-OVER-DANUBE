@@ -70,6 +70,15 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
       {/* Main Content */}
       <main className="flex-1 p-6 md:p-12 lg:p-20 overflow-y-auto">
         <div className="max-w-4xl mx-auto space-y-24">
+            {content.warning && (
+                <div className="p-6 bg-yellow-500/10 border border-yellow-500/30 rounded-lg flex gap-4 -mb-12">
+                    <AlertTriangle className="w-6 h-6 text-yellow-500 shrink-0" />
+                    <div>
+                        <h3 className="text-yellow-500 font-serif text-xl mb-2 uppercase tracking-wider">{content.warning.title}</h3>
+                        <p className="text-gray-300 leading-relaxed">{content.warning.text}</p>
+                    </div>
+                </div>
+            )}
             {content.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-32">
                     <div className="flex items-center gap-4 mb-8">

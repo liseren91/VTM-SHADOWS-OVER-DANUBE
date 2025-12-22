@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { SettingContent } from '../types';
-import { ArrowLeft, MapPin, BookOpen, Clock, AlertTriangle, Users, Zap, AlertOctagon, Quote, Crosshair, Trash2, Crown } from 'lucide-react';
+import { ArrowLeft, MapPin, BookOpen, Clock, AlertTriangle, Users, Zap, AlertOctagon, Quote, Crosshair, Trash2, Crown, Gamepad2 } from 'lucide-react';
 
 interface SettingViewProps {
   content: SettingContent;
@@ -51,6 +51,27 @@ const SettingView: React.FC<SettingViewProps> = ({ content, onBack }) => {
           {content.title}
         </h1>
       </div>
+
+      {/* Recommendations / What to play */}
+      {content.recommendations && (
+        <section className="mb-24 px-6 max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <Gamepad2 className="w-6 h-6 text-blood-red" />
+            <h2 className="text-2xl font-serif text-gray-200 tracking-wider uppercase">{content.recommendations.question}</h2>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {content.recommendations.games.map((game, idx) => (
+              <div 
+                key={idx}
+                className="bg-white/5 border border-white/10 px-6 py-4 rounded-sm hover:border-blood-red/50 transition-colors flex items-center gap-3"
+              >
+                <div className="w-2 h-2 bg-blood-red rounded-full shadow-[0_0_8px_rgba(139,0,0,0.8)]" />
+                <span className="text-gray-200 font-serif text-lg">{game}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* History Timeline */}
       <section className="mb-24 px-6 max-w-6xl mx-auto">

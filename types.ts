@@ -57,6 +57,10 @@ export interface ClanItem {
 
 export interface SettingContent {
   title: string;
+  recommendations?: {
+    question: string;
+    games: string[];
+  };
   history: {
     title: string;
     intro: string;
@@ -116,6 +120,10 @@ export interface RuleSection {
 
 export interface RulesPageContent {
   title: string;
+  warning?: {
+    title: string;
+    text: string;
+  };
   sections: RuleSection[];
 }
 

@@ -220,6 +220,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     settingPage: {
       title: 'The Setting',
+      recommendations: {
+        question: 'What to play to understand the setting?',
+        games: ['Coteries of New York', 'Shadows of New York', 'VTM Bloodlines']
+      },
       history: {
         title: 'Novi Sad: Post-War',
         intro: 'Brief History',
@@ -407,6 +411,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     rulesPage: {
       title: 'Game Rules',
+      warning: {
+        title: 'Work in Progress',
+        text: 'These rules are still under development, but you can see the current stage of our work and provide feedback. Rules for economy and services are currently being drafted.'
+      },
       sections: [
         {
           id: 'general',
@@ -468,23 +476,13 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Death & Finishing Off',
               list: [
-                'Losing the 3rd hit puts you in heavy, then death if no help arrives.',
+                'Losing the 3rd hit puts you in heavy, then torpor if no help arrives.',
                 'A character in torpor (vampire) or heavy injury (human/ghoul) can be finished off. Loudly and clearly say “Finishing off” and roleplay it with a weapon/claws.',
                 'Final killing of a Camarilla Kindred is a violation of the Tradition of Destruction unless a Blood Hunt is active.',
-                'Death conditions: Vampires in torpor die if not transported to safety by the end of the game night. Heavily injured ghouls die if not given vampire blood within an hour. Humans die if not given the Embrace/Ghouled within an hour.',
+                'Death conditions: Vampires in torpor die if not transported to safety by the end of the game night. Humans die if not given the Embrace within an hour.',
                 'After death: stay for 10 minutes roleplaying a corpse (longer if the scene needs it).',
                 'You may tell others the nature of your wounds.',
-                'Then contact STs to get a new role.'
-              ]
-            },
-            {
-              subtitle: 'Attack & defense',
-              list: [
-                'Each hit removes a hit: 1st and 2nd give light then medium wounds.',
-                '3rd hit puts you into heavy. You have 15 minutes to use a blood pack, otherwise Torpor.',
-                'Blood pack = a game resource obtained through hunting; once at safe distance it restores 1 hit per 15 minutes.',
-                'Urban safety: leave the fight area for 10 minutes or 1–1.5 km to count as safe.',
-                'While using a blood pack the character bacome healthy.'
+                'Then contact GMs to get a new role.'
               ]
             },
             {
@@ -527,6 +525,65 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'If you do not interact with the staked character for more than an hour, they may contact the GMs and will likely receive a sudden technical rescue.',
                 'Please use staking for gameplay, not to shove an opponent into a closet for the rest of the night.',
                 'Characters with level 2 Celerity or level 2 Fortitude are immune to firearms (see discipline rules for details).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'hunger',
+          title: 'Hunger Rules',
+          icon: 'droplet',
+          content: [
+            {
+              text: 'At the beginning of each night, a vampire wakes up Hungry. A hungry vampire is severely limited in their capabilities. To fix this, they need to inform the Storyteller once per night and specify how they satisfy their Hunger, choosing one of the methods.'
+            },
+            {
+              subtitle: 'A Hungry Vampire:',
+              list: [
+                'Cannot use Skills or active Disciplines.',
+                'Does not restore health over time after being wounded (and cannot restore it in any other way).',
+                'Cannot give their blood to another vampire to create Blood Bonds or Embrace.'
+              ],
+              listType: 'warning'
+            },
+            {
+              text: 'A hungry vampire behaves accordingly — they are irritable, nervous, talk about food, etc. We rely on player roleplay here.'
+            },
+            {
+              text: 'In rare cases, a vampire may fall into a state of Hunger again during the same night (if brought out of torpor, used specific disciplines, or the Storyteller says so) — then they will have to find food again.'
+            },
+            {
+              subtitle: 'IMPORTANT',
+              text: 'If a vampire remains hungry by dawn, something bad will ultimately happen to them when they wake up the next night (e.g., they will break the Masquerade, owe a Blood favor for a blood pack, or kill a human). Do not let this situation happen.',
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Methods of Feeding',
+              subsections: [
+                {
+                  title: 'Herd',
+                  text: 'The easiest way, available only to Toreador and Ventrue. Allows feeding twice per night for oneself or treating friends.'
+                },
+                {
+                  title: 'Blood Packs',
+                  text: 'Medical blood bags with a code sticker. Message the GM: "Name drank bag code X14R". Can be bought from NPCs or found. Beware of fake or tainted blood!'
+                },
+                {
+                  title: 'Rats',
+                  text: 'Similar to blood packs, found in the city. May have side effects. Ventrue cannot feed this way.'
+                },
+                {
+                  title: 'City Hunt',
+                  text: 'The GM gives a task - to find and photograph a person with a specific description (young man in jeans, or a grandmother with bags). The difficulty of the task depends on different factors (violation of the masquerade, belonging to the Ventrue clan, extreme values of humanity and others). The photo must be sent to the GM by Hunger or, at the last resort, shown to the nearest GM. Always send a photo of any person on the street to the GM and say that you are hunting without observing the masquerade. Quick and easy feeding! Remember that violating the masquerade is bad for you and the Domain where you do this.'
+                },
+                {
+                  title: 'Diablerie',
+                  text: 'Solves hunger for one night and boosts disciplines. See Diablerie rules.'
+                },
+                {
+                  title: 'Animalism Discipline',
+                  text: 'Lure and eat animals. Can treat others (need name and joint photo). Ventrue cannot use this.'
+                }
               ]
             }
           ]
@@ -641,7 +698,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'See the hidden and block any Obfuscate level.',
                   list: [
                     'Heightened Senses/See the Unseen (dot 1, passive): perceives beings in Obfuscate/invisibility, ghosts, illusions; detects hidden presence.',
-                    'Telepathy (dot 2, mental, not in combat): converse at least a minute. Learn thoughts/plans; target cannot lie but can evade. Lasts 5 minutes; target cannot leave early. Harm ends effect. Can read residual auras from items (info from ST).'
+                    'Telepathy (dot 2, mental, not in combat): converse at least a minute. Learn thoughts/plans; target cannot lie but can evade. Lasts 5 minutes; target cannot leave early. Harm ends effect. Can read residual auras from items (info from GM).'
                   ]
                 },
                 {
@@ -664,7 +721,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Thaumaturgy — Path of Blood (activated)',
                   text: 'Blood manipulation.',
                   list: [
-                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by ST. Do not Create Blood Bonds.',
+                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by GM. Do not Create Blood Bonds.',
                     'Blood Might (dot 2, touch): for the night raises one vampire’s status (or self) by +1. Number of Disciplines doesn’t grow, but mental powers use new status. Humans don’t become ghouls; ghouls don’t become neonates; elders stay elders.'
                   ]
                 },
@@ -681,16 +738,16 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Beast forms.',
                   list: [
                     'Claws (dot 1, wear claw gloves): last until dawn or deactivation. Hit deals 1 hit (Potence bonuses apply). Cannot use other weapons, but may block. Can attack with both hands without Celerity.',
-                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Auspex/Presence/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. Bonus for second dot - claws deal 2 hits.'
+                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Summoning/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. Bonus for second dot - claws deal 2 hits.'
                   ]
                 },
                 {
                   title: 'Dementation (mental)',
                   text: 'Manipulating madness.',
                   list: [
-                    'Eyes of Chaos (dot 1, see target, not in combat): learn clan, derangements, diablerie, Humanity/Path; may track target’s location/actions (via ST). Track only one at a time. Cooldown 1 hour after ending.',
-                    'Total Madness (dot 2, see target): inflicts 3 random derangements until end of strategic cycle/dawn. 2 uses per night; works on a target once per night. Derangements chosen by ST.',
-                    'Possible derangements include: blood bulimia, anatidaephobia, agoraphobia, aversion to blood, acrophobia, memory loss, spectrophobia, fixation on an item, paranoia, Tourette’s, androphobia, bibliomania, Fregoli syndrome, nomophobia, schizophrenia, and others per ST.'
+                    'Eyes of Chaos (dot 1, see target, not in combat): learn clan, derangements, diablerie, Humanity/Path; may track target’s location/actions (via GM). Track only one at a time. Cooldown 1 hour after ending.',
+                    'Total Madness (dot 2, see target): inflicts 3 random derangements for 3 hours. 2 uses per night; works on a target once per night. Derangements chosen by GM.',
+                    'Possible derangements include: blood bulimia, anatidaephobia, agoraphobia, aversion to blood, acrophobia, memory loss, spectrophobia, fixation on an item, paranoia, Tourette’s, androphobia, bibliomania, Fregoli syndrome, nomophobia, schizophrenia, and others per GM.'
                   ]
                 }
               ]
@@ -706,10 +763,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
               text: 'Thaumaturgy is available only to Tremere. There is no "free-form" ritualism. All rituals must be approved by STs in advance.',
               list: [
                 'Choose a ritual available to your level.',
-                'Agree on time/place with ST.',
+                'Agree on time/place with GM.',
                 'Prepare components.',
                 'Roleplay the process (min. 5 mins for low level).',
-                'Receive effect from ST.'
+                'Receive effect from GM.'
               ],
               listType: 'bullet'
             },
@@ -731,22 +788,69 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'heart',
           content: [
             {
-              text: 'Scale from 10 (Saint) to 0 (Beast). Neonates start at 6-7. Humanity is your link to your former self. Lower humanity means you are closer to the Beast.',
+              text: 'Humanity is a scale from 1 to 5. Most players start with a value of 3-4. It is easy to lose Humanity, but very hard to regain it. Evaluation occurs once per night.',
             },
             {
-              subtitle: 'What lowers Humanity',
+              subtitle: 'Sins and Effects',
+              text: 'Higher Humanity implies following all previous sins. Committing a sin may lead to a decrease in Humanity.',
+              subsections: [
+                {
+                  title: 'Level 5 (Saint)',
+                  list: [
+                    'Sin: Harming another, even in self-defense.',
+                    'Wake up at 20:00.',
+                    'Feeding difficulty: Decreased.',
+                    'Torpor time: 0.5 hours.'
+                  ]
+                },
+                {
+                  title: 'Level 4',
+                  list: [
+                    'Sin: Violence is the norm. Scuffles without murder. Torture without pleasure. Use of mental disciplines (Dominate/Presence).',
+                    'Wake up at 20:30.',
+                    'Feeding difficulty: Decreased.'
+                  ]
+                },
+                {
+                  title: 'Level 3',
+                  list: [
+                    'Sin: Putting a Kindred into torpor and/or killing a mortal in self-defense. Violation of personal moral code. Torture with pleasure.',
+                    'Wake up at 21:00.',
+                    'Torpor time: 1 hour.'
+                  ]
+                },
+                {
+                  title: 'Level 2',
+                  list: [
+                    'Sin: Death of a Kindred or mortal NOT in self-defense. Diablerie.',
+                    'Wake up at 21:30.',
+                    'Feeding difficulty: Increased.'
+                  ]
+                },
+                {
+                  title: 'Level 1',
+                  list: [
+                    'Sin: Nowhere lower.',
+                    'Wake up at 22:00.',
+                    'Torpor time: 2 hours.',
+                    'Feeding difficulty: Increased.'
+                  ]
+                }
+              ]
+            },
+            {
+              subtitle: 'Additional Effects',
               list: [
-                'Killing innocents',
-                'Torture',
-                'Mass violence',
-                'Violating personal moral code',
-                'Cannibalism (Diablerie)'
+                'Rotschreck Protection: Humanity 3 and higher provides protection from supernatural terror of fire.',
+                'Animalism Protection: Humanity 3 and higher allows blocking the "Quell the Beast" power.',
+                'Detection: Humanity level can be revealed by "Eyes of Chaos" or Auspex (aura).',
+                'Diablerie: Committing diablerie permanently lowers Humanity and leaves black streaks in the aura.'
               ],
-              listType: 'cross'
+              listType: 'bullet'
             },
             {
               subtitle: 'Frenzy',
-              text: 'A vampire in frenzy loses control to the Beast. Triggered by Hunger, Rage, or Critical Humanity failure.',
+              text: 'A vampire in frenzy loses control to the Beast. Triggered by Hunger, Rage.',
               list: [
                 'The vampire must attack the nearest vampire or human, put them in torpor/heavy injury, and drink their blood.',
                 'Only melee weapons can be used.',
@@ -791,14 +895,19 @@ export const TRANSLATIONS: Record<Language, Content> = {
             },
             {
               subtitle: 'Diablerie',
-              text: 'In the Camarilla, Diablerie (consuming another Kindred) is considered a grave crime. It is typically detected via Auspex; black streaks in the aura will surely raise questions from the Sheriff. Diablerie can be performed on a character in heavy injury or torpor.',
+              text: 'In the Camarilla, Diablerie (consuming another Kindred) is considered a grave crime. It is typically detected via Auspex; black streaks in the aura will surely raise questions from the Sheriff.',
               list: [
-                'The Act: Diablerie is the ultimate violation — the consumption of the soul itself. As the predator drains the last drops of the victim\'s heartblood, their essence is violently torn away and merged with the diabolist\'s own, leaving behind nothing but cold ash and a stained aura.'
+                'Consuming Essence: By performing a "Feeding Attack", a vampire can consume not only the soul but the very essence of the victim, taking their abilities and flaws. After committing diablerie, the player calls the Storyteller, and the Storyteller informs them what pros and cons they received from the diablerie, and also makes changes to their aura.',
+                'Consequences: After committing diablerie, the character falls into a trance after 5 minutes and lies in a state similar to torpor, immobilized for half an hour.',
+                'Roleplay: Diablerie is the ultimate violation — the consumption of the soul itself. As the predator drains the last drops of the victim\'s blood, their essence is violently torn away and merged with the diabolist\'s own, leaving behind nothing but cold ash and a stained aura.'
               ]
             },
             {
               subtitle: 'Blood Replenishment',
-              text: 'You can replenish your blood by feeding on Tech-Characters (NPCs). A roleplayed feeding scene with an NPC allows you to restore your Hunger status to "Sated".'
+              text: 'You can replenish your blood by feeding on Tech-Characters (NPCs). A roleplayed feeding scene with an NPC allows you to restore your Hunger status to "Sated".',
+              list: [
+                'Feeding Attack: Any vampire can perform a "Feeding Attack" using the intoxicating property of the "Vampire\'s Kiss" (the process is pleasurable for the victim). A Feeding Attack can only be performed on immobilized characters. To do this, the attacker approaches the victim, hugs them by the shoulders, says "Bite", and starts counting aloud to ten. Vampires can use disciplines that are allowed while immobilized. If the feeding is not interrupted, after 10 seconds the victim falls into torpor. If the attacker releases the victim before 10 seconds, no hits are removed, but the victim receives the "Hungry" status.'
+              ]
             }
           ]
         },
@@ -835,30 +944,30 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'book',
           content: [
             {
-              text: 'Use this to fact-check a character from YOUR Sect (an infiltrator counts as a member of the Sect they infiltrated). Examples: confirm their cover, Disciplines, sire/lineage, generation, or reputation. Declare an “investigation” action to the Investigation ST with a clear question.'
+              text: 'Use this to fact-check a character from YOUR Sect (an infiltrator counts as a member of the Sect they infiltrated). Examples: confirm their cover, Disciplines, sire/lineage, generation, or reputation. Declare an “investigation” action to the Investigation GM with a clear question.'
             },
             {
               subtitle: 'Process',
               list: [
-                'The Investigation ST sets N counter-questions about any other characters in the game (not necessarily tied to your target).',
-                'You gather answers in in-character conversations, then return to the Investigation ST.',
-                'The ST checks how many answers are correct: all correct = you receive the info; incorrect answers are reported by quantity.',
-                'You may “buy out” each incorrect or missing answer for 1 in-game $.',
+                'The Investigation GM sets N counter-questions about any other characters in the game (not necessarily tied to your target).',
+                'You gather answers in in-character conversations, then return to the Investigation GM.',
+                'The GM checks how many answers are correct: all correct = you receive the info; incorrect answers are reported by quantity.',
+                'You may “buy out” each incorrect or missing answer for 1 in-game resource.',
                 'You may skip fact-finding and immediately buy out unanswered questions.'
               ]
             },
             {
               subtitle: 'Bonuses',
               list: [
-                'Each Nosferatu (and any character with the Detective skill) may buy out one unanswered question for free.'
+                'Each Nosferatu may buy out one unanswered question for free.'
               ],
               listType: 'check'
             },
             {
               subtitle: 'Required component',
-              text: 'Bring a physical folder with newspaper clippings related to the investigation target plus 3 photos of the target in three different places, shot outside public Kindred spots (no Elysium photos).',
+              text: 'Bring a physical folder with newspaper clippings or screenshots related to the investigation target, 3 photos of the target in three different places, shot outside public Kindred spots (no Elysium photos) and the file that was able to be collected independently.',
               list: [
-                'Example: Ivan wants to learn where Ventrue Vasiliy was embraced — clippings about Vasiliy opening a business center, signing deals where he is a founder, etc.',
+                'Example: Ivan wants to learn where Ventrue Vasiliy was embraced — clippings or screenshots about Vasiliy opening a business center, signing deals where he is a founder, etc.',
                 'Photos must be taken in non-public locations away from Kindred gatherings.'
               ],
               listType: 'bullet'
@@ -894,7 +1003,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Metagaming ❌',
               list: [
                 'Do not use player knowledge your character lacks',
-                'Do not coordinate off-game without ST knowledge',
+                'Do not coordinate off-game without GM knowledge',
                 'Do not read others\' secrets'
               ],
               listType: 'cross'
@@ -1131,6 +1240,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     settingPage: {
       title: 'Сеттинг',
+      recommendations: {
+        question: 'Во что поиграть чтобы понять сеттинг?',
+        games: ['Coteries of New York', 'Shadows of New York', 'VTM Bloodlines']
+      },
       history: {
         title: 'Нови-Сад: Послевоенный',
         intro: 'Краткая История',
@@ -1318,6 +1431,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     rulesPage: {
       title: 'Правила Игры',
+      warning: {
+        title: 'Правила в разработке',
+        text: 'Правила еще в разработке, но вы можете увидеть стадию нашей работы и дать обратную связь. Правила по экономике и услугам пока в разработке.'
+      },
       sections: [
         {
           id: 'general',
@@ -1378,23 +1495,13 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Смерть и добивание',
               list: [
-                'Потеря третьего хита переводит в тяжёлое ранение, затем в смерть, если помощь не получена.',
+                'Потеря последнего хита переводит в тяжёлое ранение, затем в торпор если был на несен еще один удар.',
                 'Персонажа в торпоре (вампир) или тяжелом ранении (человек/гуль) можно добить. Требуется громко и четко сказать «Добиваю» и отыграть это оружием или когтями.',
                 'Убийство Сородича Камарильи — прямое нарушение Традиции Уничтожения, если не объявлена Кровавая Охота.',
-                'Условия смерти: Вампир в торпоре умирает, если не будет транспортирован в безопасное место к концу ночи. Тяжело раненый гуль — если в течение часа не получил крови вампира. Человек — если в течение часа не получил становление/гуление.',
+                'Условия смерти: Вампир в торпоре умирает, если не будет транспортирован в безопасное место к концу ночи. Человек — если в течение часа не получил становление/гуление.',
                 'После смерти игрок 10 минут отыгрывает труп (можно дольше ради сцены).',
                 'В это время можно сообщить другим о характере ранений.',
                 'Затем связывайтесь с Мастерами для получения новой роли.'
-              ]
-            },
-            {
-              subtitle: 'Нападение и защита',
-              list: [
-                'Оружие снимает хиты: первое и второе попадание убирают по 1 хиту и дают лёгкое, затем среднее ранение.',
-                'Третье попадание вводит в тяжёлое ранение. Есть 15 минут на использование блад пакета, иначе Торпор.',
-                'Блад пакет — игровой ресурс, добываемый на охоте; позволяет восстанавливать все хиты после вывода раненого из столкновения.',
-                'В городской игре безопасное удаление: 10 минут от точки боя или 1-1.5 км.',
-                'При использовании блад пакета персонаж полностью вылечивается.'
               ]
             },
             {
@@ -1437,6 +1544,65 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Если вы никак не взаимодействуете с колированным персонажем больше часа, он может написать МГ и его очень вероятно ждет внезапное игротехническое спасение.',
                 'Просим использовать кол для игры, а не для того чтобы до конца ночи запихать соперника в шкаф.',
                 'Персонажи, обладающие вторым уровнем дисциплины Стремительность или вторым уровнем дисциплины Стойкость, иммунны к огнестрелу (подробности в правилах по дисциплинам).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'hunger',
+          title: 'Правила по Голоду',
+          icon: 'droplet',
+          content: [
+            {
+              text: 'На начало каждой ночи вампир просыпается Голодным. Голодный вампир серьезно ограничен в своих возможностях. Чтобы исправить это, ему нужно один раз за ночь сообщить мастеру и указать как он утоляет Голод, выбрав один из способов.'
+            },
+            {
+              subtitle: 'Голодный вампир:',
+              list: [
+                'Не может использовать Навыки и активируемые Дисциплины',
+                'Не восстанавливает хиты со временем после ранения (и вообще никак не может их восстановить)',
+                'Не может поить своей кровью другого вампира для создания Уз Крови и не может давать Становления'
+              ],
+              listType: 'warning'
+            },
+            {
+              text: 'Голодный вампир ведет себя соответственно -- он раздражен, нервничает, говорит о еде и т.п. Тут мы рассчитываем на отыгрыш игроков.'
+            },
+            {
+              text: 'В редких случая вампир может впасть в состояние Голода той же ночью ещё раз (если его вывели из торпора, он применял специфичные дисциплины или мастер сказал ему об этом) -- тогда придется находить пропитание заново.'
+            },
+            {
+              subtitle: 'ВАЖНО',
+              text: 'Если вампир к моменту наступления утра остаётся голоден, то на следующую ночь при пробуждении с ним ультимативно случится что-то плохое (например, нарушит Маскарад, или задолжает услугу Крови за бладпак, или убьет человека). Не доводите до такой ситуации.',
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Способы питания',
+              subsections: [
+                {
+                  title: 'Стадо',
+                  text: 'Самый простой способ, есть только у Тореадоров и Вентру. Позволяет два раза за ночь попитаться самому или угостить друзей.'
+                },
+                {
+                  title: 'Бладпаки',
+                  text: 'Медицинские пакеты с кровью с кодом. Сообщение мастеру: "Вася выпил пакет с кодом Х14Р". Можно купить у NPC или найти. Остерегайтесь подделок!'
+                },
+                {
+                  title: 'Крысы',
+                  text: 'Аналогичны пакетам, можно найти в городе. Могут иметь неприятные эффекты. Вентру не могут так питаться.'
+                },
+                {
+                  title: 'Городская Охота',
+                  text: 'Мастер дает задание - найти и сфотографировать человека с определенным описанием (молодой парень в джинсах, или старушка с пакетами). Сложность задания зависит от разных факторов (нарушение маскарада, принадлежность к клану вентру, крайние значения человечности и т.п.). Фото надо прислать мастеру по Голоду или, на крайний случай, показать ближайшему мастеру. Всегда можно прислать мастеру фото любого человека на улице и сказать, что ты охотишься не соблюдая Маскарад. Быстрое и простое питание! Помните, что нарушение маскарада плохо и для вас и для Домена, где вы это делаете.'
+                },
+                {
+                  title: 'Диаблери',
+                  text: 'Решает проблему с голодом на одну ночь и дает прирост дисциплин. См. подробнее правила по диаблери.'
+                },
+                {
+                  title: 'Дисциплина «Анимализм»',
+                  text: 'Приманивание животных. Можно угощать других (имя + совместное фото). Вентру не могут так питаться.'
+                }
               ]
             }
           ]
@@ -1591,7 +1757,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Звериные формы.',
                   list: [
                     'Когти (1 точка, надеть перчатки-когти): держатся до рассвета или деактивации. Удар снимает 1 хит (бонусы от Мощи добавляются). Нельзя использовать другое оружие, но можно блокировать. Можно атаковать двумя руками без Стремительности.',
-                    'Форма тумана (2 точки): белая ткань 1x1.5 м на плечи. Нематериален, иммунен к физическому урону и дисциплинам, кроме Прорицания/Присутствия/Помешательства; уязвим к тауматургии, солнцу и огню (включая путь огней). Нельзя говорить, применять дисциплины или взаимодействовать физически; движение только шагом; можно входить/выходить в помещения (двери открывают по жизни). Длительность 1 час, кулдаун 30 минут. Бонус второй точки - когти наносят 2 хита.'
+                    'Форма тумана (2 точки): белая ткань 1x1.5 м на плечи. Нематериален, иммунен к физическому урону и дисциплинам, кроме Призыва и Помешательства; уязвим к тауматургии, солнцу и огню (включая путь огней). Нельзя говорить, применять дисциплины или взаимодействовать физически; движение только шагом; можно входить/выходить в помещения (двери открывают по жизни). Длительность 1 час, кулдаун 30 минут. Бонус второй точки - когти наносят 2 хита.'
                   ]
                 },
                 {
@@ -1599,7 +1765,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Работа с безумием.',
                   list: [
                     'Глаза Хаоса (1 точка, видеть цель, вне боя): узнаёт клан, психозы, диаблери, уровень человечности/пути; может отслеживать местонахождение и действия цели (по мастеру). Одновременно отслеживается один персонаж. Кулдаун 1 час с момента деактивации.',
-                    'Абсолютное Безумие (2 точки, видеть цель): навешивает 3 случайных психоза до конца стратегического цикла/рассвета. 2 применения за ночь, на цель срабатывает один раз за ночь. Список психозов выбирает мастер.',
+                    'Абсолютное Безумие (2 точки, видеть цель): навешивает 3 случайных психоза на 3 часа. 2 применения за ночь, на цель срабатывает один раз за ночь. Список психозов выбирает мастер.',
                     'Возможные психозы: кровавая булимия; анатидаефобия; агорафобия; отвращение к крови; акрофобия; провалы в памяти; спектрофобия; фиксация на предмете; паранойя; синдром Туретта; андрофобия; библиомания; синдром Фреголи; номофобия; шизофрения; иные по мастеру.'
                   ]
                 }
@@ -1641,22 +1807,69 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'heart',
           content: [
             {
-              text: 'Шкала от 10 (Святой) до 0 (Зверь). Неонаты начинают с 6-7. Человечность — это ваша связь с прежним "я". Низкая человечность означает, что вы ближе к Зверю.',
+              text: 'Человечность разделена на 5 пунктов. Большая часть игроков будет начинать игру с 3-4 значением человечности. Уронить человечность легко, поднять тяжело. Время оценки — ночь.',
             },
             {
-              subtitle: 'Что снижает Человечность',
+              subtitle: 'Грехи и Свойства',
+              text: 'Более высокое значение Человечности предполагает «следование» всем предыдущим грехам. При совершении греха может произойти падение значения.',
+              subsections: [
+                {
+                  title: 'Уровень 5 (Святой)',
+                  list: [
+                    'Грех: Не причинять вред другому, даже в случае самообороны.',
+                    'Просыпаетесь в 20:00.',
+                    'Сложность питания: Уменьшена.',
+                    'Время торпора: 0,5 часа.'
+                  ]
+                },
+                {
+                  title: 'Уровень 4',
+                  list: [
+                    'Грех: Совершение насилия — это норма. Потасовка без убийств. Пытки без удовольствия. Применение ментальных дисциплин (Доминирование\\Присутствие).',
+                    'Просыпаетесь в 20:30.',
+                    'Сложность питания: Уменьшена.'
+                  ]
+                },
+                {
+                  title: 'Уровень 3',
+                  list: [
+                    'Грех: Торпор сородича и/или убийство смертного при самообороне. Нарушение личного морального кодекса. Пытки с удовольствием.',
+                    'Просыпаетесь в 21:00.',
+                    'Время торпора: 1 час.'
+                  ]
+                },
+                {
+                  title: 'Уровень 2',
+                  list: [
+                    'Грех: Смерть сородича или смертного не в случае самообороны. Диаблери.',
+                    'Просыпаетесь в 21:30.',
+                    'Сложность питания: Увеличена.'
+                  ]
+                },
+                {
+                  title: 'Уровень 1',
+                  list: [
+                    'Грех: Ниже уже некуда.',
+                    'Просыпаетесь в 22:00.',
+                    'Время торпора: 2 часа.',
+                    'Сложность питания: Увеличена.'
+                  ]
+                }
+              ]
+            },
+            {
+              subtitle: 'Дополнительные эффекты',
               list: [
-                'Убийство невиновных',
-                'Пытки',
-                'Массовое насилие',
-                'Нарушение личного морального кодекса',
-                'Каннибализм (Диаблери)'
+                'Защита от Ротшрека: Человечность 3 и выше дает защиту от сверхъестественного ужаса перед огнем.',
+                'Защита от Анимализма: Человечность 3 и выше позволяет блокировать воздействие способности «Управление зверем».',
+                'Обнаружение: уровень Человечности может быть узнан с помощью дисциплины «Глаза Хаоса» или Прорицания (аура).',
+                'Диаблери: совершение диаблери навсегда снижает Человечность и оставляет черные полосы в ауре.'
               ],
-              listType: 'cross'
+              listType: 'bullet'
             },
             {
               subtitle: 'Безумие (Frenzy)',
-              text: 'Вампир, впавший в состояние френзи, теряет контроль над Зверем. Триггеры: Голод, Ярость, критический провал Человечности.',
+              text: 'Вампир, впавший в состояние френзи, теряет контроль над Зверем. Триггеры: Голод, Ярость.',
               list: [
                 'Обязан атаковать любого ближайшего вампира или человека, ввести его в торпор/тяжран и выпить его кровь.',
                 'Можно пользоваться только оружием ближнего боя.',
@@ -1701,14 +1914,19 @@ export const TRANSLATIONS: Record<Language, Content> = {
             },
             {
               subtitle: 'Диаблери',
-              text: 'В Камарилье Диаблери другого Сородича считается тяжким преступлением. Оно выявляется, как правило, Прорицанием; черные полосы в ауре непременно вызовут вопросы у Шерифа. Диаблери можно совершить над персонажем, находящимся в тяжране или торпоре.',
+              text: 'В Камарилье Диаблери другого Сородича считается тяжким преступлением. Оно выявляется, как правило, Прорицанием; черные полосы в ауре непременно вызовут вопросы у Шерифа.',
               list: [
-                'Отыгрыш: Диаблери — это абсолютное нарушение всех законов, поглощение самой души. Когда хищник выпивает последние капли сердечной крови жертвы, её сущность насильственно вырывается и сливается с кровью диаблериста, оставляя после себя лишь холодный пепел и запятнанную ауру.'
+                'Поглощение сути: Совершая «Атаку испитием», вампир может поглотить не только душу, но и саму суть жертвы, забрав его способности и изъяны. После совершения диаблери игрок делает звонок мастеру, и мастер сообщает ему какие плюсы и минусы он получил от диаблери, а также вносит изменения в его ауру.',
+                'Последствия: Совершив диаблери, персонаж через 5 минут впадает в транс и лежит в состоянии, аналогичном состоянию торпор, обездвиженный в течение получаса.',
+                'Отыгрыш: Диаблери — это абсолютное нарушение всех законов, поглощение самой души. Когда хищник выпивает последние капли крови жертвы, её сущность насильственно вырывается и сливается с кровью диаблериста, оставляя после себя лишь холодный пепел и запятнанную ауру.'
               ]
             },
             {
               subtitle: 'Пополнение крови',
-              text: 'Вы можете пополнить запас крови, питаясь игротехническими персонажами (NPC). Отыгрыш сцены питания с NPC позволяет восстановить статус Голода до «Сыт».'
+              text: 'Вы можете пополнить запас крови, питаясь игротехническими персонажами (NPC). Отыгрыш сцены питания с NPC позволяет восстановить статус Голода до «Сыт».',
+              list: [
+                'Атака испитием: Любой вампир может провести «Атаку испитием», используя одурманивающее свойство «Поцелуя вампира» (жертве процесс приятен). Атаку испитием можно провести только на обездвиженных персонажей. Для этого он подходит к жертве, обнимает за плечи, говорит: «Укус» и начинает считать вслух до десяти. Вампиры могут воспользоваться дисциплинами, которыми можно пользоваться в обездвиженном состоянии. Если испитие не прервано, через 10 секунд жертва падает в торпор. Если атакующий испитием отпускает жертву до истечения 10 секунд, хиты у нее не снимаются, но при этом жертва получает состояние “голоден”.'
+              ]
             }
           ]
         },
@@ -1753,20 +1971,20 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Мастер по расследованиям назначает N встречных вопросов про любых других персонажей в игре (не обязательно связанных с целью).',
                 'Вы выясняете ответы в игровых беседах и возвращаетесь к мастеру.',
                 'Мастер определяет, сколько ответов верны: если все — выдаёт искомую информацию; при ошибках сообщает лишь количество неверных.',
-                'Неверные или отсутствующие ответы можно «выкупить» по курсу 1 игровой $ за каждый.',
+                'Неверные или отсутствующие ответы можно «выкупить» по курсу 1 игровой ресурс за каждый.',
                 'Можно сразу выкупить неотвеченные вопросы, не проводя расследование.'
               ]
             },
             {
               subtitle: 'Бонусы',
               list: [
-                'Каждый Носферату (и персонаж с навыком Детектив) может выкупить один неотвеченный вопрос без траты игровых $.'
+                'Каждый Носферату может выкупить один неотвеченный вопрос без траты игровых ресурсов.'
               ],
               listType: 'check'
             },
             {
               subtitle: 'Материальный компонент',
-              text: 'Нужна папка с газетными вырезками по объекту расследования и 3 фото цели в трёх местах, сделанные не в публичных местах сородичей (фото в Элизиуме не подходят).',
+              text: 'Нужна папка с газетными вырезками или скриншотами по объекту расследования, 3 фото цели в трёх местах, сделанные не в публичных местах сородичей (фото в Элизиуме не подходят) и то досье которое удалось самостоятельно собрать.',
               list: [
                 'Пример: Иван хочет узнать, где был становлен вентру Василий — ищет вырезки про открытие бизнес-центра с участием Василия, сделки с компаниями, где он учредитель и т.д.',
                 'Фотографии должны быть из разных непубличных локаций, вдали от мест скопления сородичей.'
