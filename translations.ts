@@ -86,7 +86,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         whereLabel: 'Where',
         where: 'Novi Sad',
         mgLabel: 'Team',
-        mg: 'Ptica, Kaire, Til & Max Gorin'
+        mg: 'Ptica, Kaire, Til, Grisha & Max Gorin'
       },
       buttonRules: 'READ THE RULES',
       buttonJoin: 'JOIN THE GAME',
@@ -1106,7 +1106,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         whereLabel: 'Где',
         where: 'Нови-Сад',
         mgLabel: 'МГ',
-        mg: 'Птица, Кайре, Тиль и Макс Горин'
+        mg: 'Птица, Кайре, Тиль, Гриша и Макс Горин'
       },
       buttonRules: 'ЧИТАТЬ ПРАВИЛА',
       buttonJoin: 'ВСТУПИТЬ В ИГРУ',
