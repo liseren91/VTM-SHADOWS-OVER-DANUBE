@@ -103,7 +103,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                 )}
                                 
                                 {block.text && (
-                                    <p className="text-gray-400 leading-relaxed text-lg">
+                                    <p className="text-gray-400 leading-relaxed text-lg whitespace-pre-line">
                                         {block.text}
                                     </p>
                                 )}
@@ -131,7 +131,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                                     block.listType === 'warning' ? 'border-l-4 border-yellow-500/50' :
                                                     'border-l-4 border-gray-600'
                                                 }`}>
-                                                    <span className="text-gray-300">{itemText}</span>
+                                                    <span className="text-gray-300 whitespace-pre-line">{itemText}</span>
                                                     {itemImage && (
                                                         <div className="mt-2">
                                                             <img 
@@ -165,7 +165,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                           {isOpen && (
                                             <div className="border-t border-white/10 p-4 space-y-3 animate-in fade-in">
                                               {sub.text && (
-                                                <p className="text-gray-400 leading-relaxed text-base">
+                                                <p className="text-gray-400 leading-relaxed text-base whitespace-pre-line">
                                                   {sub.text}
                                                 </p>
                                               )}
@@ -186,7 +186,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                                     
                                                     return (
                                                       <li key={listIdx} className="flex flex-col gap-3 p-3 rounded bg-black/40 border border-white/5">
-                                                        <span className="text-gray-300">{itemText}</span>
+                                                        <span className="text-gray-300 whitespace-pre-line">{itemText}</span>
                                                         {itemImage && (
                                                           <div className="mt-2">
                                                             <img 
