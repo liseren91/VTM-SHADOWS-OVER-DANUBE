@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RulesPageContent } from '../types';
-import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown, Droplets } from 'lucide-react';
+import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown, Droplets, MessageSquare, Link as LinkIcon } from 'lucide-react';
 
 interface RulesViewProps {
   content: RulesPageContent;
@@ -9,6 +9,7 @@ interface RulesViewProps {
 
 const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
   const [openSubsections, setOpenSubsections] = useState<Record<string, boolean>>({});
+  const [copiedSection, setCopiedSection] = useState<string | null>(null);
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -20,6 +21,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
       case 'coins': return <Coins className="w-6 h-6" />;
       case 'shield': return <Shield className="w-6 h-6" />;
       case 'droplet': return <Droplets className="w-6 h-6" />;
+      case 'message-square': return <MessageSquare className="w-6 h-6" />;
       default: return <Scroll className="w-6 h-6" />;
     }
   };
@@ -28,12 +30,35 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
     setOpenSubsections(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id: string, updateHash = true) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (updateHash) {
+        // Update URL without triggering hashchange navigation
+        window.history.replaceState(null, '', `#rules-${id}`);
+      }
     }
   };
+
+  const copyLinkToSection = (id: string) => {
+    const url = `${window.location.origin}${window.location.pathname}#rules-${id}`;
+    navigator.clipboard.writeText(url);
+    setCopiedSection(id);
+    setTimeout(() => setCopiedSection(null), 2000);
+  };
+
+  // Handle initial scroll if URL has section anchor
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    const match = hash.match(/^rules-(.+)$/);
+    if (match) {
+      const sectionId = match[1];
+      setTimeout(() => {
+        scrollToSection(sectionId, false);
+      }, 100);
+    }
+  }, []);
 
   return (
     <div className="pt-24 pb-20 min-h-screen bg-black flex flex-col md:flex-row">
@@ -81,13 +106,28 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
             )}
             {content.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-32">
-                    <div className="flex items-center gap-4 mb-8">
+                    <div className="flex items-center gap-4 mb-8 group">
                         <div className="p-3 bg-blood-red/10 rounded-full border border-blood-red/30 text-blood-red">
                             {getIcon(section.icon)}
                         </div>
                         <h2 className="text-3xl md:text-4xl font-serif text-white tracking-widest uppercase">
                             {section.title}
                         </h2>
+                        <button
+                            onClick={() => copyLinkToSection(section.id)}
+                            className={`opacity-0 group-hover:opacity-100 transition-all p-2 ${
+                              copiedSection === section.id 
+                                ? 'text-green-500 opacity-100' 
+                                : 'text-gray-500 hover:text-blood-red'
+                            }`}
+                            title="Copy link to section"
+                        >
+                            {copiedSection === section.id ? (
+                              <CheckCircle2 className="w-5 h-5" />
+                            ) : (
+                              <LinkIcon className="w-5 h-5" />
+                            )}
+                        </button>
                     </div>
 
                     <div className="space-y-12 border-l-2 border-white/10 pl-6 md:pl-10 ml-5">

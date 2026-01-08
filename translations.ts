@@ -422,11 +422,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'scroll',
           content: [
             {
-              text: 'System: Vampire: The Masquerade 20th Anniversary Edition (V20) adapted for LARP.',
+              text: 'Thanks to the Rostov VTM Storyteller team and all participants who helped develop and test the rules. We welcome feedback, especially suggestions for rule improvements. In our game, the most important thing is the game itself; we ask you to follow the rules and respect each other.',
               list: [
                 'Game Time: Evenings after sunset. Game time runs from sunset to sunrise. During the day, characters sleep/hide — out of game.',
-                'Game Period: 5 evenings (November 11-15, 2026).',
-                'Safety: We use a "Safe word" system and safety gestures. Details provided upon acceptance.'
+                'Game Period: 4 evenings (November 11-15, 2026).',
               ],
               listType: 'bullet'
             }
@@ -458,8 +457,8 @@ export const TRANSLATIONS: Record<Language, Content> = {
               text: 'Each hit to a valid zone removes 1 hit and assigns a wound status.',
               list: [
                'Light — no gameplay restrictions. Wound roleplaying is encouraged.',
-               'Medium — 1 hit point remaining. Walking only (unless you have Celerity 1 or a suitable enhancement); with the help of a healthy companion, you can run (Celerity 2).',
-               'Heavy — Zero hit points. Independent movement is prohibited. Carrying a seriously wounded character is only possible with two other players, unless you have Might or a suitable artifact. Conversation is permitted. The next hit puts the character into Torpor.',
+               'Medium — 1 hit point remaining. Walking only (unless you have Celerity or a suitable enhancement); with the help of a healthy Kindred, you can run.',
+               'Heavy — Zero hit points. Independent movement is prohibited. Carrying a heavily wounded character is only possible with two people, unless you have Potence or a suitable artifact. Conversation is permitted. The next hit puts the character into Torpor.',
                'Torpor is a state of unconsciousness in which you cannot see, hear, or move. You can only emerge from it if you are given a blood pack.'
               ],
             },
@@ -476,12 +475,12 @@ export const TRANSLATIONS: Record<Language, Content> = {
             {
               subtitle: 'Death & Finishing Off',
               list: [
-                'Losing the 3rd hit puts you in heavy, then torpor if no help arrives.',
-                'A character in torpor (vampire) or heavy injury (human/ghoul) can be finished off. Loudly and clearly say “Finishing off” and roleplay it with a weapon/claws.',
+                'Losing the last hit puts you in heavy injury, then torpor if another hit is dealt.',
+                'A character in torpor (vampire) or heavy injury (human/ghoul) can be finished off. Loudly and clearly say "Finishing off" and roleplay it with a weapon/claws.',
                 'Final killing of a Camarilla Kindred is a violation of the Tradition of Destruction unless a Blood Hunt is active.',
-                'Death conditions: Vampires in torpor die if not transported to safety by the end of the game night. Humans die if not given the Embrace within an hour.',
+                'Death conditions: Vampires in torpor die if not transported to safety by the end of the night. Humans die if not given the Embrace or ghouled within an hour.',
                 'After death: stay for 10 minutes roleplaying a corpse (longer if the scene needs it).',
-                'You may tell others the nature of your wounds.',
+                'During this time you may inform others about the nature of your wounds.',
                 'Then contact GMs to get a new role.'
               ]
             },
@@ -917,7 +916,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'coins',
           content: [
             {
-              text: 'Money is secondary. Influence, favors (Boons), and debts are the currency of the night.',
+              text: 'Money is secondary. Influence, favors (Boons), and connections are the currency of the night.',
             },
             {
               subtitle: 'Values',
@@ -931,46 +930,135 @@ export const TRANSLATIONS: Record<Language, Content> = {
               ],
               listType: 'bullet'
             },
-            {
-              subtitle: 'Influence Spheres',
-              text: 'Bureaucracy, Church, Finance, Health, High Society, Industry, Legal, Media, Occult, Police, Politics, Underworld, University, Street, Transportation.',
-              listType: 'bullet'
-            }
+//            {
+//              subtitle: 'Influence Spheres',
+//              text: 'Bureaucracy, Church, Finance, Health, High Society, Industry, Legal, Media, Occult, Police, Politics, Underworld, University, Street, Transportation.',
+//              listType: 'bullet'
+//            }
           ]
         },
         {
           id: 'investigations',
-          title: 'Investigation Rules',
-          icon: 'book',
+          title: 'Infobroker Rules',
+          icon: 'message-square',
           content: [
             {
-              text: 'Use this to fact-check a character from YOUR Sect (an infiltrator counts as a member of the Sect they infiltrated). Examples: confirm their cover, Disciplines, sire/lineage, generation, or reputation. Declare an “investigation” action to the Investigation GM with a clear question.'
+              text: 'It is known that there is an infobroker in the city. He exists online under the nickname Gutter_Sage. Rumors say he is a Nosferatu and older than the Shadow, while others claim the opposite — that she is his sire. Either way, it is known that Gutter_Sage never appears in public. But everyone knows you can write him a question. And get an answer.'
             },
             {
-              subtitle: 'Process',
+              subtitle: 'Attitude toward Nosferatu',
+              text: 'They say he is more lenient toward young Nosferatu. He may even forgive them for answering "I don\'t know" to one of his questions. Or even a mistake. For others — no.\n\nYou can write to him as much as you want, but until your current request is closed (you received your 3-5 questions and answered them), he won\'t respond to your next question. There are rare cases when the Infobroker cannot answer your request. He will tell you directly, before he starts asking his own questions.',
               list: [
-                'The Investigation GM sets N counter-questions about any other characters in the game (not necessarily tied to your target).',
-                'You gather answers in in-character conversations, then return to the Investigation GM.',
-                'The GM checks how many answers are correct: all correct = you receive the info; incorrect answers are reported by quantity.',
-                'You may “buy out” each incorrect or missing answer for 1 in-game resource.',
-                'You may skip fact-finding and immediately buy out unanswered questions.'
-              ]
-            },
-            {
-              subtitle: 'Bonuses',
-              list: [
-                'Each Nosferatu may buy out one unanswered question for free.'
+                'Exception to "1 unanswered request per neonate": Nosferatu can have 2 open requests at the same time.'
               ],
               listType: 'check'
             },
             {
-              subtitle: 'Required component',
-              text: 'Bring a physical folder with newspaper clippings or screenshots related to the investigation target, 3 photos of the target in three different places, shot outside public Kindred spots (no Elysium photos) and the file that was able to be collected independently.',
+              subtitle: 'Exchange Principles',
+              text: 'Gutter_Sage will ask questions in return. The harder your question is to answer (in his opinion), the harder his counter-questions will be. He is a collector of information. He is not interested in hastily fabricated rumors, blood, money, or generally Favors. There are known exceptions regarding Favors — he will tell you about them himself.',
               list: [
-                'Example: Ivan wants to learn where Ventrue Vasiliy was embraced — clippings or screenshots about Vasiliy opening a business center, signing deals where he is a founder, etc.',
-                'Photos must be taken in non-public locations away from Kindred gatherings.'
+                'Expects specific questions accompanied by your hypotheses (1 to 3). Sage appreciates good hypotheses; for them, he is willing to overlook some inaccuracies in your answers.',
+                'Tends to ignore yes-no questions and overly general requests like "Send me some dirt on the Ventrue Primogen."',
+                'The Infobroker is not a telepath. He won\'t answer whether that Malk really sees spirits or whether your friend is thinking about signing a contract with infernal forces.',
+                'But if you ask whether your friend performed any shady rituals yesterday before midnight, or yelled that Baphomet would soon grant him great power — that\'s a different conversation.',
+                'Asking "List everyone the Prince met with in the last week" also won\'t work, but you can specify a reasonable time window within a night, and it\'s better to specify a location too. Gutter_Sage will determine what\'s reasonable.'
               ],
               listType: 'bullet'
+            },
+            {
+              subtitle: 'Mechanics and How It Works',
+              text: 'If you\'ve hit a dead end, don\'t know where to look for a piece of information you need, or you\'ve just decided with other neonates at 4 AM to dig into a Primogen\'s turbulent youth or that shady neonate from another coterie — message the Infobroker on Telegram.',
+              list: [
+                'Your message should contain: character name, clan, briefly what you already know and what you want to find out.',
+                'The question must be specific about a place, Kindred, or event, reflecting what you\'ve already dug up, your hypothesis (1 to 3).',
+                'We encourage you to maintain your character\'s communication style. The Infobroker has a sense of humor and appreciates creativity.',
+                'You cannot introduce yourself under someone else\'s name — the request is sent on behalf of the account owner.',
+                'If you\'re asking about a character, you\'ll need at least one recent photo (taken during the game) of that character. Photos must be clear — the old Nosferatu understands about night photography, but it should be clear who it is.'
+              ],
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Information Retrieval Process',
+              text: 'In response, you will receive 3 to 5 questions of varying difficulty. Base is 3 — for an easy request. Secrets of Primogen or the Tremere Chantry will cost significantly more.',
+              list: [
+                'A smart and cautious neonate can easily deduce from the question difficulty that they\'re digging into a dangerous topic and back off.',
+                'Questions may not arrive instantly (usually within an hour or two, or at the beginning of the next night if asked toward dawn).',
+                'Questions will be about different Kindred, events, or locations in the city, not directly related to your query\'s subject. You may need to negotiate with other neonates.',
+                'Among the Kindred mentioned, there may be Council members and even the Prince. We advise talking to neonates of the relevant clans — a Primogen is more likely to answer a clanmate.',
+                'Gutter_Sage will not answer a repeated question from the same character if you answered at least 1 incorrectly (for Nosferatu — 2).',
+                'The question can be resent by another Kindred. Usually, questions that have already been correctly answered are not asked again by Sage.'
+              ],
+              listType: 'bullet'
+            },
+            {
+              subtitle: 'Example of Use',
+              subsections: [
+                {
+                  title: '1. Andrey\'s Request (Brujah)',
+                  text: 'Brujah Andrey suspects that the Ventrue Primogen may be indirectly involved in the disappearance of his clanmate and friend Danila. Because Danila mentioned that the Primogen had called him for a talk. Then he came back, looking glum, and dodged all questions. Then he vanished.\n\nOf course, the Camarilla is not a place where you can throw around such accusations freely, and you can\'t ask directly either. So Andrey first secretly takes a photo of the Primogen in Elysium. Then he goes and takes a photo of the building where his friend Danila was last seen — Hotel Pupin.\n\nHe writes:\n"Hey, Gutter_Sage. I\'m Andrey from clan Brujah. Recently my bro Danila from clan Gangrel disappeared. He was last seen near Hotel Pupin around midnight. A couple of days before disappearing, he mentioned that the Ventrue Primogen invited him for a talk. And after the talk, but before disappearing, he was sullen and dodged all my questions.\n\nMy hypotheses:',
+                  list: [
+                    '1) Danila saw something near the "Pupin" that he shouldn\'t have seen.',
+                    '2) OR I\'m not accusing the Primogen of killing him personally, of course, but I think Danila may have encountered someone acting on his behalf — or using his name as cover.',
+                    'Can you tell me which Kindred were hanging around that night from 10 PM to 2 AM near Hotel Pupin?'
+                  ]
+                },
+                {
+                  title: '2. Sage\'s Counter-Questions',
+                  text: 'Sage replies: "Hey, little bro. Let\'s go:"',
+                  list: [
+                    '1. Who is the favorite childe of Nosferatu Primogen Shadow?',
+                    '2. Who did Brujah Valentina meet in the abandoned house at midnight?',
+                    '3. What were the Tremere doing in Limanski Park yesterday at 10 PM?'
+                  ]
+                },
+                {
+                  title: '3. Gathering Answers',
+                  text: 'Andrey thinks it over. The questions aren\'t that hard, except maybe the first one. And there are only 3. So neither the Prince, nor the Council, nor the Regent are involved, or they simply don\'t think this piece of information is worth spending significant resources to hide.\n\nAsking Valentina will be easy, they\'re buddies. He thinks he\'ll approach the Tremere with a simple offer — he\'ll honestly tell them this question is for the Infobroker. If they help with this question, he\'ll share the info from Sage about who was near the Ventrue Primogen\'s hotel. They probably won\'t refuse if there wasn\'t some mega-secret sorcery involved.\n\nAbout who\'s Shadow\'s favorite childe — he has no idea. He easily gets info from Valentina. Then he writes to or finds one of the Tremere neonates, and they\'re indeed willing to help if he shares the result. The childe question remains.\n\nHe finds Nosferatu Milan at the tea house where neonates often gather. Milan laughs at the question and is sure he knows the answer. Says it\'s him. Andrey is skeptical; he understands that if it\'s wrong — Sage won\'t forgive the mistake and Andrey won\'t get another chance to ask this question personally. He tries to get Milan to just call Shadow and ask, but Milan isn\'t keen, even though he\'s the favorite childe.\n\nIn the end, they agree that if the answer is correct — Andrey owes Milan a Minor Favor. If wrong — Milan sends the request to Sage under his own name.'
+                },
+                {
+                  title: '4. Answer and Failure',
+                  text: 'Andrey writes a response to the Infobroker:',
+                  list: [
+                    '1) Milan from clan Nosferatu,',
+                    '2) Valentina met with Katarina from clan Toreador. She said they were just exchanging gossip. But I don\'t think that\'s true — why exchange gossip in an abandoned house.',
+                    '3) Recently, scratches like claw marks of strange shape have been appearing on trees. There are also rumors that Neo-pagans gather there — because people find bloody marks on trees. They decided to investigate. They found several symbols drawn in human blood. And they say the claw marks are strange — probably not a Kindred and unlikely an animal.'
+                  ]
+                },
+                {
+                  title: '5. Result of the Error',
+                  text: 'Half an hour later, Andrey receives a response: "One of the answers is fundamentally wrong, young one."\n\nThat\'s it. Andrey\'s question is closed by the Infobroker. Andrey can write him another question about a different place, event, or Kindred immediately. But not the one he\'s most interested in right now, the one he already failed. Andrey can never ask this question again.\n\nBut another Kindred can ask the same question. For example, Milan, because of whom this happened.'
+                },
+                {
+                  title: '6. Milan\'s Second Attempt',
+                  text: 'Milan\'s heart is broken that he\'s not the favorite childe, but he has to fulfill his part of the deal. Milan writes:\n"Hey, boss. I\'m Milan from clan Nosferatu. Andrey (the Brujah) lost his buddy — Danila (from clan Gangrel). He was last seen near Hotel Pupin around midnight. A couple of days before disappearing, he said the Ventrue Primogen invited him to discuss something. After that, until he disappeared, he was sullen and didn\'t answer Andrey\'s questions.\n\nThe hypotheses are as follows, boss:\n1) Danila saw something near the "Pupin" that he shouldn\'t have seen.\n2) OR I\'m not accusing the Primogen of killing him personally, of course, but I think Danila may have encountered someone acting on his behalf — or using his name as cover.\n3) OR (Milan decided to add his own) Someone wants to frame the Ventrue Primogen with this disappearance.\n\nCan you tell me which Kindred were around that night from 10 PM to 2 AM near Hotel Pupin?"'
+                },
+                {
+                  title: '7. New Questions',
+                  text: 'He gets a response: "Hey, kid. Let\'s go:"',
+                  list: [
+                    '1) Where and why did the Sheriff go with his coterie tonight around 8 PM and what did he do there,',
+                    '2) Name a former or current lover of Tremere Regent Francesca Orsini,',
+                    '3) Which Toreador specifically accompanied their Primogen the day before yesterday before the Ball, and (optional) was there among them someone who recently had a conflict with Brujah?'
+                  ]
+                },
+                {
+                  title: '8. Gathering Information',
+                  text: 'Milan is generally friendly with a Kindred from the Sheriff\'s Coterie and bets he\'ll get this information. Andrey says he won\'t go to the Tremere neonates again — he already owes them info they\'re currently trying to get, from the first attempt. But he\'s ready to find out about the conflict with Brujah clanmates.\n\nThey spend some time gathering information and Milan writes his answer. He knows he can fail one question without consequences; he\'s quite confident about the rest.'
+                },
+                {
+                  title: '9. Result',
+                  text: 'Milan writes his answer:',
+                  list: [
+                    '1) They went to the outskirts of the city. To cover up traces of a Masquerade breach. There was a small skirmish with Shovelheads there. Seems like no one was badly hurt. They found traces of some shady ritual. Now he went to consult with the Tremere.',
+                    '2) Boss, why you gotta do me like this. I dunno. Toreador Primogen?',
+                    '3) He was accompanied by his childe Anna and a visitor from Hungary named Zoltan. And yes, Zoltan recently had a beef with the Brujah.'
+                  ]
+                },
+                {
+                  title: '10. Finale',
+                  text: 'The answer comes an hour later:\n"One of the answers is wrong, Milan. Moreover, it\'s teeth-grindingly banal. You can do better. But overall, pass. Here\'s the list, even with approximate time breakdown. I\'m feeling generous today."\n\nResult — The information goes to Milan. But if Milan weren\'t Nosferatu — the question would simply be closed without an answer.'
+                }
+              ]
             }
           ]
         },

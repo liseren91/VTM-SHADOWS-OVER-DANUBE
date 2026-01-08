@@ -277,7 +277,20 @@ const App: React.FC = () => {
       const hash = window.location.hash.replace('#', '');
       setCurrentHash(hash);
 
-      if (VALID_VIEWS.includes(hash as View)) {
+      // Check for view-specific anchors (e.g., #rules-combat, #setting-clans)
+      const viewAnchorMatch = hash.match(/^(rules|setting|about|casting)-(.+)$/);
+      
+      if (viewAnchorMatch) {
+        const [, view, sectionId] = viewAnchorMatch;
+        setCurrentView(view as View);
+        // Scroll to section after view renders
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 150);
+      } else if (VALID_VIEWS.includes(hash as View)) {
         setCurrentView(hash as View);
         window.scrollTo(0, 0);
       } else if (hash === '') {
