@@ -60,7 +60,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
           <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif text-white mb-6 tracking-tighter drop-shadow-2xl leading-none">
             {content.hero.titleStart} <span className="text-blood-red block md:inline drop-shadow-[0_0_35px_rgba(220,20,60,0.8)]">{content.hero.titleEnd}</span>
           </h1>
-          <p className="text-xl md:text-3xl text-gray-100 font-medium mb-10 max-w-4xl mx-auto drop-shadow-md text-balance bg-black/40 p-6 rounded-lg backdrop-blur-sm border border-white/5">
+          <p className="text-xl md:text-3xl text-gray-100 font-medium mb-10 max-w-4xl mx-auto drop-shadow-md text-balance bg-black/40 p-6 rounded-lg backdrop-blur-sm border border-white/5 whitespace-pre-line">
             {content.hero.subtitle}
           </p>
           
@@ -154,36 +154,40 @@ const LandingPage: React.FC<LandingPageProps> = ({ content, lang }) => {
         </div>
       </Section>
 
-      {/* Schedule Section */}
-      <Section id="schedule" title={content.schedule.title} isAlternate>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
-            <p className="text-lg text-gray-300 mb-8">
-              {content.schedule.description}
-            </p>
-            <div className="space-y-4">
-              {content.schedule.items.map((item: any, idx: number) => (
-                <EventCard key={idx} item={item} lang={lang} />
-              ))}
+      {/* Schedule Section (conditionally hidden) */}
+      {content.schedule.hidden ? (
+        <div id="schedule" aria-hidden="true" />
+      ) : (
+        <Section id="schedule" title={content.schedule.title} isAlternate>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <p className="text-lg text-gray-300 mb-8">
+                {content.schedule.description}
+              </p>
+              <div className="space-y-4">
+                {content.schedule.items.map((item: any, idx: number) => (
+                  <EventCard key={idx} item={item} lang={lang} />
+                ))}
+              </div>
+            </div>
+            <div className="relative hidden md:block h-full min-h-[400px]">
+              <div className="sticky top-24 p-8 border border-white/10 bg-black/50 backdrop-blur-sm shadow-xl">
+                <h3 className="text-2xl font-serif text-blood-red mb-4 flex items-center gap-2">
+                  <Moon className="w-6 h-6" />
+                  {content.schedule.adviceTitle}
+                </h3>
+                <p className="italic text-gray-400 mb-4 leading-relaxed">
+                  {content.schedule.adviceText}
+                </p>
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-700 to-transparent my-4" />
+                <p className="text-sm text-gray-500">
+                  {content.schedule.adviceFooter}
+                </p>
+              </div>
             </div>
           </div>
-          <div className="relative hidden md:block h-full min-h-[400px]">
-            <div className="sticky top-24 p-8 border border-white/10 bg-black/50 backdrop-blur-sm shadow-xl">
-              <h3 className="text-2xl font-serif text-blood-red mb-4 flex items-center gap-2">
-                <Moon className="w-6 h-6" />
-                {content.schedule.adviceTitle}
-              </h3>
-              <p className="italic text-gray-400 mb-4 leading-relaxed">
-                {content.schedule.adviceText}
-              </p>
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-700 to-transparent my-4" />
-              <p className="text-sm text-gray-500">
-                {content.schedule.adviceFooter}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       {/* Call to Action */}
       <Section id="apply" title={content.apply.title} isAlternate>
@@ -273,7 +277,20 @@ const App: React.FC = () => {
       const hash = window.location.hash.replace('#', '');
       setCurrentHash(hash);
 
-      if (VALID_VIEWS.includes(hash as View)) {
+      // Check for view-specific anchors (e.g., #rules-combat, #setting-clans)
+      const viewAnchorMatch = hash.match(/^(rules|setting|about|casting)-(.+)$/);
+      
+      if (viewAnchorMatch) {
+        const [, view, sectionId] = viewAnchorMatch;
+        setCurrentView(view as View);
+        // Scroll to section after view renders
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 150);
+      } else if (VALID_VIEWS.includes(hash as View)) {
         setCurrentView(hash as View);
         window.scrollTo(0, 0);
       } else if (hash === '') {

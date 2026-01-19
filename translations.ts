@@ -37,6 +37,7 @@ interface Content {
     adviceText: string;
     adviceFooter: string;
     items: ScheduleItem[];
+    hidden?: boolean;
   };
   apply: {
     title: string;
@@ -78,17 +79,17 @@ export const TRANSLATIONS: Record<Language, Content> = {
     hero: {
       titleStart: 'VTM:',
       titleEnd: 'SHADOWS OVER DANUBE',
-      subtitle: 'Urban LARP. Mystical detective & action based on World of Darkness.',
+      subtitle: 'Urban LARP.\n Mystical detective & action based on World of Darkness.',
       details: {
         whenLabel: 'When',
         when: 'November 11 - 15, 2026',
         whereLabel: 'Where',
         where: 'Novi Sad',
-        mgLabel: 'MG',
-        mg: 'PtiCA, Kaire, Til & Max Gorin @GorinMY'
+        mgLabel: 'Team',
+        mg: 'Ptica, Kaire, Til, Grisha & Max Gorin'
       },
-      buttonRules: 'READ THE LAWS',
-      buttonJoin: 'JOIN THE COURT',
+      buttonRules: 'READ THE RULES',
+      buttonJoin: 'JOIN THE GAME',
     },
     pitch: {
       title: 'The Aftermath',
@@ -102,7 +103,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       title: 'About the Game',
       intro: {
         title: 'Novi Sad. 2026.',
-        text: 'A city on the Danube, where old bridges remember more than they should. Three years ago, there was war. The Camarilla, led by the Prince of Budapest, drove the Sabbat out. Barricades were dismantled, bodies removed, the Masquerade restored. Now the Laws of Traditions rule here, and everything is relatively calm. Relatively.',
+        text: 'A city on the Danube, where old bridges remember more than they should. Three years ago, there was war. The Camarilla, led by the Knez of Budapest, drove the Sabbat out. Barricades were dismantled, bodies removed, the Masquerade restored. Now the Laws of Traditions rule here, and everything is relatively calm. Relatively.',
         subText: 'You are a neonate. Perhaps recently embraced, still adjusting to the Hunger. Or maybe you survived the war and seek your place in the new order. The city is open to the ambitious. Or it will devour those who are not careful.'
       },
       atmosphere: {
@@ -113,6 +114,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
           'Shadows of the past: not all Sabbat followers have left.',
           'Hunger, politics, survival.'
         ]
+      },
+      video: {
+        title: 'Watch the Teaser',
+        description: 'Short mood piece for VTM: Shadows over Danube.',
+        url: 'https://www.youtube.com/embed/x6w9RNsL0GE'
       },
       expectations: {
         title: 'What to Expect',
@@ -142,7 +148,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         npc: {
           title: 'The Court',
           subtitle: 'NON-PLAYER CHARACTERS',
-          list: 'Prince, Seneschal, Harpy, Elders & Ancillae',
+          list: 'Knez, Seneschal, Harpy, Elders & Ancillae',
           desc: 'These potentates are Tech Characters (NPCs). They serve the narrative. They do not strive to "win" the game, nor do they play favorites to ensure their friends win. They have triggers, secrets, and modes of operation, but they exist to provide a backdrop for YOUR story.',
           quote: '"Killing an Elder requires more than a sharp stake. You will likely need the aid of another Elder, powerful artifacts, or a very long night."'
         },
@@ -214,6 +220,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     settingPage: {
       title: 'The Setting',
+      recommendations: {
+        question: 'What to play to understand the setting?',
+        games: ['Coteries of New York', 'Shadows of New York', 'VTM Bloodlines']
+      },
       history: {
         title: 'Novi Sad: Post-War',
         intro: 'Brief History',
@@ -401,6 +411,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     rulesPage: {
       title: 'Game Rules',
+      warning: {
+        title: 'Work in Progress',
+        text: 'These rules are still under development, but you can see the current stage of our work and provide feedback. Rules for economy and services are currently being drafted.'
+      },
       sections: [
         {
           id: 'general',
@@ -408,11 +422,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'scroll',
           content: [
             {
-              text: 'System: Vampire: The Masquerade 20th Anniversary Edition (V20) adapted for LARP.',
+              text: 'Thanks to the Rostov VTM Storyteller team and all participants who helped develop and test the rules. We welcome feedback, especially suggestions for rule improvements. In our game, the most important thing is the game itself; we ask you to follow the rules and respect each other.',
               list: [
                 'Game Time: Evenings after sunset. Game time runs from sunset to sunrise. During the day, characters sleep/hide — out of game.',
-                'Game Period: 5 evenings (November 11-15, 2026).',
-                'Safety: We use a "Safe word" system and safety gestures. Details provided upon acceptance.'
+                'Game Period: 4 evenings (November 11-15, 2026).',
               ],
               listType: 'bullet'
             }
@@ -431,6 +444,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Core rules',
               list: [
                 'Each player has 3 hits; some characters may have extra.',
+                'Maximum hits for most players is 5, even with armor/disciplines (unless specified otherwise by a discipline like Setite Golems or Zulo form).',
                 'Hit zone: torso and limbs. Do NOT hit head, hands, feet, or groin.',
                 'Damage only with unpainted Nerf blasters or foam/protector weapons marked “in game item”.',
                 'Follow weapon safety. The less realistic your weapon looks, the fewer problems on city streets.',
@@ -442,37 +456,32 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Taking wounds',
               text: 'Each hit to a valid zone removes 1 hit and assigns a wound status.',
               list: [
-                'Light — may move at a fast walk; may carry a wounded only at a walk.',
-                'Medium — only walking; cannot carry others.',
-                'Heavy — no self‑movement. Can be carried in arms or by two people under the shoulders.'
-              ]
+               'Light — no gameplay restrictions. Wound roleplaying is encouraged.',
+               'Medium — 1 hit point remaining. Walking only (unless you have Celerity or a suitable enhancement); with the help of a healthy Kindred, you can run.',
+               'Heavy — Zero hit points. Independent movement is prohibited. Carrying a heavily wounded character is only possible with two people, unless you have Potence or a suitable artifact. Conversation is permitted. The next hit puts the character into Torpor.',
+               'Torpor is a state of unconsciousness in which you cannot see, hear, or move. You can only emerge from it if you are given a blood pack.'
+              ],
             },
             {
               subtitle: 'While wounded',
               list: [
                 'Must roleplay pain (groans, cries, etc.).',
-                'Running is forbidden with any wound.',
-                'Every 15 minutes you restore 1 hit and downgrade to light/normal; 2 hits take 30 minutes.',
-                'Losing the 3rd hit and going heavy blocks regen without a “helping hand”.'
+                'After combat, vampires and ghouls (if not in heavy injury/torpor) restore all hits automatically if not Hungry.',
+                'Losing the 3rd hit and going heavy blocks regen without a blood pack.',
+                'Ghouls can be brought out of heavy injury by drinking vampire blood or surgery.',
+                'Vampires exit torpor from wounds after a period determined by their Humanity/Path level.'
               ]
             },
             {
-              subtitle: 'Death',
+              subtitle: 'Death & Finishing Off',
               list: [
-                'Losing the 3rd hit puts you in heavy, then death if no help arrives.',
+                'Losing the last hit puts you in heavy injury, then torpor if another hit is dealt.',
+                'A character in torpor (vampire) or heavy injury (human/ghoul) can be finished off. Loudly and clearly say "Finishing off" and roleplay it with a weapon/claws.',
+                'Final killing of a Camarilla Kindred is a violation of the Tradition of Destruction unless a Blood Hunt is active.',
+                'Death conditions: Vampires in torpor die if not transported to safety by the end of the night. Humans die if not given the Embrace or ghouled within an hour.',
                 'After death: stay for 10 minutes roleplaying a corpse (longer if the scene needs it).',
-                'You may tell others the nature of your wounds.',
-                'Then contact STs to get a new role.'
-              ]
-            },
-            {
-              subtitle: 'Attack & defense',
-              list: [
-                'Each hit removes a hit: 1st and 2nd give light then medium wounds.',
-                '3rd hit puts you into heavy. You have 15 minutes for a “helping hand”, otherwise death.',
-                'Helping hand = extracting the wounded from the clash; once at safe distance they heal 1 hit per 15 minutes.',
-                'Urban safety: leave the fight area for 10 minutes or 1–1.5 km to count as safe.',
-                'While helped the character remains heavy and obeys heavy limitations.'
+                'During this time you may inform others about the nature of your wounds.',
+                'Then contact GMs to get a new role.'
               ]
             },
             {
@@ -498,6 +507,82 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'If you hear it and feel a hand on your shoulder — that is a punch.',
                 'First marker gives you a chance to talk your way out.',
                 'On the second marker you must follow to a safe place for the fight or surrender.'
+              ]
+            },
+            {
+              subtitle: 'Weapon Mechanics',
+              list: [
+                'For melee weapons and claws, a hit is a clear, amplitude touch of the target zone with a swing (wrist hits and "sewing machine" style strikes are forbidden).',
+                'For a stake, it is a clear touch of the chest or back with the HAND in which the stake is held (not the stake itself).'
+              ]
+            },
+            {
+              subtitle: 'Staking',
+              list: [
+                'A vampire stake immobilizes the target. The vampire remains in this state until the stake is removed.',
+                'In the "immobilized" state, the character cannot perform any game actions.',
+                'If you do not interact with the staked character for more than an hour, they may contact the GMs and will likely receive a sudden technical rescue.',
+                'Please use staking for gameplay, not to shove an opponent into a closet for the rest of the night.',
+                'Characters with level 2 Celerity or level 2 Fortitude are immune to firearms (see discipline rules for details).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'hunger',
+          title: 'Hunger Rules',
+          icon: 'droplet',
+          content: [
+            {
+              text: 'At the beginning of each night, a vampire wakes up Hungry. A hungry vampire is severely limited in their capabilities. To fix this, they need to inform the Storyteller once per night and specify how they satisfy their Hunger, choosing one of the methods.'
+            },
+            {
+              subtitle: 'A Hungry Vampire:',
+              list: [
+                'Cannot use Skills or active Disciplines.',
+                'Does not restore health over time after being wounded (and cannot restore it in any other way).',
+                'Cannot give their blood to another vampire to create Blood Bonds or Embrace.'
+              ],
+              listType: 'warning'
+            },
+            {
+              text: 'A hungry vampire behaves accordingly — they are irritable, nervous, talk about food, etc. We rely on player roleplay here.'
+            },
+            {
+              text: 'In rare cases, a vampire may fall into a state of Hunger again during the same night (if brought out of torpor, used specific disciplines, or the Storyteller says so) — then they will have to find food again.'
+            },
+            {
+              subtitle: 'IMPORTANT',
+              text: 'If a vampire remains hungry by dawn, something bad will ultimately happen to them when they wake up the next night (e.g., they will break the Masquerade, owe a Blood favor for a blood pack, or kill a human). Do not let this situation happen.',
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Methods of Feeding',
+              subsections: [
+                {
+                  title: 'Herd',
+                  text: 'The easiest way, available only to Toreador and Ventrue. Allows feeding twice per night for oneself or treating friends.'
+                },
+                {
+                  title: 'Blood Packs',
+                  text: 'Medical blood bags with a code sticker. Message the GM: "Name drank bag code X14R". Can be bought from NPCs or found. Beware of fake or tainted blood!'
+                },
+                {
+                  title: 'Rats',
+                  text: 'Similar to blood packs, found in the city. May have side effects. Ventrue cannot feed this way.'
+                },
+                {
+                  title: 'City Hunt',
+                  text: 'The GM gives a task - to find and photograph a person with a specific description (young man in jeans, or a grandmother with bags). The difficulty of the task depends on different factors (violation of the masquerade, belonging to the Ventrue clan, extreme values of humanity and others). The photo must be sent to the GM by Hunger or, at the last resort, shown to the nearest GM. Always send a photo of any person on the street to the GM and say that you are hunting without observing the masquerade. Quick and easy feeding! Remember that violating the masquerade is bad for you and the Domain where you do this.'
+                },
+                {
+                  title: 'Diablerie',
+                  text: 'Solves hunger for one night and boosts disciplines. See Diablerie rules.'
+                },
+                {
+                  title: 'Animalism Discipline',
+                  text: 'Lure and eat animals. Can treat others (need name and joint photo). Ventrue cannot use this.'
+                }
               ]
             }
           ]
@@ -566,8 +651,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
                     'Marker: white sash over the shoulder. No marker — no effect.',
                     'Activate by donning the sash and declaring; remove anytime. Re-enter only after the combat scene and not sooner than 1 minute; cannot enter mid-attack/defense.',
                     'Cloak of Shadows (dot 1): must first leave line of sight. Walk only; noise, collisions, dropped objects reveal you. Cameras do not see you.',
-                    'Unseen Presence (dot 2): may vanish in plain sight; can speak and move without dropping the effect, otherwise as Cloak of Shadows.',
-                    'Mask of a Thousand Faces is mandatory for Nosferatu off-scene. In Elysium they may remove it; leaving the scene they must put it back. Can be used to hide deformity for strategic actions.'
+                    {
+                      text: 'Unseen Presence (dot 2): may vanish in plain sight; can speak and move without dropping the effect, otherwise as Cloak of Shadows. Marker: see image.',
+                      image: '/white-ribbon.png'
+                    },
+                    'The Mask of a Thousand Faces is an additional effect for the Abrupt Disappearance ability—a Nosferatu appears human, and its appearance does not violate the Masquerade. Without the Mask of a Thousand Faces, you should not ride in a taxi with your face uncovered, unless you wish to violate the Traditions.'
                   ]
                 },
                 {
@@ -609,7 +697,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'See the hidden and block any Obfuscate level.',
                   list: [
                     'Heightened Senses/See the Unseen (dot 1, passive): perceives beings in Obfuscate/invisibility, ghosts, illusions; detects hidden presence.',
-                    'Telepathy (dot 2, mental, not in combat): converse at least a minute. Learn thoughts/plans; target cannot lie but can evade. Lasts 5 minutes; target cannot leave early. Harm ends effect. Can read residual auras from items (info from ST).'
+                    'Telepathy (dot 2, mental, not in combat): converse at least a minute. Learn thoughts/plans; target cannot lie but can evade. Lasts 5 minutes; target cannot leave early. Harm ends effect. Can read residual auras from items (info from GM).'
                   ]
                 },
                 {
@@ -617,7 +705,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Emotional sway.',
                   list: [
                     'Awe (dot 1, touch, not in combat): for 2 hours target is a willing servant within line of sight/50 m, obeying non–self-harm orders. Cannot override 3rd Blood Bond. Dangerous orders may be refused with warning. Target forgets the effect but may suspect.',
-                    'Summon (dot 2): may summon anyone seen this night, any distance. Target must drop everything and come quickly without courting certain death; cannot attack summoner until arrival. Only one Summon at a time; can cancel. A second Summon from elsewhere won’t take effect. If scene is in a public spot, move it by “step outside”.'
+                    'Summoning (2 dots): Any character seen this night can be summoned to any distance. The target must arrive as quickly as possible, avoiding unnecessary suspicion among friends, endangering themselves, or committing suicidal acts. The summoning ends when the victim comes within 3 meters of the summoner or when the summoner attacks the victim. One summoning can be active at a time; it can be canceled. A second summoning from a different source will not work. If the scene is in a crowded place, GMs/players can reschedule it using the "Let\'s go outside" rule.'
                   ]
                 },
                 {
@@ -632,7 +720,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Thaumaturgy — Path of Blood (activated)',
                   text: 'Blood manipulation.',
                   list: [
-                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by ST.',
+                    'Taste of Blood (dot 1, needs target’s blood): determines status, clan, Discipline spread. Success by GM. Do not Create Blood Bonds.',
                     'Blood Might (dot 2, touch): for the night raises one vampire’s status (or self) by +1. Number of Disciplines doesn’t grow, but mental powers use new status. Humans don’t become ghouls; ghouls don’t become neonates; elders stay elders.'
                   ]
                 },
@@ -649,16 +737,16 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Beast forms.',
                   list: [
                     'Claws (dot 1, wear claw gloves): last until dawn or deactivation. Hit deals 1 hit (Potence bonuses apply). Cannot use other weapons, but may block. Can attack with both hands without Celerity.',
-                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Auspex/Presence/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. While active, claws deal 2 hits.'
+                    'Mist Form (dot 2): white cloth 1x1.5 m over shoulders. Incorporeal; immune to physical damage and Disciplines except Summoning/Dementation; vulnerable to Thaumaturgy, sun, fire (incl. Path of Flames). Cannot speak, use Disciplines, or interact physically; move only at a walk; may pass any doorway (doors opened in real life). Duration 1 hour, cooldown 30 minutes. Bonus for second dot - claws deal 2 hits.'
                   ]
                 },
                 {
                   title: 'Dementation (mental)',
                   text: 'Manipulating madness.',
                   list: [
-                    'Eyes of Chaos (dot 1, see target, not in combat): learn clan, derangements, diablerie, Humanity/Path; may track target’s location/actions (via ST). Track only one at a time. Cooldown 1 hour after ending.',
-                    'Total Madness (dot 2, see target): inflicts 3 random derangements until end of strategic cycle/dawn. 2 uses per night; works on a target once per night. Derangements chosen by ST.',
-                    'Possible derangements include: blood bulimia, anatidaephobia, agoraphobia, aversion to blood, acrophobia, memory loss, spectrophobia, fixation on an item, paranoia, Tourette’s, androphobia, bibliomania, Fregoli syndrome, nomophobia, schizophrenia, and others per ST.'
+                    'Eyes of Chaos (dot 1, see target, not in combat): learn clan, derangements, diablerie, Humanity/Path; may track target’s location/actions (via GM). Track only one at a time. Cooldown 1 hour after ending.',
+                    'Total Madness (dot 2, see target): inflicts 3 random derangements for 3 hours. 2 uses per night; works on a target once per night. Derangements chosen by GM.',
+                    'Possible derangements include: blood bulimia, anatidaephobia, agoraphobia, aversion to blood, acrophobia, memory loss, spectrophobia, fixation on an item, paranoia, Tourette’s, androphobia, bibliomania, Fregoli syndrome, nomophobia, schizophrenia, and others per GM.'
                   ]
                 }
               ]
@@ -674,10 +762,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
               text: 'Thaumaturgy is available only to Tremere. There is no "free-form" ritualism. All rituals must be approved by STs in advance.',
               list: [
                 'Choose a ritual available to your level.',
-                'Agree on time/place with ST.',
+                'Agree on time/place with GM.',
                 'Prepare components.',
                 'Roleplay the process (min. 5 mins for low level).',
-                'Receive effect from ST.'
+                'Receive effect from GM.'
               ],
               listType: 'bullet'
             },
@@ -699,23 +787,126 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'heart',
           content: [
             {
-              text: 'Scale from 10 (Saint) to 0 (Beast). Neonates start at 6-7. Humanity is your link to your former self. Lower humanity means you are closer to the Beast.',
+              text: 'Humanity is a scale from 1 to 5. Most players start with a value of 3-4. It is easy to lose Humanity, but very hard to regain it. Evaluation occurs once per night.',
             },
             {
-              subtitle: 'What lowers Humanity',
+              subtitle: 'Sins and Effects',
+              text: 'Higher Humanity implies following all previous sins. Committing a sin may lead to a decrease in Humanity.',
+              subsections: [
+                {
+                  title: 'Level 5 (Saint)',
+                  list: [
+                    'Sin: Harming another, even in self-defense.',
+                    'Wake up at 20:00.',
+                    'Feeding difficulty: Decreased.',
+                    'Torpor time: 0.5 hours.'
+                  ]
+                },
+                {
+                  title: 'Level 4',
+                  list: [
+                    'Sin: Violence is the norm. Scuffles without murder. Torture without pleasure. Use of mental disciplines (Dominate/Presence).',
+                    'Wake up at 20:30.',
+                    'Feeding difficulty: Decreased.'
+                  ]
+                },
+                {
+                  title: 'Level 3',
+                  list: [
+                    'Sin: Putting a Kindred into torpor and/or killing a mortal in self-defense. Violation of personal moral code. Torture with pleasure.',
+                    'Wake up at 21:00.',
+                    'Torpor time: 1 hour.'
+                  ]
+                },
+                {
+                  title: 'Level 2',
+                  list: [
+                    'Sin: Death of a Kindred or mortal NOT in self-defense. Diablerie.',
+                    'Wake up at 21:30.',
+                    'Feeding difficulty: Increased.'
+                  ]
+                },
+                {
+                  title: 'Level 1',
+                  list: [
+                    'Sin: Nowhere lower.',
+                    'Wake up at 22:00.',
+                    'Torpor time: 2 hours.',
+                    'Feeding difficulty: Increased.'
+                  ]
+                }
+              ]
+            },
+            {
+              subtitle: 'Additional Effects',
               list: [
-                'Killing innocents',
-                'Torture',
-                'Mass violence',
-                'Violating personal moral code',
-                'Cannibalism (Diablerie)'
+                'Rotschreck Protection: Humanity 3 and higher provides protection from supernatural terror of fire.',
+                'Animalism Protection: Humanity 3 and higher allows blocking the "Quell the Beast" power.',
+                'Detection: Humanity level can be revealed by "Eyes of Chaos" or Auspex (aura).',
+                'Diablerie: Committing diablerie permanently lowers Humanity and leaves black streaks in the aura.'
               ],
-              listType: 'cross'
+              listType: 'bullet'
             },
             {
               subtitle: 'Frenzy',
-              text: 'When the Beast breaks free. Triggers: Fire/Sunlight (Panic), Hunger, Provocation (Rage), Critical Humanity failure. In Frenzy, you lose control.',
-              listType: 'bullet'
+              text: 'A vampire in frenzy loses control to the Beast. Triggered by Hunger, Rage.',
+              list: [
+                'The vampire must attack the nearest vampire or human, put them in torpor/heavy injury, and drink their blood.',
+                'Only melee weapons can be used.',
+                'Only physical disciplines (Potence, Fortitude, Celerity) can be used.',
+                'Immune to mental disciplines; all active mental effects fall off.',
+                'Ends when the vampire feeds from a victim or falls into torpor.'
+              ]
+            },
+            {
+              subtitle: 'Rotschreck',
+              text: 'Supernatural terror of open fire (any fire larger than the flame of a match/lighter).',
+              list: [
+                'Any vampire approaching open fire falls into uncontrolled terror and must run away at least 10 meters.',
+                'Immunity: Thaumaturges with the Path of Flames, some Sabbat members, and vampires with Humanity 3 or higher (Humanity specifically, not Path).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'blood',
+          title: 'Blood & Bonds',
+          icon: 'droplet',
+          content: [
+            {
+              subtitle: 'Blood Bonds',
+              text: 'Any vampire who drinks the blood of another vampire experiences the effect of the Blood Bond.',
+              list: [
+                '1 Sip – The character feels a strong affinity for the one whose blood they drank.',
+                '2 Sips – The character feels love and sexual attraction toward the one whose blood they drank. However, the character still values their own life, can keep secrets, and will not obey orders that directly lead to their death.',
+                '3 Sips – The character becomes a slave to the one whose blood they drank. They will tell and do anything that does not directly threaten their life.'
+              ]
+            },
+            {
+              text: 'The bond level can only increase by one step per night. Vampires sometimes voluntarily drink each other\'s blood to strengthen emotional ties or pledge mutual loyalty. The simplest way to bond a Kindred is to feed them your blood while they are in torpor.',
+            },
+            {
+              subtitle: 'Rumors',
+              list: [
+                'Rumors suggest that Sabbat vampires know how to break Blood Bonds.',
+                'It is said that the Tremere may know ways to release someone from a bond.'
+              ]
+            },
+            {
+              subtitle: 'Diablerie',
+              text: 'In the Camarilla, Diablerie (consuming another Kindred) is considered a grave crime. It is typically detected via Auspex; black streaks in the aura will surely raise questions from the Sheriff.',
+              list: [
+                'Consuming Essence: By performing a "Feeding Attack", a vampire can consume not only the soul but the very essence of the victim, taking their abilities and flaws. After committing diablerie, the player calls the Storyteller, and the Storyteller informs them what pros and cons they received from the diablerie, and also makes changes to their aura.',
+                'Consequences: After committing diablerie, the character falls into a trance after 5 minutes and lies in a state similar to torpor, immobilized for half an hour.',
+                'Roleplay: Diablerie is the ultimate violation — the consumption of the soul itself. As the predator drains the last drops of the victim\'s blood, their essence is violently torn away and merged with the diabolist\'s own, leaving behind nothing but cold ash and a stained aura.'
+              ]
+            },
+            {
+              subtitle: 'Blood Replenishment',
+              text: 'You can replenish your blood by feeding on Tech-Characters (NPCs). A roleplayed feeding scene with an NPC allows you to restore your Hunger status to "Sated".',
+              list: [
+                'Feeding Attack: Any vampire can perform a "Feeding Attack" using the intoxicating property of the "Vampire\'s Kiss" (the process is pleasurable for the victim). A Feeding Attack can only be performed on immobilized characters. To do this, the attacker approaches the victim, hugs them by the shoulders, says "Bite", and starts counting aloud to ten. Vampires can use disciplines that are allowed while immobilized. If the feeding is not interrupted, after 10 seconds the victim falls into torpor. If the attacker releases the victim before 10 seconds, no hits are removed, but the victim receives the "Hungry" status.'
+              ]
             }
           ]
         },
@@ -725,7 +916,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'coins',
           content: [
             {
-              text: 'Money is secondary. Influence, favors (Boons), and debts are the currency of the night.',
+              text: 'Money is secondary. Influence, favors (Boons), and connections are the currency of the night.',
             },
             {
               subtitle: 'Values',
@@ -739,46 +930,135 @@ export const TRANSLATIONS: Record<Language, Content> = {
               ],
               listType: 'bullet'
             },
-            {
-              subtitle: 'Influence Spheres',
-              text: 'Bureaucracy, Church, Finance, Health, High Society, Industry, Legal, Media, Occult, Police, Politics, Underworld, University, Street, Transportation.',
-              listType: 'bullet'
-            }
+//            {
+//              subtitle: 'Influence Spheres',
+//              text: 'Bureaucracy, Church, Finance, Health, High Society, Industry, Legal, Media, Occult, Police, Politics, Underworld, University, Street, Transportation.',
+//              listType: 'bullet'
+//            }
           ]
         },
         {
           id: 'investigations',
-          title: 'Investigation Rules',
-          icon: 'book',
+          title: 'Infobroker Rules',
+          icon: 'message-square',
           content: [
             {
-              text: 'Use this to fact-check a character from YOUR Sect (an infiltrator counts as a member of the Sect they infiltrated). Examples: confirm their cover, Disciplines, sire/lineage, generation, or reputation. Declare an “investigation” action to the Investigation ST with a clear question.'
+              text: 'It is known that there is an infobroker in the city. He exists online under the nickname Gutter_Sage. Rumors say he is a Nosferatu and older than the Shadow, while others claim the opposite — that she is his sire. Either way, it is known that Gutter_Sage never appears in public. But everyone knows you can write him a question. And get an answer.'
             },
             {
-              subtitle: 'Process',
+              subtitle: 'Attitude toward Nosferatu',
+              text: 'They say he is more lenient toward young Nosferatu. He may even forgive them for answering "I don\'t know" to one of his questions. Or even a mistake. For others — no.\n\nYou can write to him as much as you want, but until your current request is closed (you received your 3-5 questions and answered them), he won\'t respond to your next question. There are rare cases when the Infobroker cannot answer your request. He will tell you directly, before he starts asking his own questions.',
               list: [
-                'The Investigation ST sets N counter-questions about any other characters in the game (not necessarily tied to your target).',
-                'You gather answers in in-character conversations, then return to the Investigation ST.',
-                'The ST checks how many answers are correct: all correct = you receive the info; incorrect answers are reported by quantity.',
-                'You may “buy out” each incorrect or missing answer for 1 in-game $.',
-                'You may skip fact-finding and immediately buy out unanswered questions.'
-              ]
-            },
-            {
-              subtitle: 'Bonuses',
-              list: [
-                'Each Nosferatu (and any character with the Detective skill) may buy out one unanswered question for free.'
+                'Exception to "1 unanswered request per neonate": Nosferatu can have 2 open requests at the same time.'
               ],
               listType: 'check'
             },
             {
-              subtitle: 'Required component',
-              text: 'Bring a physical folder with newspaper clippings related to the investigation target plus 3 photos of the target in three different places, shot outside public Kindred spots (no Elysium photos).',
+              subtitle: 'Exchange Principles',
+              text: 'Gutter_Sage will ask questions in return. The harder your question is to answer (in his opinion), the harder his counter-questions will be. He is a collector of information. He is not interested in hastily fabricated rumors, blood, money, or generally Favors. There are known exceptions regarding Favors — he will tell you about them himself.',
               list: [
-                'Example: Ivan wants to learn where Ventrue Vasiliy was embraced — clippings about Vasiliy opening a business center, signing deals where he is a founder, etc.',
-                'Photos must be taken in non-public locations away from Kindred gatherings.'
+                'Expects specific questions accompanied by your hypotheses (1 to 3). Sage appreciates good hypotheses; for them, he is willing to overlook some inaccuracies in your answers.',
+                'Tends to ignore yes-no questions and overly general requests like "Send me some dirt on the Ventrue Primogen."',
+                'The Infobroker is not a telepath. He won\'t answer whether that Malk really sees spirits or whether your friend is thinking about signing a contract with infernal forces.',
+                'But if you ask whether your friend performed any shady rituals yesterday before midnight, or yelled that Baphomet would soon grant him great power — that\'s a different conversation.',
+                'Asking "List everyone the Prince met with in the last week" also won\'t work, but you can specify a reasonable time window within a night, and it\'s better to specify a location too. Gutter_Sage will determine what\'s reasonable.'
               ],
               listType: 'bullet'
+            },
+            {
+              subtitle: 'Mechanics and How It Works',
+              text: 'If you\'ve hit a dead end, don\'t know where to look for a piece of information you need, or you\'ve just decided with other neonates at 4 AM to dig into a Primogen\'s turbulent youth or that shady neonate from another coterie — message the Infobroker on Telegram.',
+              list: [
+                'Your message should contain: character name, clan, briefly what you already know and what you want to find out.',
+                'The question must be specific about a place, Kindred, or event, reflecting what you\'ve already dug up, your hypothesis (1 to 3).',
+                'We encourage you to maintain your character\'s communication style. The Infobroker has a sense of humor and appreciates creativity.',
+                'You cannot introduce yourself under someone else\'s name — the request is sent on behalf of the account owner.',
+                'If you\'re asking about a character, you\'ll need at least one recent photo (taken during the game) of that character. Photos must be clear — the old Nosferatu understands about night photography, but it should be clear who it is.'
+              ],
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Information Retrieval Process',
+              text: 'In response, you will receive 3 to 5 questions of varying difficulty. Base is 3 — for an easy request. Secrets of Primogen or the Tremere Chantry will cost significantly more.',
+              list: [
+                'A smart and cautious neonate can easily deduce from the question difficulty that they\'re digging into a dangerous topic and back off.',
+                'Questions may not arrive instantly (usually within an hour or two, or at the beginning of the next night if asked toward dawn).',
+                'Questions will be about different Kindred, events, or locations in the city, not directly related to your query\'s subject. You may need to negotiate with other neonates.',
+                'Among the Kindred mentioned, there may be Council members and even the Prince. We advise talking to neonates of the relevant clans — a Primogen is more likely to answer a clanmate.',
+                'Gutter_Sage will not answer a repeated question from the same character if you answered at least 1 incorrectly (for Nosferatu — 2).',
+                'The question can be resent by another Kindred. Usually, questions that have already been correctly answered are not asked again by Sage.'
+              ],
+              listType: 'bullet'
+            },
+            {
+              subtitle: 'Example of Use',
+              subsections: [
+                {
+                  title: '1. Andrey\'s Request (Brujah)',
+                  text: 'Brujah Andrey suspects that the Ventrue Primogen may be indirectly involved in the disappearance of his clanmate and friend Danila. Because Danila mentioned that the Primogen had called him for a talk. Then he came back, looking glum, and dodged all questions. Then he vanished.\n\nOf course, the Camarilla is not a place where you can throw around such accusations freely, and you can\'t ask directly either. So Andrey first secretly takes a photo of the Primogen in Elysium. Then he goes and takes a photo of the building where his friend Danila was last seen — Hotel Pupin.\n\nHe writes:\n"Hey, Gutter_Sage. I\'m Andrey from clan Brujah. Recently my bro Danila from clan Gangrel disappeared. He was last seen near Hotel Pupin around midnight. A couple of days before disappearing, he mentioned that the Ventrue Primogen invited him for a talk. And after the talk, but before disappearing, he was sullen and dodged all my questions.\n\nMy hypotheses:',
+                  list: [
+                    '1) Danila saw something near the "Pupin" that he shouldn\'t have seen.',
+                    '2) OR I\'m not accusing the Primogen of killing him personally, of course, but I think Danila may have encountered someone acting on his behalf — or using his name as cover.',
+                    'Can you tell me which Kindred were hanging around that night from 10 PM to 2 AM near Hotel Pupin?'
+                  ]
+                },
+                {
+                  title: '2. Sage\'s Counter-Questions',
+                  text: 'Sage replies: "Hey, little bro. Let\'s go:"',
+                  list: [
+                    '1. Who is the favorite childe of Nosferatu Primogen Shadow?',
+                    '2. Who did Brujah Valentina meet in the abandoned house at midnight?',
+                    '3. What were the Tremere doing in Limanski Park yesterday at 10 PM?'
+                  ]
+                },
+                {
+                  title: '3. Gathering Answers',
+                  text: 'Andrey thinks it over. The questions aren\'t that hard, except maybe the first one. And there are only 3. So neither the Prince, nor the Council, nor the Regent are involved, or they simply don\'t think this piece of information is worth spending significant resources to hide.\n\nAsking Valentina will be easy, they\'re buddies. He thinks he\'ll approach the Tremere with a simple offer — he\'ll honestly tell them this question is for the Infobroker. If they help with this question, he\'ll share the info from Sage about who was near the Ventrue Primogen\'s hotel. They probably won\'t refuse if there wasn\'t some mega-secret sorcery involved.\n\nAbout who\'s Shadow\'s favorite childe — he has no idea. He easily gets info from Valentina. Then he writes to or finds one of the Tremere neonates, and they\'re indeed willing to help if he shares the result. The childe question remains.\n\nHe finds Nosferatu Milan at the tea house where neonates often gather. Milan laughs at the question and is sure he knows the answer. Says it\'s him. Andrey is skeptical; he understands that if it\'s wrong — Sage won\'t forgive the mistake and Andrey won\'t get another chance to ask this question personally. He tries to get Milan to just call Shadow and ask, but Milan isn\'t keen, even though he\'s the favorite childe.\n\nIn the end, they agree that if the answer is correct — Andrey owes Milan a Minor Favor. If wrong — Milan sends the request to Sage under his own name.'
+                },
+                {
+                  title: '4. Answer and Failure',
+                  text: 'Andrey writes a response to the Infobroker:',
+                  list: [
+                    '1) Milan from clan Nosferatu,',
+                    '2) Valentina met with Katarina from clan Toreador. She said they were just exchanging gossip. But I don\'t think that\'s true — why exchange gossip in an abandoned house.',
+                    '3) Recently, scratches like claw marks of strange shape have been appearing on trees. There are also rumors that Neo-pagans gather there — because people find bloody marks on trees. They decided to investigate. They found several symbols drawn in human blood. And they say the claw marks are strange — probably not a Kindred and unlikely an animal.'
+                  ]
+                },
+                {
+                  title: '5. Result of the Error',
+                  text: 'Half an hour later, Andrey receives a response: "One of the answers is fundamentally wrong, young one."\n\nThat\'s it. Andrey\'s question is closed by the Infobroker. Andrey can write him another question about a different place, event, or Kindred immediately. But not the one he\'s most interested in right now, the one he already failed. Andrey can never ask this question again.\n\nBut another Kindred can ask the same question. For example, Milan, because of whom this happened.'
+                },
+                {
+                  title: '6. Milan\'s Second Attempt',
+                  text: 'Milan\'s heart is broken that he\'s not the favorite childe, but he has to fulfill his part of the deal. Milan writes:\n"Hey, boss. I\'m Milan from clan Nosferatu. Andrey (the Brujah) lost his buddy — Danila (from clan Gangrel). He was last seen near Hotel Pupin around midnight. A couple of days before disappearing, he said the Ventrue Primogen invited him to discuss something. After that, until he disappeared, he was sullen and didn\'t answer Andrey\'s questions.\n\nThe hypotheses are as follows, boss:\n1) Danila saw something near the "Pupin" that he shouldn\'t have seen.\n2) OR I\'m not accusing the Primogen of killing him personally, of course, but I think Danila may have encountered someone acting on his behalf — or using his name as cover.\n3) OR (Milan decided to add his own) Someone wants to frame the Ventrue Primogen with this disappearance.\n\nCan you tell me which Kindred were around that night from 10 PM to 2 AM near Hotel Pupin?"'
+                },
+                {
+                  title: '7. New Questions',
+                  text: 'He gets a response: "Hey, kid. Let\'s go:"',
+                  list: [
+                    '1) Where and why did the Sheriff go with his coterie tonight around 8 PM and what did he do there,',
+                    '2) Name a former or current lover of Tremere Regent Francesca Orsini,',
+                    '3) Which Toreador specifically accompanied their Primogen the day before yesterday before the Ball, and (optional) was there among them someone who recently had a conflict with Brujah?'
+                  ]
+                },
+                {
+                  title: '8. Gathering Information',
+                  text: 'Milan is generally friendly with a Kindred from the Sheriff\'s Coterie and bets he\'ll get this information. Andrey says he won\'t go to the Tremere neonates again — he already owes them info they\'re currently trying to get, from the first attempt. But he\'s ready to find out about the conflict with Brujah clanmates.\n\nThey spend some time gathering information and Milan writes his answer. He knows he can fail one question without consequences; he\'s quite confident about the rest.'
+                },
+                {
+                  title: '9. Result',
+                  text: 'Milan writes his answer:',
+                  list: [
+                    '1) They went to the outskirts of the city. To cover up traces of a Masquerade breach. There was a small skirmish with Shovelheads there. Seems like no one was badly hurt. They found traces of some shady ritual. Now he went to consult with the Tremere.',
+                    '2) Boss, why you gotta do me like this. I dunno. Toreador Primogen?',
+                    '3) He was accompanied by his childe Anna and a visitor from Hungary named Zoltan. And yes, Zoltan recently had a beef with the Brujah.'
+                  ]
+                },
+                {
+                  title: '10. Finale',
+                  text: 'The answer comes an hour later:\n"One of the answers is wrong, Milan. Moreover, it\'s teeth-grindingly banal. You can do better. But overall, pass. Here\'s the list, even with approximate time breakdown. I\'m feeling generous today."\n\nResult — The information goes to Milan. But if Milan weren\'t Nosferatu — the question would simply be closed without an answer.'
+                }
+              ]
             }
           ]
         },
@@ -811,7 +1091,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Metagaming ❌',
               list: [
                 'Do not use player knowledge your character lacks',
-                'Do not coordinate off-game without ST knowledge',
+                'Do not coordinate off-game without GM knowledge',
                 'Do not read others\' secrets'
               ],
               listType: 'cross'
@@ -822,6 +1102,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     schedule: {
       title: "Rhythm of the Night",
+      hidden: true,
       description: "The game lasts from sunset to sunrise. While personal intrigues are eternal, the City demands your service during specific hours. Do not miss mandatory gatherings.",
       adviceTitle: "Keeper's Advice",
       adviceText: "\"Events can be adapted to your coterie or personal story. We are not villains; we won't drag you into the abyss right before dawn... usually. But remember: The City won't wait for you to get ready.\"",
@@ -906,21 +1187,21 @@ export const TRANSLATIONS: Record<Language, Content> = {
     hero: {
       titleStart: 'VTM:',
       titleEnd: 'ТЕНИ НАД ДУНАЕМ',
-      subtitle: 'Городской ЛАРП. Мистический детектив и экшн по Миру Тьмы.',
+      subtitle: 'Городская Ролевая Игра.\nМистический детектив и экшн на основе Мира Тьмы.',
       details: {
         whenLabel: 'Когда',
         when: '11 - 15 Ноября 2026',
         whereLabel: 'Где',
         where: 'Нови-Сад',
         mgLabel: 'МГ',
-        mg: 'Птица, Кайре, Тиль и Макс Горин @GorinMY'
+        mg: 'Птица, Кайре, Тиль, Гриша и Макс Горин'
       },
-      buttonRules: 'ЧИТАТЬ ЗАКОНЫ',
-      buttonJoin: 'ВСТУПИТЬ ВО ДВОР',
+      buttonRules: 'ЧИТАТЬ ПРАВИЛА',
+      buttonJoin: 'ВСТУПИТЬ В ИГРУ',
     },
     pitch: {
       title: 'Последствия',
-      context: 'Три года назад Камарилья отбила Нови-Сад у Шабаша. Война закончена, но город все еще помнит вкус крови.',
+      context: 'Три года назад Камарилья отбила Нови-Сад у Шабаша.Война закончена, но город все еще помнит вкус крови.',
       role: 'Ты — Неонат. Вчерашний птенец или опытный хищник? Город полон возможностей для тех, кто готов платить цену.',
       genre: 'Детектив, экшн или мрачные интриги — ты сам выбираешь свой путь. Никаких рельс. Только твои решения, их последствия и реакция мира.',
       question: 'На что ты готов ради своей цели?',
@@ -930,7 +1211,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       title: 'Об Игре',
       intro: {
         title: 'Нови-Сад. 2026.',
-        text: 'Город на Дунае, где старые мосты помнят больше, чем должны. Три года назад здесь была война. Камарилья во главе с Принцем Будапешта выбила Шабаш. Баррикады разобрали, тела убрали, Маскарад восстановили. Теперь здесь правят Законы Традиций, и все относительно спокойно. Относительно.',
+        text: 'Город на Дунае, где старые мосты помнят больше, чем должны. Три года назад здесь была война. Камарилья во главе с Князем Будапешта выбила Шабаш. Баррикады разобрали, тела убрали, Маскарад восстановили. Теперь здесь правят Законы Традиций, и все относительно спокойно. Относительно.',
         subText: 'Вы — неонат. Возможно, недавно обращенный, еще привыкающий к Голоду. Или, может быть, вы пережили войну и ищете свое место в новом порядке. Город открыт для амбициозных. Или пожрет тех, кто неосторожен.'
       },
       atmosphere: {
@@ -941,6 +1222,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
           'Тени прошлого: не все последователи Шабаша ушли.',
           'Голод, политика, выживание.'
         ]
+      },
+      video: {
+        title: 'Смотри тизер',
+        description: 'Короткое атмосферное видео к «VTM:Тени над Дунаем».',
+        url: 'https://www.youtube.com/embed/BZgbzV9rcn4'
       },
       expectations: {
         title: 'Чего Ожидать',
@@ -1016,7 +1302,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       }
     },
     castingPage: {
-      title: 'Кастинг',
+      title: 'Сетка Ролей',
       description: 'Проверьте доступные роли.',
       teamSection: {
         title: 'Мастерская Группа',
@@ -1042,34 +1328,38 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     settingPage: {
       title: 'Сеттинг',
+      recommendations: {
+        question: 'Во что поиграть чтобы понять сеттинг?',
+        games: ['Coteries of New York', 'Shadows of New York', 'VTM Bloodlines']
+      },
       history: {
         title: 'Нови-Сад: Послевоенный',
         intro: 'Краткая История',
         timeline: [
           {
-            year: 'До 2010-х',
+            year: 'До 2020-х',
             title: 'Меч Каина',
-            description: 'Нови-Сад под контролем Шабаша. Город служил оплотом Меча Каина на Балканах — точильным камнем, где тактика оттачивалась против Камарильи.'
+            description: 'Нови-Сад держал Шабаш. Город был одной из их балканских баз — тут обкатывали тактику против Камарильи, тут готовили кадры.'
           },
           {
             year: 'Осень 2023',
             title: 'Война за Город',
-            description: 'Камарилья, во главе с Принцем Будапешта, начала масштабную операцию по зачистке города. Война была короткой, но кровавой. Последователи Шабаша либо пали, либо отступили, либо... ушли в подполье.'
+            description: 'Камарилья решила вычистить город. Князь Будапешта лично возглавил операцию. Месяц боёв — и Шабаш сломлен. Кто-то погиб, кто-то отступил на юг, а кто-то... просто исчез с радаров.'
           },
           {
             year: 'Зима 2023',
             title: 'Домен Камарильи',
-            description: 'Нови-Сад официально вошел в домен Камарильи. Князь Будапешта отправил своего потомка на княжение. Он должен защищать город и его границы.'
+            description: 'Нови-Сад перешёл под контроль Камарильи. Князь Будапешта назначил Князем своего птенца. Теперь его задача — держать город и не дать старым врагам вернуться..'
           },
           {
             year: '2024-2025',
-            title: 'Восстановление',
-            description: 'Новый Шериф и его команда навели порядок. Традиции были установлены, остатки Шабаша выслежены, а Маскарад восстановлен после хаоса войны. Начали прибывать Неонаты из других доменов — молодые, амбициозные, жаждущие куска нового пирога.'
+            title: 'Наведение порядка',
+            description: 'Новый Шериф взялся за дело всерьёз. Традиции ввели, Маскарад восстановили после военного беспредела, остатки Шабаша повыловили. К середине 2025-го в город начали подтягиваться Неонаты из соседних доменов — молодняк, который хочет урвать своё в новом месте.'
           },
           {
             year: 'Ноябрь 2026',
-            title: 'Новый Порядок',
-            description: 'Относительное спокойствие воцарилось. Иерархия установлена, Элизиум функционирует, Традиции соблюдаются. Но старые обиды не забыты. Странные банды бродят по окраинам. Находят тела со знакомыми метками. Параноики шепчут, что некоторые "новообращенные" Камарильи знают ритуалы Шабаша слишком хорошо.'
+            title: 'Мы здесь',
+            description: 'Вроде как утряслось. Иерархия работает, Элизиум функционирует, правила соблюдаются. Но не всё чисто. На окраинах шастают странные банды. Иногда находят трупы с узнаваемым почерком. Есть слухи, что некоторые "новые" Камарильцы слишком хорошо знают ритуалы Шабаша. Старые враги не забывают обид.'
           }
         ]
       },
@@ -1084,7 +1374,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       },
       traditions: {
         title: 'Шесть Традиций',
-        intro: 'Вампиры Камарильи клянутся соблюдать шесть легендарных Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
+        intro: 'Вампиры Камарильи клянутся соблюдать шесть Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
         traditions: [
           { name: 'Маскарад', description: 'Ты не будешь открывать свою истинную природу тем, кто не Твоей Крови. Сделав это, ты отречешься от своих прав Крови.' },
           { name: 'Домен', description: 'Твой домен — твоя забота. Все остальные обязаны уважать тебя, пока находятся в нем. Никто не может оспаривать твое слово в твоем домене.' },
@@ -1102,7 +1392,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             name: 'Бруха',
             nickname: 'Бунтари',
             stereotype: 'Страстные, идеалистичные, яростные. Философы и уличные бойцы.',
-            description: 'Клан противоречий. Клан неистовых, не признающих авторитетов вампиров, провозглашающих свободу от законов общества. Всех Бруха объединяет страсть. Они чувствуют глубоко — это их сила и их слабость. Ужасающие в гневе, опасные стратеги в спокойствии.',
+            description: 'Клан противоречий. Клан неистовых, не признающих авторитетов вампиров, провозглашающих свободу от законов общества! Всех Бруха объединяет страсть. Они чувствуют глубоко — это их сила и их слабость. Ужасающие в гневе, опасные стратеги в спокойствии.',
             disciplines: 'Могущество, Стремительность, Присутствие',
             weakness: 'Труднее сопротивляться Безумию. Зверь близко к поверхности.',
             roles: ['Бойцы и Телохранители', 'Активисты и Идеологи', 'Уличные Бойцы', 'Пережившие Войну'],
@@ -1168,7 +1458,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             name: 'Вентру',
             nickname: 'Голубая Кровь',
             stereotype: 'Короли, лидеры, аристократия Камарильи.',
-            description: 'Считают себя правителями общества вампиров. Большинство Принцев — Вентру. Они контролируют, организуют и управляют. Они ценят порядок, традиции и стабильность. Они привыкли командовать — и обычно хороши в этом. Но их высокомерие — их слабость.',
+            description: 'Считают себя правителями общества вампиров. Большинство Князей — Вентру. Они контролируют, организуют и управляют. Они ценят порядок, традиции и стабильность. Они привыкли командовать — и обычно хороши в этом. Но их высокомерие — их слабость.',
             disciplines: 'Доминирование, Стойкость, Присутствие',
             weakness: 'Избирательный вкус. Могут пить только от определенного типа смертных (напр., только знать, только солдаты, только блондины).',
             roles: ['Лидеры и Организаторы', 'Политики и Дипломаты', 'Бизнес-Управляющие', 'Искатели Власти'],
@@ -1204,7 +1494,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
           },
           {
             term: 'Иерархия',
-            definition: 'Принц (Правитель), Примоген (Совет), Шериф (Исполнитель), Гарпии (Арбитры Статуса), Бич (Охотник на чужаков). Вы — Неонат в самом низу.'
+            definition: 'Князь (Правитель), Примоген (Совет), Шериф (Исполнитель), Гарпии (Арбитры Статуса), Бич (Охотник на чужаков). Вы — Неонат в самом низу.'
           },
           {
             term: 'Враги',
@@ -1229,6 +1519,10 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     rulesPage: {
       title: 'Правила Игры',
+      warning: {
+        title: 'Правила в разработке',
+        text: 'Правила еще в разработке, но вы можете увидеть стадию нашей работы и дать обратную связь. Правила по экономике и услугам пока в разработке.'
+      },
       sections: [
         {
           id: 'general',
@@ -1236,7 +1530,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'scroll',
           content: [
             {
-              text: 'Система: Vampire: The Masquerade 20th Anniversary Edition (V20) адаптированная для ЛАРП.',
+              text: 'Спасибо мастерской группе Ростовских VTM и всем участникам, которые помогали в разработке и тестировании правил. Мы принимаем обратную связь, особенно предложения к улучшению правил. В нашей игре самое важное это игра, просим вас соблюдать правила и уважать друг друга.',
               list: [
                 'Игровое Время: Вечера после заката. Игровое время идет от заката до рассвета. Днем персонажи спят/прячутся — вне игры.',
                 'Игровой Период: 4 вечера (11-15 Ноября 2026).',
@@ -1258,6 +1552,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Основные правила',
               list: [
                 'У каждого игрока 3 хита; некоторые персонажи могут иметь дополнительные.',
+                'Максимальное количество хитов большинства игроков — 5, если не указано иного в дисциплине (големы сеттитов и форма Зуло тзимицу).',
                 'Зона поражения: туловище и конечности. Бить нельзя по голове, кистям, стопам и паху.',
                 'Повреждения наносятся только некрашеными Nerf-бластерами или мягким оружием из протектора, маркированным как «предмет в игре».',
                 'Соблюдайте технику безопасности. Чем менее антуражно выглядит оружие, тем меньше проблем на улицах.',
@@ -1269,37 +1564,32 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Получение ранений',
               text: 'Каждое попадание игровым оружием в зону поражения снимает 1 хит и присваивает статус ранения.',
               list: [
-                'Лёгкое — можно идти быстрым шагом, переносить раненого только шагом.',
-                'Среднее — передвижение только шагом; переносить других нельзя.',
-                'Тяжёлое — самостоятельное движение запрещено. Переносить можно на руках или вдвоём под плечи.'
+                'Лёгкое — нет игротехнических ограничений. Приветствуется отыгрыш ранения.',
+                'Среднее — 1 хит остался. Передвижение только шагом (если нет Стремительности или подходящего усиления); при помощи здорового сородича может бежать.',
+                'Тяжёлое — ноль хитов. Самостоятельное движение запрещено. Переносить тяжелораненого можно только вдвоем, если нет Мощи или подходящего артефакта. Можно разговаривать. Следующий удар погружает персонажа в Торпор.',
+                'Торпор — это состояние бессознательное, в нем нельзя видеть, слышать и двигаться. Выйти из него можно только при использовании блад пакета.'
               ]
             },
             {
               subtitle: 'Поведение при ранении',
               list: [
                 'Обязаны имитировать боль (стон, крики и т. д.).',
-                'Бег запрещён при любом ранении.',
-                'Каждые 15 минут восстанавливается 1 хит и статус упрощается до лёгкого/нормы; два хита — за 30 минут.',
-                'Потеря третьего хита и тяжёлое ранение блокируют восстановление без «руки помощи».'
+                'По завершении боевки вампир и гуль, если не впали в тяжран/торпор, восстанавливают все хиты автоматически, если не голодны.',
+                'Потеря третьего хита и тяжёлое ранение блокируют восстановление без блад пакета.',
+                'Гуля можно вывести из тяжрана, напоив кровью вампира или проведя операцию.',
+                'Вампиры выходят из торпора по ранению по прошествию времени, определяемого уровнем человечности/пути.'
               ]
             },
             {
-              subtitle: 'Смерть',
+              subtitle: 'Смерть и добивание',
               list: [
-                'Потеря третьего хита переводит в тяжёлое ранение, затем в смерть, если помощь не получена.',
+                'Потеря последнего хита переводит в тяжёлое ранение, затем в торпор если был на несен еще один удар.',
+                'Персонажа в торпоре (вампир) или тяжелом ранении (человек/гуль) можно добить. Требуется громко и четко сказать «Добиваю» и отыграть это оружием или когтями.',
+                'Убийство Сородича Камарильи — прямое нарушение Традиции Уничтожения, если не объявлена Кровавая Охота.',
+                'Условия смерти: Вампир в торпоре умирает, если не будет транспортирован в безопасное место к концу ночи. Человек — если в течение часа не получил становление/гуление.',
                 'После смерти игрок 10 минут отыгрывает труп (можно дольше ради сцены).',
                 'В это время можно сообщить другим о характере ранений.',
                 'Затем связывайтесь с Мастерами для получения новой роли.'
-              ]
-            },
-            {
-              subtitle: 'Нападение и защита',
-              list: [
-                'Оружие снимает хиты: первое и второе попадание убирают по 1 хиту и дают лёгкое, затем среднее ранение.',
-                'Третье попадание вводит в тяжёлое ранение. Есть 15 минут на «руку помощи», иначе смерть.',
-                'Рука помощи — вывод раненого из столкновения; как только он ушёл на безопасное расстояние, хиты восстанавливаются по 1 за каждые 15 минут.',
-                'В городской игре безопасное удаление: 10 минут от точки боя или 1-1.5 км.',
-                'Под рукой помощи персонаж остаётся в тяжёлом ранении и соблюдает все ограничения.'
               ]
             },
             {
@@ -1325,6 +1615,82 @@ export const TRANSLATIONS: Record<Language, Content> = {
                 'Если услышали фразу и почувствовали руку на плече — это удар.',
                 'Первый маркер даёт шанс уговорить нападающего не бить.',
                 'При повторном маркере нужно пойти за нападающим к безопасному месту для боёвки или сдаться.'
+              ]
+            },
+            {
+              subtitle: 'Механика ударов',
+              list: [
+                'Для холодного оружия и когтей попадание — четкое амплитудное касание поражаемой зоны, с замахом (кистевые удары, «швейная машинка» запрещена).',
+                'Для кола — четкое касание грудной клетки или спины РУКОЙ, в которой зажат кол (а не самим колом).'
+              ]
+            },
+            {
+              subtitle: 'Колирование',
+              list: [
+                'Кол вампиров обездвиживает. В таком состоянии вампир находится до тех пор, пока не вытащат кол.',
+                'В состоянии «обездвижен» персонаж не может совершать никаких игровых действий.',
+                'Если вы никак не взаимодействуете с колированным персонажем больше часа, он может написать МГ и его очень вероятно ждет внезапное игротехническое спасение.',
+                'Просим использовать кол для игры, а не для того чтобы до конца ночи запихать соперника в шкаф.',
+                'Персонажи, обладающие вторым уровнем дисциплины Стремительность или вторым уровнем дисциплины Стойкость, иммунны к огнестрелу (подробности в правилах по дисциплинам).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'hunger',
+          title: 'Правила по Голоду',
+          icon: 'droplet',
+          content: [
+            {
+              text: 'На начало каждой ночи вампир просыпается Голодным. Голодный вампир серьезно ограничен в своих возможностях. Чтобы исправить это, ему нужно один раз за ночь сообщить мастеру и указать как он утоляет Голод, выбрав один из способов.'
+            },
+            {
+              subtitle: 'Голодный вампир:',
+              list: [
+                'Не может использовать Навыки и активируемые Дисциплины',
+                'Не восстанавливает хиты со временем после ранения (и вообще никак не может их восстановить)',
+                'Не может поить своей кровью другого вампира для создания Уз Крови и не может давать Становления'
+              ],
+              listType: 'warning'
+            },
+            {
+              text: 'Голодный вампир ведет себя соответственно -- он раздражен, нервничает, говорит о еде и т.п. Тут мы рассчитываем на отыгрыш игроков.'
+            },
+            {
+              text: 'В редких случая вампир может впасть в состояние Голода той же ночью ещё раз (если его вывели из торпора, он применял специфичные дисциплины или мастер сказал ему об этом) -- тогда придется находить пропитание заново.'
+            },
+            {
+              subtitle: 'ВАЖНО',
+              text: 'Если вампир к моменту наступления утра остаётся голоден, то на следующую ночь при пробуждении с ним ультимативно случится что-то плохое (например, нарушит Маскарад, или задолжает услугу Крови за бладпак, или убьет человека). Не доводите до такой ситуации.',
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Способы питания',
+              subsections: [
+                {
+                  title: 'Стадо',
+                  text: 'Самый простой способ, есть только у Тореадоров и Вентру. Позволяет два раза за ночь попитаться самому или угостить друзей.'
+                },
+                {
+                  title: 'Бладпаки',
+                  text: 'Медицинские пакеты с кровью с кодом. Сообщение мастеру: "Вася выпил пакет с кодом Х14Р". Можно купить у NPC или найти. Остерегайтесь подделок!'
+                },
+                {
+                  title: 'Крысы',
+                  text: 'Аналогичны пакетам, можно найти в городе. Могут иметь неприятные эффекты. Вентру не могут так питаться.'
+                },
+                {
+                  title: 'Городская Охота',
+                  text: 'Мастер дает задание - найти и сфотографировать человека с определенным описанием (молодой парень в джинсах, или старушка с пакетами). Сложность задания зависит от разных факторов (нарушение маскарада, принадлежность к клану вентру, крайние значения человечности и т.п.). Фото надо прислать мастеру по Голоду или, на крайний случай, показать ближайшему мастеру. Всегда можно прислать мастеру фото любого человека на улице и сказать, что ты охотишься не соблюдая Маскарад. Быстрое и простое питание! Помните, что нарушение маскарада плохо и для вас и для Домена, где вы это делаете.'
+                },
+                {
+                  title: 'Диаблери',
+                  text: 'Решает проблему с голодом на одну ночь и дает прирост дисциплин. См. подробнее правила по диаблери.'
+                },
+                {
+                  title: 'Дисциплина «Анимализм»',
+                  text: 'Приманивание животных. Можно угощать других (имя + совместное фото). Вентру не могут так питаться.'
+                }
               ]
             }
           ]
@@ -1403,8 +1769,11 @@ export const TRANSLATIONS: Record<Language, Content> = {
                     'Маркер: белая лента через плечо. Без маркера дисциплина не действует.',
                     'Активация: надеть ленту и заявить. Снять можно в любой момент; повторно включить после боевой ситуации, но не раньше чем через минуту. Войти в Затемнение прямо во время активной атаки/защиты нельзя.',
                     'Незримое присутствие (1 точка): нужно скрыться из поля зрения. Передвижение шагом; шум, столкновения, падение предметов делают видимым. Не видно на камерах.',
-                    'Внезапное исчезновение (2 точки): можно исчезнуть на глазах. Можно говорить и двигаться, не боясь снять эффект, остальное как у Незримого присутствия.',
-                    'Маска тысячи лиц обязательна для Носферату вне сцены. В Элизиуме маску можно снять; покидая сцену, нужно вернуть. Можно скрывать уродство для стратегических действий.'
+                    {
+                      text: 'Внезапное исчезновение (2 точки): можно исчезнуть на глазах. Можно говорить и двигаться, не боясь снять эффект, остальное как у Незримого присутствия. Маркер: см. изображение.',
+                      image: '/white-ribbon.png'
+                    },
+                    'Маска тысячи лиц это дополнительный эффект для Внезапного исчезновения - Носферату похож на человека, его появление не нарушает Маскарад. Без Маски Тысячи Лиц не стоит ездить на такси с открытм лицом, если не хотите нарушать Традиции.'
                   ]
                 },
                 {
@@ -1453,8 +1822,8 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Присутствие (ментальная)',
                   text: 'Эмоциональное подчинение.',
                   list: [
-                    'Восторг (1 точка, касание, вне боя): 2 часа цель — добровольный слуга в зоне прямой видимости до 50 м, выполняет приказы без прямого физического вреда. Не может нарушать 3 Уза Крови. Опасный приказ можно игнорировать, предупредив. Жертва не помнит эффекта, но может догадаться.',
-                    'Призыв (2 точки): можно призвать любого персонажа, увиденного этой ночью, на любое расстояние. Цель обязана как можно быстрее прийти, не ставя себя на верную смерть; не может атаковать призывателя до конца действия. Одновременно держится один призыв; можно отменить. Второй призыв от другого источника не сработает. Если сцена в людном месте — мастера/игроки могут перенести её по правилу "Пойдем выйдем".'
+                    'Восторг (1 точка, касание, вне боя): 2 часа цель — добровольный слуга в зоне прямой видимости до 50 м, выполняет приказы без прямого физического вреда. Не может нарушать Третьи Узы Крови. Опасный приказ можно игнорировать, предупредив. Жертва не помнит эффекта, но может догадаться.',
+                    'Призыв (2 точки): можно призвать любого персонажа, увиденного этой ночью, на любое расстояние. Цель обязана как можно быстрее прийти не создавай лишних подозрений у друзей, не подвергая себя опасности и не совершая самоубийственные действия; Призыв заканчивается после того как жертыва подошла на 3 метра к призывающему или с нападаением призывающего на жертву. Одновременно держится один призыв; можно отменить. Второй призыв от другого источника не сработает. Если сцена в людном месте — мастера/игроки могут перенести её по правилу "Пойдем выйдем".'
                   ]
                 },
                 {
@@ -1469,7 +1838,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   title: 'Тауматургия — Путь крови (активируемая)',
                   text: 'Манипуляция кровью.',
                   list: [
-                    'Вкус крови (1 точка, нужна кровь цели): определяет статус, клан и раскидку дисциплин. Успех определяет мастер.',
+                    'Вкус крови (1 точка, нужна кровь цели): определяет статус, клан и раскидку дисциплин. Успех определяет мастер. Не создавайте Узы Крови.',
                     'Сила крови (2 точки, касание): до конца ночи повышает статус выбранного вампира (или себя) на +1. Количество дисциплин не растёт, но ментальные работают по новому статусу. Люди не становятся гулями, гули — не неонатами, старейшины остаются старейшинами.'
                   ]
                 },
@@ -1486,7 +1855,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
                   text: 'Звериные формы.',
                   list: [
                     'Когти (1 точка, надеть перчатки-когти): держатся до рассвета или деактивации. Удар снимает 1 хит (бонусы от Мощи добавляются). Нельзя использовать другое оружие, но можно блокировать. Можно атаковать двумя руками без Стремительности.',
-                    'Форма тумана (2 точки): белая ткань 1x1.5 м на плечи. Нематериален, иммунен к физическому урону и дисциплинам, кроме Прорицания/Присутствия/Помешательства; уязвим к тауматургии, солнцу и огню (включая путь огней). Нельзя говорить, применять дисциплины или взаимодействовать физически; движение только шагом; можно входить/выходить в помещения (двери открывают по жизни). Длительность 1 час, кулдаун 30 минут. Во время действия когти наносят 2 хита.'
+                    'Форма тумана (2 точки): белая ткань 1x1.5 м на плечи. Нематериален, иммунен к физическому урону и дисциплинам, кроме Призыва и Помешательства; уязвим к тауматургии, солнцу и огню (включая путь огней). Нельзя говорить, применять дисциплины или взаимодействовать физически; движение только шагом; можно входить/выходить в помещения (двери открывают по жизни). Длительность 1 час, кулдаун 30 минут. Бонус второй точки - когти наносят 2 хита.'
                   ]
                 },
                 {
@@ -1536,23 +1905,126 @@ export const TRANSLATIONS: Record<Language, Content> = {
           icon: 'heart',
           content: [
             {
-              text: 'Шкала от 10 (Святой) до 0 (Зверь). Неонаты начинают с 6-7. Человечность — это ваша связь с прежним "я". Низкая человечность означает, что вы ближе к Зверю.',
+              text: 'Человечность разделена на 5 пунктов. Большая часть игроков будет начинать игру с 3-4 значением человечности. Уронить человечность легко, поднять тяжело. Время оценки — ночь.',
             },
             {
-              subtitle: 'Что снижает Человечность',
+              subtitle: 'Грехи и Свойства',
+              text: 'Более высокое значение Человечности предполагает «следование» всем предыдущим грехам. При совершении греха может произойти падение значения.',
+              subsections: [
+                {
+                  title: 'Уровень 5 (Святой)',
+                  list: [
+                    'Грех: Не причинять вред другому, даже в случае самообороны.',
+                    'Просыпаетесь в 20:00.',
+                    'Сложность питания: Уменьшена.',
+                    'Время торпора: 0,5 часа.'
+                  ]
+                },
+                {
+                  title: 'Уровень 4',
+                  list: [
+                    'Грех: Совершение насилия — это норма. Потасовка без убийств. Пытки без удовольствия. Применение ментальных дисциплин (Доминирование\\Присутствие).',
+                    'Просыпаетесь в 20:30.',
+                    'Сложность питания: Уменьшена.'
+                  ]
+                },
+                {
+                  title: 'Уровень 3',
+                  list: [
+                    'Грех: Торпор сородича и/или убийство смертного при самообороне. Нарушение личного морального кодекса. Пытки с удовольствием.',
+                    'Просыпаетесь в 21:00.',
+                    'Время торпора: 1 час.'
+                  ]
+                },
+                {
+                  title: 'Уровень 2',
+                  list: [
+                    'Грех: Смерть сородича или смертного не в случае самообороны. Диаблери.',
+                    'Просыпаетесь в 21:30.',
+                    'Сложность питания: Увеличена.'
+                  ]
+                },
+                {
+                  title: 'Уровень 1',
+                  list: [
+                    'Грех: Ниже уже некуда.',
+                    'Просыпаетесь в 22:00.',
+                    'Время торпора: 2 часа.',
+                    'Сложность питания: Увеличена.'
+                  ]
+                }
+              ]
+            },
+            {
+              subtitle: 'Дополнительные эффекты',
               list: [
-                'Убийство невиновных',
-                'Пытки',
-                'Массовое насилие',
-                'Нарушение личного морального кодекса',
-                'Каннибализм (Диаблери)'
+                'Защита от Ротшрека: Человечность 3 и выше дает защиту от сверхъестественного ужаса перед огнем.',
+                'Защита от Анимализма: Человечность 3 и выше позволяет блокировать воздействие способности «Управление зверем».',
+                'Обнаружение: уровень Человечности может быть узнан с помощью дисциплины «Глаза Хаоса» или Прорицания (аура).',
+                'Диаблери: совершение диаблери навсегда снижает Человечность и оставляет черные полосы в ауре.'
               ],
-              listType: 'cross'
+              listType: 'bullet'
             },
             {
               subtitle: 'Безумие (Frenzy)',
-              text: 'Когда Зверь вырывается на свободу. Триггеры: Огонь/Солнце (Паника), Голод, Провокация (Ярость), Критический провал Человечности. В Безумии вы теряете контроль.',
-              listType: 'bullet'
+              text: 'Вампир, впавший в состояние френзи, теряет контроль над Зверем. Триггеры: Голод, Ярость.',
+              list: [
+                'Обязан атаковать любого ближайшего вампира или человека, ввести его в торпор/тяжран и выпить его кровь.',
+                'Можно пользоваться только оружием ближнего боя.',
+                'Нельзя использовать никакие дисциплины, кроме Мощи, Стойкости и Стремительности.',
+                'Неуязвим к ментальным дисциплинам; все ранее висевшие ментальные воздействия спадают.',
+                'Состояние спадает, когда вампир попитается из жертвы или когда впадет в торпор.'
+              ]
+            },
+            {
+              subtitle: 'Ротшрек (Rotschreck)',
+              text: 'Состояние сверхъестественного ужаса перед открытым огнем (любой огонь, крупнее пламени спички/зажигалки).',
+              list: [
+                'Любой вампир, подошедший к открытому огню, впадает в неконтролируемый ужас и должен убежать от источника огня на расстояние около 10 метров.',
+                'Иммунитет имеют тауматурги с путем Привлечения Огней, некоторые шабашиты и вампиры с человечностью 3 или выше (именно человечностью, не путем).'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'blood',
+          title: 'Кровь и Узы',
+          icon: 'droplet',
+          content: [
+            {
+              subtitle: 'Узы крови',
+              text: 'Любой вампир, испивший крови другого вампира, испытывает на себе эффект Уз Крови.',
+              list: [
+                '1 Глоток — Персонаж чувствует приязнь к тому, чьей крови он испил.',
+                '2 Глотка — Персонаж чувствует любовь и сексуальное влечение к тому, чьей крови он испил. Но персонаж все же дорожит своей жизнью, может хранить секреты и не выполнять приказы напрямую влияющие на возможность умереть.',
+                '3 Глотка — Персонаж становится рабом того, чей крови он испил. Он расскажет и выполнит все, что прямо не угрожает его жизни.'
+              ]
+            },
+            {
+              text: 'В течение одной ночи можно повысить уровень уз только на один шаг. Иногда вампиры добровольно могут испить крови друг друга для усиления эмоциональной связи или обещания взаимной верности. Самый простой способ посадить Сородича на узы — отпоить его своей кровью в состоянии торпора.',
+            },
+            {
+              subtitle: 'Слухи',
+              list: [
+                'Ходят слухи, что вампиры Шабаша умеют разрывать Узы Крови.',
+                'Говорят, что Тремеры также могут знать способы освободить от Уз.'
+              ]
+            },
+            {
+              subtitle: 'Диаблери',
+              text: 'В Камарилье Диаблери другого Сородича считается тяжким преступлением. Оно выявляется, как правило, Прорицанием; черные полосы в ауре непременно вызовут вопросы у Шерифа.',
+              list: [
+                'Поглощение сути: Совершая «Атаку испитием», вампир может поглотить не только душу, но и саму суть жертвы, забрав его способности и изъяны. После совершения диаблери игрок делает звонок мастеру, и мастер сообщает ему какие плюсы и минусы он получил от диаблери, а также вносит изменения в его ауру.',
+                'Последствия: Совершив диаблери, персонаж через 5 минут впадает в транс и лежит в состоянии, аналогичном состоянию торпор, обездвиженный в течение получаса.',
+                'Отыгрыш: Диаблери — это абсолютное нарушение всех законов, поглощение самой души. Когда хищник выпивает последние капли крови жертвы, её сущность насильственно вырывается и сливается с кровью диаблериста, оставляя после себя лишь холодный пепел и запятнанную ауру.'
+              ]
+            },
+            {
+              subtitle: 'Пополнение крови',
+              text: 'Вы можете пополнить запас крови, питаясь игротехническими персонажами (NPC). Отыгрыш сцены питания с NPC позволяет восстановить статус Голода до «Сыт».',
+              list: [
+                'Атака испитием: Любой вампир может провести «Атаку испитием», используя одурманивающее свойство «Поцелуя вампира» (жертве процесс приятен). Атаку испитием можно провести только на обездвиженных персонажей. Для этого он подходит к жертве, обнимает за плечи, говорит: «Укус» и начинает считать вслух до десяти. Вампиры могут воспользоваться дисциплинами, которыми можно пользоваться в обездвиженном состоянии. Если испитие не прервано, через 10 секунд жертва падает в торпор. Если атакующий испитием отпускает жертву до истечения 10 секунд, хиты у нее не снимаются, но при этом жертва получает состояние “голоден”.'
+              ]
             }
           ]
         },
@@ -1576,46 +2048,135 @@ export const TRANSLATIONS: Record<Language, Content> = {
               ],
               listType: 'bullet'
             },
-            {
-              subtitle: 'Сферы Влияния',
-              text: 'Бюрократия, Церковь, Финансы, Здравоохранение, Высшее Общество, Промышленность, Закон, Медиа, Оккультизм, Полиция, Политика, Криминал, Университет, Улица, Транспорт.',
-              listType: 'bullet'
-            }
+//            {
+//              subtitle: 'Сферы Влияния',
+//              text: 'Бюрократия, Церковь, Финансы, Здравоохранение, Высшее Общество, Промышленность, Закон, Медиа, Оккультизм, Полиция, Политика, Криминал, Университет, Улица, Транспорт.',
+//              listType: 'bullet'
+//            }
           ]
         },
         {
           id: 'investigations',
-          title: 'Правила по расследованиям',
-          icon: 'book',
+          title: 'Правила по Инфоброкеру',
+          icon: 'message-square',
           content: [
             {
-              text: 'Используйте это, чтобы узнать факт о Персонаже из ВАШЕЙ Секты (инфильтратор считается членом секты, в которую он внедрён). Можно подтвердить легенду, дисциплины, сирра/линию, поколение или известность. Заявите мастеру по расследованиям действие «расследование» с чётким вопросом.'
+              text: 'Известно, что в городе есть инфоброкер. Он существует в сети, под ником Gutter_Sage. Слухи говорят, что он Носферату и что он старше Тени, а другие наоборот — что она его сир. Так или иначе известно, что Gutter_Sage никогда не показывается на публике. Но все знают, что ему можно написать вопрос. И получить ответ.'
             },
             {
-              subtitle: 'Процесс',
+              subtitle: 'Отношение к Носферату',
+              text: 'Говорят, он более доброжелателен к молодыми Носферату. Может даже простить им “я не знаю” при ответе на один из своих вопросов. Или даже ошибку. Остальным — нет.\n\nПисать можно ему сколько угодно, но пока не будет закрыт один ваш запрос (вы получили свои 3-5 вопросов и не ответили на них), на следующий вопрос от вас он не ответит. Известны редкие случаи, когда Инфоброкер не сможет ответить на ваш запрос. Он вам об этом скажет прямо, до того как начнет задавать свои.',
               list: [
-                'Мастер по расследованиям назначает N встречных вопросов про любых других персонажей в игре (не обязательно связанных с целью).',
-                'Вы выясняете ответы в игровых беседах и возвращаетесь к мастеру.',
-                'Мастер определяет, сколько ответов верны: если все — выдаёт искомую информацию; при ошибках сообщает лишь количество неверных.',
-                'Неверные или отсутствующие ответы можно «выкупить» по курсу 1 игровой $ за каждый.',
-                'Можно сразу выкупить неотвеченные вопросы, не проводя расследование.'
-              ]
-            },
-            {
-              subtitle: 'Бонусы',
-              list: [
-                'Каждый Носферату (и персонаж с навыком Детектив) может выкупить один неотвеченный вопрос без траты игровых $.'
+                'Исключение из “1 неотвеченный запрос на неоната”: Носферату могут иметь 2 одновременных открытых запроса.'
               ],
               listType: 'check'
             },
             {
-              subtitle: 'Материальный компонент',
-              text: 'Нужна папка с газетными вырезками по объекту расследования и 3 фото цели в трёх местах, сделанные не в публичных местах сородичей (фото в Элизиуме не подходят).',
+              subtitle: 'Принципы обмена',
+              text: 'Gutter_Sage будет задавать вопросы в ответ. Чем сложнее по его мнению ответить на ваш вопрос, тем сложнее будут его встречные. Он — коллекционер информации. Его не интересуют сфабрикованные на коленке слухи, кровь, деньги и, как правило, Услуги. В плане услуг известны исключения, он вам об этом сам сообщит.',
               list: [
-                'Пример: Иван хочет узнать, где был становлен вентру Василий — ищет вырезки про открытие бизнес-центра с участием Василия, сделки с компаниями, где он учредитель и т.д.',
-                'Фотографии должны быть из разных непубличных локаций, вдали от мест скопления сородичей.'
+                'Ожидает конкретные вопросы, сопровождаемые вашими гипотезами (от 1 до 3). Сейдж любит хорошие гипотезы, за них он готов закрыть глаза на некоторые неточности при ваших ответах.',
+                'Склонен игнорировать закрытые вопросы (да-нет) и слишком общие запросы типа “Пришлите какой-нибудь компромат на Примогена Вентру”.',
+                'Инфоброкер — не телепат. Он не ответит на вопрос, правда ли тот малк видит духов или не думает ли ваш товарищ подписать контракт с инфернальными силами.',
+                'Но вот если спросить, не проводил ли ваш товарищ стремных ритуалов вчера до полуночи или не орал ли, что скоро Бафомет даст ему великих сил — это другой разговор.',
+                'Спросить “Перечисли всех, с кем Князь встречался за последнюю неделю” тоже не прокатит, но можно брать вменяемый временной отрезок в пределах ночи, и лучше б еще и место указать. Вменяемость определит Gutter_Sage.'
               ],
               listType: 'bullet'
+            },
+            {
+              subtitle: 'Механика и как это работает',
+              text: 'Если вы зашли в тупик, не знаете, где искать кусок информации и считаете, что он вам нужен, или вы просто решили с другими неонатами в 4 утра посидеть и покопать про бурную молодость Примогена или вон того мутного неоната из другой котерии — пишите в Telegram Инфоброкеру.',
+              list: [
+                'Сообщение должно содержать: имя персонажа, клан, кратко то, что вам уже известно и то, что вы хотите узнать.',
+                'Вопрос должен быть конкретным про место, Сородича или событие, отражать то, что вы уже накопали, вашу гипотезу (от 1 до 3).',
+                'Мы призываем вас сохранять стиль общения вашего персонажа. У инфоброкера есть чувство юмора и он ценит креативность.',
+                'Представляться чужим именем нельзя — запрос ему отправляется от имени того, кому принадлежит аккаунт.',
+                'Если спрашиваете о персонаже, то потребуется минимум одна свежая фотография (сделанная на игре) этого персонажа. Фото должны быть разборчивыми — старый Носферату все понимает про ночную съемку, но должно быть понятно, кто это.'
+              ],
+              listType: 'warning'
+            },
+            {
+              subtitle: 'Процесс получения информации',
+              text: 'В ответ вам придет от 3 до 5 вопросов разной сложности. Базово 3 — при запросе легкой сложности. Секреты Примогенов или Капеллы Тремер обойдутся кратно дороже.',
+              list: [
+                'Умный и осторожный неонат по сложности вопросов может легко догадаться, что копает опасную тему, и отступить.',
+                'Вопросы могут прийти не мгновенно (обычно в течение часа или двух, или в начале следующей ночи, если были заданы к утру).',
+                'Вопросы будут о разных Сородичах, событиях или местах в городе, напрямую не связанных с объектом вопроса. Возможно, придется договариваться с другими неонатами.',
+                'Среди Сородичей могут попадаться члены Совета и даже Князь. Мы советуем общаться с неонатами соответствующих кланов — примоген охотнее ответит соклановцу.',
+                'Gutter_Sage не ответит на заданный повторно вопрос от одного и того же персонажа, если вы ответили неверно хотя бы на 1 (для Носферату — 2).',
+                'Вопрос может быть повторно отправлен другим Сородичем. Обычно вопросы, на которые уже был получен верный ответ, Сейдж не задает снова.'
+              ],
+              listType: 'bullet'
+            },
+            {
+              subtitle: 'Пример использования',
+              subsections: [
+                {
+                  title: '1. Запрос Андрея (Бруха)',
+                  text: 'Бруха Андрей подозревает, что примоген Вентру косвенно может быть причастен к исчезновению его соклановца и друга Данилы. Потому что Данила упомянул, что тот его зовет на разговор. Потом вернулся, какой-то смурной и на все распросы слился. А потом исчез.\n\nРазумеется, Камарилья не то место, где можно разбрасываться такими обвинениями просто так, и напрямую тоже не спросишь. Потому Андрей первым делом скрытно делает фотографию Примогена в Элизиуме. А потом идет еще делает фотографию здания, возле которого по его информации видели его друга Данилу незадолго до исчезновения — Отель Пупина.\n\nОн пишет сам:\n“Привет; Gutter_Sage. Я Андрей из клана Бруха. Недавно мой бро Данила из клана Гангрел пропал. Его последний раз видели возле отеля Пупин около 12 ночи. За пару дней до исчезновения он проболтался, что его зовет Примоген Вентру на разговор. И после разговора, но до исчезновения, ходил смурной и на все вопросы сливался.\n\nМои гипотезы:',
+                  list: [
+                    '1) Данила видел что-то возле “Пупина”, чего не должен был видеть.',
+                    '2) ИЛИ Я не обвиняю, конечно, что Примоген завалил его лично, но считаю, что Данила мог столкнуться с кем-то, кто действует от его имени — или прикрывается этим именем.',
+                    'Можешь сказать, кто из Сородичей крутился в ту ночь с 22 до 2 ночи возле отеля Пупин?'
+                  ]
+                },
+                {
+                  title: '2. Встречные вопросы Сейджа',
+                  text: 'Сейдж отвечает: “Привет, братишка. Поехали:”',
+                  list: [
+                    '1. Кто самый любимый птенец Примогена Носферату Тени?',
+                    '2. С кем общалась Бруха Валентина в заброшенном доме в полночь?',
+                    '3. Что Тремеры делали в Лиманском Парке вчера в 10 вечера?'
+                  ]
+                },
+                {
+                  title: '3. Сбор ответов',
+                  text: 'Андрей задумывается. Вопросы не сказать что бы сложные, кроме первого разве что. И их всего 3. То есть ни Князь, ни Совет, ни Регент тут не при чем, или просто не считают, что этот кусок информации стоит того, чтобы тратить значимые ресурсы на сокрытие.\n\nРасспросить Валентину будет легко, они кореша. К Тремерам он думает подкатить с простым предложением — он расскажет им честно, что этот вопрос нужен инфоброкеру. Если они помогут с этим вопросом, он перешлет им информацию от Сейджа про личностей возле отеля примогена Вентру. Скорее всего они не откажут, если там не было какого-то мега секретного колдунства.\n\nПро кто любимый птенец Тени он вообще без понятия. Он выясняет информацию у Валентины легко. Потом пишет или идет к одному из неонатов Тремер и они ему действительно готовы помочь, если он поделится результатом. Остался вопрос про птенца.\n\nОн находит в чайной, где часто собираются неонаты, Носферату Милана. Милан ржет над вопросом и уверен, что знает ответ. Говорит, что это он. Андрей как-то скептичен, он понимает, что если это неверно — Сейдж ему не простит ошибки и шанса задать этот вопрос лично у Андрея больше не будет. Он пытается развести Милана просто позвонить Тени и спросить, но Милан как-то не горит желанием, хоть и любимый птенец.\n\nВ итоге они договариваются, что если ответ верный — Андрей должен Милану Малую услугу. Если неверный — Милан отправит запрос Сейджу от своего имени.'
+                },
+                {
+                  title: '4. Ответ и провал',
+                  text: 'Андрей пишет сообщение-ответ инфоброкеру:',
+                  list: [
+                    '1) Милан из клана Носферату,',
+                    '2) Валентина встречалась с Катариной из Клана Тореадор. Она сказала, что просто обменивались сплетнями. Но не думаю, что это правда — зачем обмениваться сплетнями в заброшеном доме.',
+                    '3) Недавно на деревьях стали появляться царапины как от когтей, странной формы. Ходят слухи также, что там собираются Неоязычники — потому что люди находят на деревьях кровавые отметины. Они решили проверить. Они нашли несколько знаков, нарисованных человеческой кровью. И говорят, следы когтей странные — это не Сородич вероятно и вряд ли животное.'
+                  ]
+                },
+                {
+                  title: '5. Результат ошибки',
+                  text: 'Через полчаса Андрею приходит ответ: “Один из ответов в корне неверен, юноша.”\n\nЭто все. Вопрос Андрея Инфоброкером закрыт. Андрей может написать ему другой вопрос, про другое место или событие/Сородича хоть немедленно. Но не тот, который его сейчас интересует больше всего и инфообмен по которому он уже завалил. Этот вопрос Андрей не сможет задать уже никогда.\n\nЗато этот же вопрос может написать другой Сородич. Например, Милан, из-за которого это и произошло.'
+                },
+                {
+                  title: '6. Вторая попытка Милана',
+                  text: 'Сердце Милана разбито тем, что он не самый любимый птенец, но часть сделки свою выполнять надо. Милан пишет :\n“Привет, босс. Я — Милан из клана Носферату. Тут Андрей (Бруха который) потерял своего другана — Данилу (из клана Гангрел). Его последний раз видели возле отеля Пупин около 12 ночи. За пару дней до исчезновения он говорил что его зовет Примоген Вентру чето там обсудить. Потом до исчезновения, ходил смурной и на распросы Андрею не ответил.\n\nГипотезы таковы, босс:\n1) Данила видел что-то возле “Пупина”, чего не должен был видеть.\n2) ИЛИ Я не обвиняю, конечно, что Примоген завалил его лично, но считаю, что Данила мог столкнуться а с кем-то, кто действует от его имени — или прикрывается этим именем.\n3) ИЛИ (Милан решил добавить свою) Кто-то хочет подставить Примогена Вентру этим исчезновением\n\nМожешь сказать, кто из Сородичей крутился в ту ночь с 22 до 2 ночи возле отеля Пупин?”'
+                },
+                {
+                  title: '7. Новые вопросы',
+                  text: 'Ему приходит ответ: “Привет, малой. Поехали:”',
+                  list: [
+                    '1) Куда и зачем этой ночью примерно с 20 уехал Шериф со своей котерией и что он там делал,',
+                    '2) Назови бывшего или нынешнего любовника Регента Тремер Франчески Орсини,',
+                    '3) Кто именно из Тореадор сопровождал своего Примогена позавчера перед Балом, и (опционально) был ли среди них тот, кто недавно конфликтовал с Бруха?'
+                  ]
+                },
+                {
+                  title: '8. Сбор информации',
+                  text: 'Милан в целом дружен с Сородичем из Котерии Шерифа и ставит на то, что он эту информацию добудет. Андрей говорит, что не пойдет с вопросом к неонатом Тремер еще раз, он им и так инфу торчит, которую они щас добыть пытаются, еще за первую попытку. Но про конфликт с соклановцами Бруха готов выяснить.\n\nОни какое-то время собирают информацию и Милан пишет ответ. Он знает, что может завалить один вопрос без последствий, в остальных он вполне уверен.'
+                },
+                {
+                  title: '9. Итог',
+                  text: 'Милан пишет ответ:',
+                  list: [
+                    '1) Они ездили на окраины города. Заметать следы нарушения Маскарада. Там случилась небольшая стычка с лопатоголовыми. Вроде никого сильно не ранили. Нашли следы какого-то стремного ритуала. Теперь поехал консультироваться к Тремер.',
+                    '2) Босс, ну за чтооо. Я хз. Примоген Тореадор?',
+                    '3) Его сопровождала его чайлд Анна и приезжий из Венгрии Золтан. И да, Золтан недавно с Бруха поцапался.'
+                  ]
+                },
+                {
+                  title: '10. Финал',
+                  text: 'Ответ приходит через час:\n“Один из ответов не верен, Милан. К тому же, прямо до зубовного скрежета банален. Можешь лучше. Но в целом, зачет. Лови список, даже с примерной раскладкой по времени. Я сегодня добрый.”\n\nИтог — Информация уходит Милану. Но был бы Милан не из Носферату — вопрос попросту закрылся без ответа.'
+                }
+              ]
             }
           ]
         },
@@ -1638,7 +2199,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               subtitle: 'Игровые Ограничения ⚠️',
               list: [
                 'Диаблери (Возможно, но с тяжелыми последствиями)',
-                'Создание потомства (Только с разрешения Принца, нарушение = Окончательная Смерть)',
+                'Создание потомства (Только с разрешения Князя, нарушение = Окончательная Смерть)',
                 'Нарушение Маскарада (Большие проблемы, если смертные узнают)',
                 'Насилие в Элизиуме (Карается смертью)',
               ],
@@ -1659,13 +2220,14 @@ export const TRANSLATIONS: Record<Language, Content> = {
     },
     schedule: {
       title: "Ритм Ночи",
+      hidden: true,
       description: "Игра длится от заката до рассвета. Личные интриги вечны, но Город требует вашей службы в определенные часы. Не пропускайте обязательные собрания.",
       adviceTitle: "Совет Хранителя",
       adviceText: "\"События могут быть адаптированы под вашу котерию или личную историю. Мы не злодеи; мы не потащим вас в бездну прямо перед рассветом... обычно. Но помните: Город не будет ждать, пока вы соберетесь.\"",
       adviceFooter: "* Уточняйте местоположение Элизиума у Гарпии.",
       items: [
         { time: 'Закат - 20:00', title: 'Пробуждение', description: 'Подъем. Сбор в Элизиуме. Обмен слухами и подготовка к ночи.', type: 'downtime' },
-        { time: '20:00 - 22:00', title: 'Мандат Принца', description: 'Обязательные групповые события. Шериф или Примоген раздадут задачи. Отсутствие будет замечено.', type: 'mandatory' },
+        { time: '20:00 - 22:00', title: 'Мандат Князя', description: 'Обязательные групповые события. Шериф или Примоген раздадут задачи. Отсутствие будет замечено.', type: 'mandatory' },
         { time: '22:00 - 00:00', title: 'Тени и Секреты', description: 'Свободное время. Преследуйте личные цели, торгуйте информацией или плетите интриги в углах Элизиума.', type: 'optional' },
         { time: '00:00 - 02:00', title: 'Час Ведьм', description: 'Вторая волна обязательных операций. Город спит, но Сородичи работают.', type: 'mandatory' },
         { time: '02:00 - Рассвет', title: 'Долгая Ночь', description: 'Личные сюжеты, опасные сделки. Мы стараемся не отправлять вас на смерть так поздно, но будьте осторожны.', type: 'downtime' }
@@ -1690,7 +2252,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
         },
         {
           q: 'Насколько опасна игра? Может ли мой персонаж умереть?',
-          a: 'Да, смерть возможна. Но мы не убиваем персонажей просто так — всегда есть способы избежать фатала, если ты играешь осторожно или находишь союзников.'
+          a: 'Да, смерть возможна. Но мы не убиваем персонажей просто так — всегда есть способы избежать смерти, если ты играешь осторожно или находишь союзников.'
         },
         {
           q: 'Как проходит игра по времени?',

@@ -57,6 +57,10 @@ export interface ClanItem {
 
 export interface SettingContent {
   title: string;
+  recommendations?: {
+    question: string;
+    games: string[];
+  };
   history: {
     title: string;
     intro: string;
@@ -90,6 +94,11 @@ export interface SettingContent {
   };
 }
 
+export interface ListItem {
+  text: string;
+  image?: string;
+}
+
 export interface RuleSection {
   id: string;
   title: string;
@@ -97,18 +106,24 @@ export interface RuleSection {
   content: {
     subtitle?: string;
     text?: string;
-    list?: string[];
+    list?: (string | ListItem)[];
     listType?: 'bullet' | 'check' | 'cross' | 'warning';
+    image?: string;
     subsections?: {
       title: string;
       text?: string;
-      list?: string[];
+      list?: (string | ListItem)[];
+      image?: string;
     }[];
   }[];
 }
 
 export interface RulesPageContent {
   title: string;
+  warning?: {
+    title: string;
+    text: string;
+  };
   sections: RuleSection[];
 }
 
@@ -147,6 +162,11 @@ export interface AboutPageContent {
   atmosphere: {
     title: string;
     list: string[];
+  };
+  video?: {
+    title: string;
+    description?: string;
+    url: string;
   };
   expectations: {
     title: string;
