@@ -266,7 +266,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       },
       traditions: {
         title: 'The Six Traditions',
-        intro: 'Vampires of the Camarilla swear to uphold the six legendary Traditions of Caine — laws that Caine supposedly bequeathed to his descendants. Like other laws, the Traditions are often ignored, twisted, or outright broken.',
+        intro: 'Vampires of the Camarilla swear to uphold the six legendary Traditions of Camarilla — laws that were established among Kindred in XV century. Like other laws, the Traditions are often ignored, twisted, or outright broken.',
         traditions: [
           { name: 'The Masquerade', description: 'Thou shall not reveal thy true nature to those not of the Blood. Doing such shall renounce thy claims of Blood.' },
           { name: 'The Domain', description: 'Thy domain is thine own concern. All others owe thee respect while in it. None may challenge thy word while in thy domain.' },
@@ -867,7 +867,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               text: 'Based on the Vampire The Masquerade V20 scale. We simplified it to 5 points instead of 10. Humanity is measured on a scale from 1 to 5. Vampires are predators by nature, and Humanity allows them to pretend otherwise. It is a mask that protects and hides the vampire from themselves and from mortals.'
             },
             {
-              text: 'Unfortunately, with each century the Beast grew stronger, and the value of human life in the eyes of Cainites fell lower and lower (they will all die anyway, sooner or later). This does not mean that all vampires are ruthless monsters. There are far more cruel creatures among humans. So it is quite possible for a vampire to be more humane than a human. Note that Golconda is a myth, not a mechanic. Getting to very high humanity is not enough — you must stay there for a long time.'
+              text: 'Unfortunately, with each century the Beast grew stronger, and the value of human life in the eyes of Kindred fell lower and lower (they will all die anyway, sooner or later). This does not mean that all vampires are ruthless monsters. There are far more cruel creatures among humans. So it is quite possible for a vampire to be more humane than a human. Note that Golconda is a myth, not a mechanic. Getting to very high humanity is not enough — you must stay there for a long time.'
             },
             {
               subtitle: 'Simplified View on Violent Death',
@@ -892,7 +892,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
             },
             {
               subtitle: 'Influence of Humanity',
-              text: 'Humanity reflects how much of the human remains in the vampire, despite the curse of Cain. It reflects how well the character can hide that they are a vampire and pass as human. The time a vampire spends in Torpor directly depends on their Humanity. The lower the Humanity, the longer the vampire will be there. You cannot start with Humanity 5. But you can start with 4 if your character strongly justifies it.'
+              text: 'Humanity reflects how much of the human remains in the vampire, despite the curse of Camarilla. It reflects how well the character can hide that they are a vampire and pass as human. The time a vampire spends in Torpor directly depends on their Humanity. The lower the Humanity, the longer the vampire will be there. You cannot start with Humanity 5. But you can start with 4 if your character strongly justifies it.'
             },
             {
               subtitle: 'IMPORTANT ABOUT HUMANITY',
@@ -1611,7 +1611,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
       },
       traditions: {
         title: 'Шесть Традиций',
-        intro: 'Вампиры Камарильи клянутся соблюдать шесть Традиций Каина — законы, которые Каин якобы завещал своим потомкам. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
+        intro: 'Вампиры Камарильи клянутся соблюдать шесть Традиций Камарильи — законы, которые были установлены среди Сородичей в XV веке. Как и другие законы, Традиции часто игнорируются, искажаются или откровенно нарушаются.',
         traditions: [
           { name: 'Маскарад', description: 'Ты не будешь открывать свою истинную природу тем, кто не Твоей Крови. Сделав это, ты отречешься от своих прав Крови.' },
           { name: 'Домен', description: 'Твой домен — твоя забота. Все остальные обязаны уважать тебя, пока находятся в нем. Никто не может оспаривать твое слово в твоем домене.' },
@@ -2209,7 +2209,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
               text: 'За основу взята шкала Vampire The Masquerade V20. Мы ее упростили до 5 пунктов вместо 10. Человечность измеряется по шкале от 1 до 5. Вампиры по своей природе хищники, и Человечность позволяет им делать вид, будто это не так. Это маска, которая защищает и прячет вампира от самого себя и от смертных.'
             },
             {
-              text: 'К сожалению, с каждым веком Зверь становился все сильнее, и ценность человеческой жизни в глазах каинитов падала все ниже и ниже (все равно они все умрут, рано или поздно). Это не значит, что все вампиры — беспощадные монстры. Среди людей есть и гораздо более жестокие создания. Так что вполне возможно вампир может оказаться человечнее человека. Обращаем внимание, что Голконда — это миф, а не механика. До очень высокой человечности мало дойти, на ней надо длительное время удержаться.'
+              text: 'К сожалению, с каждым веком Зверь становился все сильнее, и ценность человеческой жизни в глазах Сородичей падала все ниже и ниже (все равно они все умрут, рано или поздно). Это не значит, что все вампиры — беспощадные монстры. Среди людей есть и гораздо более жестокие создания. Так что вполне возможно вампир может оказаться человечнее человека. Обращаем внимание, что Голконда — это миф, а не механика. До очень высокой человечности мало дойти, на ней надо длительное время удержаться.'
             },
             {
               subtitle: 'Упрощённо о насильственной смерти',
