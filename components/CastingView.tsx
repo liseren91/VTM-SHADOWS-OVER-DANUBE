@@ -1,8 +1,9 @@
 import React from 'react';
 import { CastingPageContent, Language } from '../types';
 import RolesGridWidget from './RolesGridWidget';
-import { ArrowLeft, Send, Users, PenTool, Camera, MapPin, Shirt } from 'lucide-react';
+import { ArrowLeft, Send, Users, PenTool, Camera, MapPin, Shirt, Shield, Image as ImageIcon } from 'lucide-react';
 import { APPLICATION_URL } from '../constants';
+import { NEW_PRIMOGENS_CONTENT } from '../newPrimogensContent';
 
 interface CastingViewProps {
   content: CastingPageContent;
@@ -11,6 +12,8 @@ interface CastingViewProps {
 }
 
 const CastingView: React.FC<CastingViewProps> = ({ content, onBack, lang }) => {
+  const primogensContent = NEW_PRIMOGENS_CONTENT[lang];
+
   return (
     <div className="pt-24 pb-20 min-h-screen bg-black">
       {/* Header */}
@@ -29,6 +32,108 @@ const CastingView: React.FC<CastingViewProps> = ({ content, onBack, lang }) => {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 space-y-24">
+
+        {/* New Primogens Section */}
+        <section className="bg-gradient-to-br from-neutral-950 via-black to-neutral-900 border border-white/10 p-6 md:p-10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-6 opacity-10">
+            <Shield className="w-48 h-48 text-blood-red" />
+          </div>
+
+          <div className="relative z-10">
+            <div className="mb-10">
+              <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide mb-3 border-b border-blood-red pb-3 inline-block">
+                {primogensContent.title}
+              </h2>
+              <p className="text-blood-red font-mono text-sm uppercase tracking-widest mb-3">
+                {primogensContent.subtitle}
+              </p>
+              <p className="text-gray-400 max-w-4xl leading-relaxed">
+                {primogensContent.intro}
+              </p>
+            </div>
+
+            <div className="space-y-10">
+              {primogensContent.entries.map((entry) => (
+                <article
+                  key={entry.clan}
+                  className="border border-white/10 bg-white/[0.03] p-5 md:p-7 rounded-sm"
+                >
+                  <div className="grid lg:grid-cols-[220px_1fr] gap-6 md:gap-8">
+                    <div className="space-y-4">
+                      <div className="aspect-[3/4] border border-dashed border-white/25 bg-black/40 flex flex-col items-center justify-center text-center p-4">
+                        <ImageIcon className="w-10 h-10 text-gray-500 mb-3" />
+                        <p className="font-mono text-xs uppercase tracking-wider text-gray-500">
+                          {entry.photoPlaceholder}
+                        </p>
+                      </div>
+                      <div className="border border-white/10 bg-black/40 p-3 text-center">
+                        <p className="font-serif text-white text-lg leading-tight">{entry.primogen}</p>
+                        <p className="text-blood-red text-xs uppercase tracking-wider mt-1">{entry.clan}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="text-2xl font-serif text-white mb-3 tracking-wide">{entry.clan}</h3>
+                        <p className="text-blood-red font-mono text-sm uppercase tracking-wider mb-4">
+                          Примоген: {entry.primogen}
+                        </p>
+                        <div className="space-y-4">
+                          {entry.opening.map((paragraph) => (
+                            <p key={paragraph} className="text-gray-300 leading-relaxed">
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="border border-emerald-800/40 bg-emerald-950/10 p-4">
+                          <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-2">♚ Шах</p>
+                          <p className="text-gray-300 text-sm leading-relaxed">{entry.shah}</p>
+                        </div>
+                        <div className="border border-amber-700/40 bg-amber-950/10 p-4">
+                          <p className="text-amber-400 font-mono text-xs uppercase tracking-widest mb-2">♚ Мат</p>
+                          <p className="text-gray-300 text-sm leading-relaxed">{entry.mat}</p>
+                        </div>
+                      </div>
+
+                      <div className="border border-white/10 bg-black/40 p-4">
+                        <p className="text-gray-200 font-serif text-lg mb-3">Слухи</p>
+                        <ul className="space-y-2 text-gray-400">
+                          {entry.rumors.map((rumor) => (
+                            <li key={rumor} className="flex gap-2">
+                              <span className="text-blood-red mt-0.5">•</span>
+                              <span className="leading-relaxed">{rumor}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="border-l-2 border-blood-red pl-4 space-y-3">
+                        <h4 className="text-xl font-serif text-white">{entry.clanPitchTitle}</h4>
+                        {entry.clanPitch.map((paragraph) => (
+                          <p key={paragraph} className="text-gray-300 leading-relaxed">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+
+                      <div className="pt-2">
+                        <a
+                          href={entry.applyUrl}
+                          className="inline-block px-8 py-3 bg-blood-red text-white font-serif text-sm tracking-widest hover:bg-red-800 transition-all border border-red-500 shadow-[0_0_14px_rgba(138,11,11,0.55)] hover:shadow-[0_0_22px_rgba(220,20,60,0.75)] transform hover:-translate-y-0.5"
+                        >
+                          {entry.applyLabel}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
         
         {/* Roles Grid Widget */}
         <section className="bg-black/50 border border-white/10 rounded-sm overflow-hidden">
