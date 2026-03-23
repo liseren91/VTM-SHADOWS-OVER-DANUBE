@@ -71,6 +71,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
     nav: [
       { label: 'About', href: '#about' },
       { label: 'Setting', href: '#setting' },
+      { label: 'Briefing', href: '#briefing' },
       { label: 'Rules', href: '#rules' },
       { label: 'Timeline', href: '#schedule' },
       { label: 'Casting', href: '#casting' },
@@ -1416,6 +1417,7 @@ export const TRANSLATIONS: Record<Language, Content> = {
     nav: [
       { label: 'Об игре', href: '#about' },
       { label: 'Сеттинг', href: '#setting' },
+      { label: 'Таймлайн', href: '#briefing' },
       { label: 'Правила', href: '#rules' },
       { label: 'Расписание', href: '#schedule' },
       { label: 'Роли', href: '#casting' },

@@ -7,14 +7,15 @@ import SettingView from './components/SettingView';
 import RulesView from './components/RulesView';
 import AboutView from './components/AboutView';
 import CastingView from './components/CastingView';
+import BriefingView from './components/BriefingView';
 import Navbar from './components/Navbar';
 import { TRANSLATIONS } from './translations';
 import { APPLICATION_URL } from './constants';
 import { Moon, ChevronDown, Calendar, MapPin, User, Flame, Plus, Minus } from 'lucide-react';
 
 // Define valid views corresponding to hash
-type View = 'home' | 'setting' | 'rules' | 'about' | 'casting';
-const VALID_VIEWS: View[] = ['home', 'setting', 'rules', 'about', 'casting'];
+type View = 'home' | 'setting' | 'rules' | 'about' | 'casting' | 'briefing';
+const VALID_VIEWS: View[] = ['home', 'setting', 'rules', 'about', 'casting', 'briefing'];
 
 // --- Landing Page Component (Moved outside App) ---
 interface LandingPageProps {
@@ -350,6 +351,14 @@ const App: React.FC = () => {
                   content={content.castingPage} 
                   lang={lang}
                   onBack={() => window.location.hash = ''} 
+                />
+            </div>
+        )}
+        {currentView === 'briefing' && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <BriefingView
+                  lang={lang}
+                  onBack={() => window.location.hash = ''}
                 />
             </div>
         )}
