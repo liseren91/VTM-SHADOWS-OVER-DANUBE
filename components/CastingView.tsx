@@ -1,7 +1,7 @@
 import React from 'react';
 import { CastingPageContent, Language } from '../types';
 import RolesGridWidget from './RolesGridWidget';
-import { ArrowLeft, Send, Users, PenTool, Camera, MapPin, Shirt, Shield, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Send, Users, PenTool, Camera, MapPin, Shirt, Shield, Image as ImageIcon, ExternalLink } from 'lucide-react';
 import { APPLICATION_URL } from '../constants';
 import { NEW_PRIMOGENS_CONTENT } from '../newPrimogensContent';
 
@@ -28,7 +28,15 @@ const CastingView: React.FC<CastingViewProps> = ({ content, onBack, lang }) => {
         <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-wide border-b border-blood-red pb-6">
           {content.title}
         </h1>
-        <p className="text-gray-400 text-lg max-w-2xl">{content.description}</p>
+        <a
+          href={APPLICATION_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="group inline-flex items-center gap-3 max-w-2xl px-5 py-4 border border-blood-red/40 bg-blood-red/10 text-gray-100 hover:bg-blood-red/20 hover:border-blood-red/70 transition-all"
+        >
+          <span className="text-lg leading-relaxed">{content.description}</span>
+          <ExternalLink className="w-5 h-5 text-blood-red group-hover:text-white transition-colors flex-shrink-0" />
+        </a>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 space-y-24">
@@ -60,12 +68,23 @@ const CastingView: React.FC<CastingViewProps> = ({ content, onBack, lang }) => {
                 >
                   <div className="grid lg:grid-cols-[220px_1fr] gap-6 md:gap-8">
                     <div className="space-y-4">
-                      <div className="aspect-[3/4] border border-dashed border-white/25 bg-black/40 flex flex-col items-center justify-center text-center p-4">
-                        <ImageIcon className="w-10 h-10 text-gray-500 mb-3" />
-                        <p className="font-mono text-xs uppercase tracking-wider text-gray-500">
-                          {entry.photoPlaceholder}
-                        </p>
-                      </div>
+                      {entry.imageSrc ? (
+                        <div className="aspect-[3/4] border border-white/25 bg-black/40 overflow-hidden">
+                          <img
+                            src={entry.imageSrc}
+                            alt={entry.photoPlaceholder}
+                            className="w-full h-full object-cover object-top"
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : (
+                        <div className="aspect-[3/4] border border-dashed border-white/25 bg-black/40 flex flex-col items-center justify-center text-center p-4">
+                          <ImageIcon className="w-10 h-10 text-gray-500 mb-3" />
+                          <p className="font-mono text-xs uppercase tracking-wider text-gray-500">
+                            {entry.photoPlaceholder}
+                          </p>
+                        </div>
+                      )}
                       <div className="border border-white/10 bg-black/40 p-3 text-center">
                         <p className="font-serif text-white text-lg leading-tight">{entry.primogen}</p>
                         <p className="text-blood-red text-xs uppercase tracking-wider mt-1">{entry.clan}</p>
