@@ -4,6 +4,8 @@ interface NewPrimogenEntry {
   clan: string;
   primogen: string;
   imageSrc?: string;
+  telegramUrl?: string;
+  telegramLabel?: string;
   opening: string[];
   shah: string;
   mat: string;
@@ -32,6 +34,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Вентру',
       primogen: 'Константин Маркович',
       imageSrc: '/promogen/ventrue.png',
+      telegramUrl: 'https://t.me/Concitorem',
+      telegramLabel: '@Concitorem',
       opening: [
         'Когда Камарилья брала Нови Сад, кто-то штурмовал баррикады, а кто-то договаривался, подписывал и распределял. Маркович из вторых. Он выстроил связи, запустил руки в бюрократический аппарат города, превратил послевоенный хаос в работающую структуру.',
         'Говорит всегда по делу. Безупречные манеры, холодный расчёт и ощущение, что он знает о тебе чуть больше, чем ты бы хотел. У каждого неоната в городе, по слухам, есть ценник в его голове.',
@@ -60,6 +64,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Бруджа',
       primogen: 'Яна Ковач',
       imageSrc: '/promogen/bruha.png',
+      telegramUrl: 'https://t.me/elgaell',
+      telegramLabel: '@elgaell',
       opening: [
         'Яна штурмовала последние баррикады Шабаша, когда Камарилья брала город. Эти клыки помнят вкус крови Цимисхов.',
         'Теперь Яна в Совете и ей там не нравится: политические игры, дипломатические реверансы, вежливые ножи в спину. Но она сидит за столом ради своих.',
@@ -88,6 +94,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Тореадор',
       primogen: 'Лейзер Крестин',
       imageSrc: '/promogen/toreador.png',
+      telegramUrl: 'https://t.me/Aust06',
+      telegramLabel: '@Aust06',
       opening: [
         'При жизни — ученик великого Исидора Кауфмана, знаменитый австрийский художник. После Становления Крестин не перестал быть художником.',
         'В Нови Сад его привела балканская культура, а Элизиум, который он устроил, считается самым красивым местом в городе.',
@@ -116,6 +124,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Малкавиан',
       primogen: 'Илинка Домнешти',
       imageSrc: '/promogen/malk.png',
+      telegramUrl: 'https://t.me/SomethingOwlish',
+      telegramLabel: '@SomethingOwlish',
       opening: [
         'Домнешти говорит загадками. Это первое, что ты узнаешь. Второе — загадки иногда сбываются.',
         'Во время войны с Шабашем её предупреждения спасли не один десяток не-жизней. Скептики замолкают, когда речь заходит о «схождении линий».',
@@ -144,6 +154,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Тремер',
       primogen: 'Франческа Орсини',
       imageSrc: '/promogen/tremer.png',
+      telegramUrl: 'https://t.me/kyirevanity',
+      telegramLabel: '@kyirevanity',
       opening: [
         'Орсини появилась в Нови Саде почти сразу после исчезновения предыдущего регента Капеллы. Приехала из Рима. Причины перевода клан не комментирует.',
         'Поначалу Князь насторожился, но сомнения рассеялись быстро: Орсини практически сразу превратила вылазку шабашитов в кровавую баню.',
@@ -172,6 +184,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Носферату',
       primogen: 'Тень',
       imageSrc: '/promogen/nosfer.png',
+      telegramUrl: 'https://t.me/liseren',
+      telegramLabel: '@liseren',
       opening: [
         'Широкополая шляпа, венецианская маска, перчатки, трость, каблуки с металлическими набойками: это не маскировка, это манифест.',
         'Во время войны именно Носферату под руководством Тени прокладывали тайные пути к убежищам Шабаша. Она контролирует подземелья Нови Сада.',
@@ -200,6 +214,8 @@ const RU_PRIMOGENS_SECTION: NewPrimogensSection = {
       clan: 'Клан Гангрел',
       primogen: 'Вук Дивљак',
       imageSrc: '/promogen/gangrel.png',
+      telegramUrl: 'https://t.me/GorinMY',
+      telegramLabel: '@GorinMY',
       opening: [
         'Дикарь, которого цивилизация держит на поводке. Поводок натянут до предела.',
         'Вук терпит Совет, потому что война показала: в одиночку не выжить. Там, где заканчивается бетон и начинается лес, слово Дивљака — закон.',

@@ -88,6 +88,17 @@ const CastingView: React.FC<CastingViewProps> = ({ content, onBack, lang }) => {
                       <div className="border border-white/10 bg-black/40 p-3 text-center">
                         <p className="font-serif text-white text-lg leading-tight">{entry.primogen}</p>
                         <p className="text-blood-red text-xs uppercase tracking-wider mt-1">{entry.clan}</p>
+                        {entry.telegramUrl && (
+                          <a
+                            href={entry.telegramUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-3 inline-flex items-center gap-1.5 text-sm text-blood-red hover:text-white transition-colors"
+                          >
+                            <Send className="w-3.5 h-3.5" />
+                            {entry.telegramLabel ?? 'Telegram'}
+                          </a>
+                        )}
                       </div>
                     </div>
 
