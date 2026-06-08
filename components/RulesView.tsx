@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RulesPageContent } from '../types';
-import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown, Droplets, MessageSquare, Link as LinkIcon } from 'lucide-react';
+import { ArrowLeft, Scroll, Sword, Flame, Book, Heart, Coins, Shield, CheckCircle2, XCircle, AlertTriangle, ChevronDown, Droplets, MessageSquare, Terminal, Link as LinkIcon } from 'lucide-react';
 
 interface RulesViewProps {
   content: RulesPageContent;
@@ -22,12 +22,32 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
       case 'shield': return <Shield className="w-6 h-6" />;
       case 'droplet': return <Droplets className="w-6 h-6" />;
       case 'message-square': return <MessageSquare className="w-6 h-6" />;
+      case 'terminal': return <Terminal className="w-6 h-6" />;
       default: return <Scroll className="w-6 h-6" />;
     }
   };
 
   const toggleSubsection = (key: string) => {
     setOpenSubsections(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const renderWithLinks = (text: string): React.ReactNode => {
+    const parts = text.split(/(https?:\/\/[^\s]+)/g);
+    return parts.map((part, i) =>
+      /^https?:\/\//.test(part) ? (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blood-red underline underline-offset-2 hover:text-red-400 break-all"
+        >
+          {part}
+        </a>
+      ) : (
+        part
+      )
+    );
   };
 
   const scrollToSection = (id: string, updateHash = true) => {
@@ -144,7 +164,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                 
                                 {block.text && (
                                     <p className="text-gray-400 leading-relaxed text-lg whitespace-pre-line">
-                                        {block.text}
+                                        {renderWithLinks(block.text)}
                                     </p>
                                 )}
 
@@ -171,7 +191,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                                     block.listType === 'warning' ? 'border-l-4 border-yellow-500/50' :
                                                     'border-l-4 border-gray-600'
                                                 }`}>
-                                                    <span className="text-gray-300 whitespace-pre-line">{itemText}</span>
+                                                    <span className="text-gray-300 whitespace-pre-line">{renderWithLinks(itemText)}</span>
                                                     {itemImage && (
                                                         <div className="mt-2">
                                                             <img 
@@ -206,7 +226,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                             <div className="border-t border-white/10 p-4 space-y-3 animate-in fade-in">
                                               {sub.text && (
                                                 <p className="text-gray-400 leading-relaxed text-base whitespace-pre-line">
-                                                  {sub.text}
+                                                  {renderWithLinks(sub.text)}
                                                 </p>
                                               )}
                                               {sub.image && (
@@ -226,7 +246,7 @@ const RulesView: React.FC<RulesViewProps> = ({ content, onBack }) => {
                                                     
                                                     return (
                                                       <li key={listIdx} className="flex flex-col gap-3 p-3 rounded bg-black/40 border border-white/5">
-                                                        <span className="text-gray-300 whitespace-pre-line">{itemText}</span>
+                                                        <span className="text-gray-300 whitespace-pre-line">{renderWithLinks(itemText)}</span>
                                                         {itemImage && (
                                                           <div className="mt-2">
                                                             <img 
