@@ -1335,6 +1335,153 @@ export const TRANSLATIONS: Record<Language, Content> = {
               ]
             }
           ]
+        },
+        {
+          id: 'hacking',
+          title: 'Hacking Rules',
+          icon: 'terminal',
+          content: [
+            {
+              subtitle: 'What do you need to become a hacker?',
+              list: [
+                'Read the rules',
+                'Try playing and decide what you need and whether it fits your character',
+                'Pick a cool User_Nickname for the network and message the Storytellers'
+              ]
+            },
+            {
+              text: '—> Congratulations, you are a hacker at the Shadows over Danube game and you are competing in the ranking of the most elusive hackers.\n\nPS we do not set up barriers and locks, but we kindly ask that only those who have agreed with the Storytellers and whose backstory fits being a hacker take part in the hacks.\nPPS there will be QR Codes at the game not only on hackers.'
+            },
+            {
+              subtitle: 'How does it work?',
+              image: '/hacking/work-qr.png',
+              list: [
+                'You find a phone, tablet, etc. and it has a QR code on it.',
+                'The QR code is an intrusion point that a hacker can latch onto (an unsecured Wi-Fi, a phone in someone\'s hands, etc.)',
+                'This QR Code can be shared with other players, because no cool hack can be pulled off alone.',
+                'A hack requires from 2 to 5 people, depending on the difficulty.',
+                'When you connect, you can see how many participants are needed to take part.',
+                'The QR Code leads to a site in the format https://black-ice.up.railway.app/play/8c44f9c3'
+              ]
+            },
+            {
+              text: 'When the game starts, you see the required number of participants and your "roles" (described below); once the required number of people connect, the game launches automatically.\nAfter launching, a mini-game begins (described below).',
+              image: '/hacking/work-game.png'
+            },
+            {
+              text: 'Once you fulfill the victory conditions, you will receive a Numeric code —>\n\nHaving obtained the prize code, you go to the site https://digital-leaks.up.railway.app, enter your code and receive the information.',
+              image: '/hacking/work-code.png'
+            },
+            {
+              subtitle: 'How does a hack work?',
+              text: 'At the link is "Black Ice" — a cooperative mini-game in which 2 to 5 players jointly "hack" a protected network. Everyone sees the same map of circles (nodes) on their screen, but during the game each only sees their own layer of information. No one has the full picture. To complete the task, you need to talk out loud, describing what you see, and together work out the correct nodes. You must not show your screen!\nNo real IT skills are required. You need attentiveness, the ability to listen and to articulate clearly.'
+            },
+            {
+              subtitle: 'Roles and layers',
+              subsections: [
+                {
+                  title: 'COORDINATOR',
+                  text: 'COORDINATOR — the only one who sees the full task text: what type of mission it is and which criteria must be met. The Coordinator sees nothing on the map except node numbers, and depends entirely on the information from the others.'
+                },
+                {
+                  title: 'SCANNER',
+                  text: 'SCANNER — sees which nodes are dangerous. Each node displays one of three labels: "ICE" (a trap, lethal), "TRACE" (being tracked, dangerous) or "OK" (clean, safe). The Scanner knows nothing else about the nodes. If you use a TRACE node in solving the task, it means you can be traced, but you will still get the result.',
+                  image: '/hacking/role-coordinator.png'
+                },
+                {
+                  title: 'DECRYPTOR',
+                  text: 'DECRYPTOR — sees the protocol of each node: SSH, TCP, UDP or FTP. Protocols are shown by color and label. The Decryptor does not know which nodes are dangerous or what their weight is.',
+                  image: '/hacking/role-scanner.png'
+                },
+                {
+                  title: 'ROUTER',
+                  text: 'ROUTER — sees the highlighted communication channels between nodes and the number of channels each node has. The Router sees neither protocols, nor threats, nor weights — only the network topology.',
+                  image: '/hacking/role-decryptor.png'
+                },
+                {
+                  title: 'ANALYST',
+                  text: 'ANALYST — sees the numeric "data weight" of each node (from 1 to 9). Heavier nodes are highlighted more brightly. The Analyst does not see protocols, threats or channels.',
+                  image: '/hacking/role-router.png'
+                }
+              ]
+            },
+            {
+              text: 'When a hack is for 2-3 people, each hacker combines 2-3 roles.\nExamples of combined interfaces.',
+              image: '/hacking/role-combined.png'
+            },
+            {
+              text: 'The difficulty of a hack increases depending on the information being obtained and the number of hackers. That is, the more valuable the information, the more hackers are needed (5 at most). And for a reasonably passable hack you usually need 2-3 hackers.'
+            },
+            {
+              subtitle: 'Course of the game',
+              list: [
+                'The Coordinator reads the task and relays it to the team: what exactly needs to be found and done.',
+                'The team discusses. Everyone looks at their own terminal, examines the data and describes it in words. For example: "Node 07 has ICE — can\'t go there", "Nodes 03 and 11 are both on the SSH protocol", "From node five the channels go to 02, 09 and 14", "The weight on node three is seven, on eleven it\'s four".',
+                'When the team is confident in the answer, the needed nodes are marked on the shared map (tap a node — it gets highlighted).',
+                'Anyone presses "CONFIRM HACK".',
+                'The system shows the result: success or failure. On success a code appears and a point is recorded for the participating hackers. On failure the correct answer is shown.',
+                'Then you enter the code at https://digital-leaks.up.railway.app'
+              ]
+            },
+            {
+              subtitle: 'Mission types',
+              list: [
+                'KILLSWITCH — find one specific node that simultaneously satisfies several criteria (a certain protocol, clean of ICE, the right weight, the right number of channels). The Coordinator knows all the criteria, but each individual parameter is visible only to one role.',
+                'DATA HEIST — find 2-3 nodes with the same protocol, all clean of ICE, with a certain sum of weights. Here you need to count and try out options. (analyst, coordinator, scanner, decryptor)',
+                'EXTRACTION — lay out a safe route from point A to point B over certain protocols. All intermediate nodes must be clean. The Router suggests which nodes are connected at all, the Scanner checks the safety of each step. (router, scanner, decryptor, coordinator)',
+                'CASCADE — assemble a chain of three connected nodes in which the weight strictly decreases, all nodes are clean, and the protocols follow a certain order. The hardest type — it requires information from all five roles at once.'
+              ]
+            },
+            {
+              subtitle: 'The main rule',
+              listType: 'warning',
+              text: 'Do not show your screen. All information is passed only by voice. This is not just a restriction — it is the essence of the game. It is precisely the need to describe data in words that creates the atmosphere and the thrill.'
+            },
+            {
+              subtitle: 'Timer',
+              text: 'Each round is given 120 seconds (at the game it will probably be 90). If time runs out — the hack is failed. Periodically, security system warnings appear on screen — they do not affect the mechanics, but they create tension.'
+            },
+            {
+              subtitle: 'Points',
+              text: 'For a successful hack, each participant of the hack receives points. Points accumulate between rounds if you use the same name (uppercase/lowercase and typos we will reconcile later for the ranking, but Nagibator vs mamkin_hacker, alas, no.)'
+            },
+            {
+              subtitle: 'Bugs',
+              text: 'If you spot bugs — feel free to write to us, we will fix everything. We have released the game now because it seems we have caught and fixed all the bugs, but we all know that is not realistic, so please poke around the little toy!'
+            },
+            {
+              subtitle: 'Testing',
+              text: 'If you are not lazy and you are cool, you can go to the link https://black-ice.up.railway.app/admin and enter the password blackice2024 and generate games for yourself =)',
+              image: '/hacking/admin.png'
+            },
+            {
+              text: 'You need to specify any 5-digit code, choose how many players you want to see in the session, and the name of yourself (the good fellow) so we know who is making games and whom to praise!'
+            },
+            {
+              subtitle: 'Available test games',
+              list: [
+                'Game 1019 — 4 players — https://black-ice.up.railway.app/play/2369e456',
+                'Game 1018 — 3 players — https://black-ice.up.railway.app/play/d4a51a3c',
+                'Game 1017 — 2 players — https://black-ice.up.railway.app/play/8b2b8c6a',
+                'Game 1016 — 5 players — https://black-ice.up.railway.app/play/e45f5149',
+                'Game 1015 — 4 players — https://black-ice.up.railway.app/play/930c7e6c',
+                'Game 1014 — 3 players — https://black-ice.up.railway.app/play/96215b58',
+                'Game 1013 — 2 players — https://black-ice.up.railway.app/play/144595e4',
+                'Game 1012 — 5 players — https://black-ice.up.railway.app/play/410bd0f2',
+                'Game 1011 — 4 players — https://black-ice.up.railway.app/play/fa5903ce',
+                'Game 1010 — 3 players — https://black-ice.up.railway.app/play/d986b428',
+                'Game 1009 — 2 players — https://black-ice.up.railway.app/play/a13de44e',
+                'Game 1008 — 5 players — https://black-ice.up.railway.app/play/a8081592',
+                'Game 1007 — 4 players — https://black-ice.up.railway.app/play/0a4b94d6',
+                'Game 1006 — 3 players — https://black-ice.up.railway.app/play/860abff5',
+                'Game 1005 — 2 players — https://black-ice.up.railway.app/play/0f6dcf91',
+                'Game 1004 — 5 players — https://black-ice.up.railway.app/play/f74cf693',
+                'Game 1003 — 4 players — https://black-ice.up.railway.app/play/144b3c7b',
+                'Game 1002 — 3 players — https://black-ice.up.railway.app/play/8f146f94',
+                'Game 1001 — 2 players — https://black-ice.up.railway.app/play/9f26702d'
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2687,6 +2834,153 @@ export const TRANSLATIONS: Record<Language, Content> = {
               list: [
                 'Достоинство — Ритуалы: Тремеры имеют доступ к ритуалам Тауматургии. На старте доступно 2 ритуала I круга (при 1 точке Тауматургии) или 1 ритуал II круга + 2 ритуала I круга (при 2 точках).',
                 'Недостаток — Узы Пирамиды: Все Тремеры начинают игру на 2-х Узах Крови к своему непосредственному начальнику в пирамиде клана (обычно Регент Капеллы). Это автоматически и не требует ночей на накопление.'
+              ]
+            }
+          ]
+        },
+        {
+          id: 'hacking',
+          title: 'Правила по Хакерству',
+          icon: 'terminal',
+          content: [
+            {
+              subtitle: 'Что нужно для того чтобы стать хакером?',
+              list: [
+                'Прочитать правила',
+                'Попробовать поиграть и решить что тебе надо и оно вяжется с персом',
+                'Выбрать крутой User_Nickname для сети и написать мастерам'
+              ]
+            },
+            {
+              text: '—> Поздравляю ты хакер на игре Тени над Дунаем и участвуешь в рейтинге самых неуловимых хакеров.\n\nPS мы не ставим барьеров и локов, но очень просим во взломах участвовать только тех, кто договорился с мастерами и у кого загруз подходит на бытие хакером.\nPPS на игре будут Qr Code не только у хакеров.'
+            },
+            {
+              subtitle: 'Как это работает?',
+              image: '/hacking/work-qr.png',
+              list: [
+                'Ты находишь телефон, планшет и т.д. и на нем есть QR код.',
+                'QR код является точкой взлома, к которой хакер может подцепиться ( незапароленный вайфай, телефон в руках и тд.)',
+                'Этим Qr Code можно делится с другими игроками, ведь ни один крутой взлом в одиночку не провести.',
+                'Для взлома нужно от 2х до 5 человек, в зависимости от сложности.',
+                'При подключение видно, сколько нужно участников для участия.',
+                'QR Код ведет на сайт формата https://black-ice.up.railway.app/play/8c44f9c3'
+              ]
+            },
+            {
+              text: 'При запуске игры вы видите необходимое количество участников и свои "роли" ( о них ниже), когда подключится необходимое количество человек – игра автоматически запустится.\nПосле запуска начнется мини игра (о ней ниже).\n Выполнив условия победы вы получите Числовой код —>\n',
+              image: '/hacking/work-game.png'
+            },
+            {
+              text: 'Получив призовой код вы переходиьте на сайт https://digital-leaks.up.railway.app и вбивает свой код и получает информацию',
+              image: '/hacking/work-code.png'
+            },
+            {
+              subtitle: 'Как проходит взлом?',
+              text: 'По ссылке находится «Чёрный Лёд» — кооперативная мини-игра, в которой от 2 до 5 игроков совместно «взламывают» защищённую сеть. Каждый видит на экране одну и ту же карту кругов(узлов), но во время игры видит только свой слой информации. Никто не обладает полной картиной. Чтобы выполнить задание, нужно общаться вслух, описывая то, что видишь, — и вместе вычислить правильные узлы. Нельзя показывать экран!\nНикаких реальных IT-навыков не требуется. Нужны внимательность, умение слушать и чётко формулировать.'
+            },
+            {
+              subtitle: 'Роли и слои',
+              subsections: [
+                {
+                  title: 'КООРДИНАТОР',
+                  text: 'КООРДИНАТОР — единственный, кто видит текст задания целиком: какой тип миссии, какие критерии нужно выполнить. Координатор не видит на карте ничего, кроме номеров узлов, — и полностью зависит от информации остальных.'
+                },
+                {
+                  title: 'СКАНЕР',
+                  text: 'СКАНЕР — видит, какие узлы опасны. На каждом узле отображается одна из трёх меток: «ICE» (ловушка, смертельно), «TRACE» (отслеживается, опасно) или «OK» (чисто, безопасно). Сканер не знает ничего другого об узлах. Если вы использует TRACE узел в решение задачи, это значит что вас могут отследить, но результат вы получите.',
+                  image: '/hacking/role-coordinator.png'
+                },
+                {
+                  title: 'ДЕШИФРОВЩИК',
+                  text: 'ДЕШИФРОВЩИК — видит протокол каждого узла: SSH, TCP, UDP или FTP. Протоколы отображаются цветом и подписью. Дешифровщик не знает, какие узлы опасны и какой у них вес.',
+                  image: '/hacking/role-scanner.png'
+                },
+                {
+                  title: 'МАРШРУТИЗАТОР',
+                  text: 'МАРШРУТИЗАТОР — видит подсвеченные каналы связи между узлами и количество каналов у каждого узла. Маршрутизатор не видит ни протоколов, ни угроз, ни весов — только топологию сети.',
+                  image: '/hacking/role-decryptor.png'
+                },
+                {
+                  title: 'АНАЛИТИК',
+                  text: 'АНАЛИТИК — видит числовой «вес данных» каждого узла (от 1 до 9). Тяжёлые узлы подсвечены ярче. Аналитик не видит протоколов, угроз и каналов.',
+                  image: '/hacking/role-router.png'
+                }
+              ]
+            },
+            {
+              text: 'Когда взлом на 2-3 человек, то каждый хакер совмещает 2 - 3 роли.\nПримеры совмещенных интерфейсов.',
+              image: '/hacking/role-combined.png'
+            },
+            {
+              text: 'Сложность взлома повышается в зависимости от добываемой информации и от количества хакеров. То есть чем ценнее информация, тем больше хакеров нужно (максимально 5). И для достаточно проходного взлома нужно обычно 2-3 хакера.'
+            },
+            {
+              subtitle: 'Ход игры',
+              list: [
+                'Координатор читает задание и пересказывает команде: что именно нужно найти и сделать.',
+                'Команда обсуждает. Каждый смотрит в свой терминал, смотрит данные и описывает их словами. Например: «На узле 07 стоит ICE — туда нельзя», «Узлы 03 и 11 оба на протоколе SSH», «От пятёрки каналы идут на 02, 09 и 14», «Вес на тройке — семёрка, на одиннадцатом — четвёрка».',
+                'Когда команда уверена в ответе, нужные узлы отмечаются на общей карте (тап по узлу — он выделяется).',
+                'Кто угодно нажимает «ПОДТВЕРДИТЬ ВЗЛОМ».',
+                'Система показывает результат: успех или провал. При успехе появляется код и записывается бал хакерам участникам. При провале показывается правильный ответ.',
+                'Далее вводите код https://digital-leaks.up.railway.app'
+              ]
+            },
+            {
+              subtitle: 'Типы миссий',
+              list: [
+                'KILLSWITCH — найти один конкретный узел, который одновременно удовлетворяет нескольким критериям (определённый протокол, чист от ICE, нужный вес, нужное количество каналов). Координатор знает все критерии, но каждый отдельный параметр виден только одной роли.',
+                'DATA HEIST — найти 2–3 узла с одинаковым протоколом, все чистые от ICE, с определённой суммой весов. Здесь нужно считать и перебирать варианты. (аналитик, координатор, сканер, дешифровщик)',
+                'EXTRACTION — проложить безопасный маршрут из точки А в точку Б по определенным протоколам. Все промежуточные узлы должны быть чисты. Маршрутизатор подсказывает, какие узлы вообще связаны, Сканер проверяет безопасность каждого шага. (маршрутизатор, сканер, дешифровщик, коорддинатор)',
+                'CASCADE — собрать цепочку из трёх связанных узлов, в которой вес строго убывает, все узлы чисты, а протоколы идут в определённом порядке. Самый сложный тип — требует информации от всех пяти ролей одновременно.'
+              ]
+            },
+            {
+              subtitle: 'Главное правило',
+              listType: 'warning',
+              text: 'Не показывай свой экран. Вся информация передается только голосом. Это не просто ограничение — это суть игры. Именно необходимость описывать данные словами создаёт атмосферу и драйв.'
+            },
+            {
+              subtitle: 'Таймер',
+              text: 'На каждый раунд даётся 120 секунд (на игре вероятно будет 90). Если время истекло — взлом провален. Периодически на экране появляются предупреждения системы безопасности — они не влияют на механику, но создают напряжение.'
+            },
+            {
+              subtitle: 'Очки',
+              text: 'За успешный взлом каждый участник взлома получает очки. Очки накапливаются между раундами, если вы используете одно и тоже имя (заглавные-строчные и опечатки  мы потом для рейтинга сличим, а вот Nagibator ot mamkin_hacker, увы нет.)'
+            },
+            {
+              subtitle: 'Баги',
+              text: 'Если вы зафиксируете баги - смело пишите нам, мы все исправим. Мы выложили сейчас игру так как кажется что поймали и пофиксили все баги, но все мы знаем что это не реально, поэтому пожалуйста потыкайте игрушку!'
+            },
+            {
+              subtitle: 'Тестирование',
+              text: 'Если вы не ленивый и классный, то вы можете перейти по ссылке https://black-ice.up.railway.app/admin и ввести пароль blackice2024 и самостоятельно генерить себе игры =)',
+              image: '/hacking/admin.png'
+            },
+            {
+              text: 'Вам надо указать любой 5 значный код, выбрать сколько игроков хотите видеть на сессии и имя себя молодца, чтобы мы знали кто делает игры и кого хвалить!'
+            },
+            {
+              subtitle: 'Доступные тестовые игры',
+              list: [
+                'Игра 1019 — 4 игрока — https://black-ice.up.railway.app/play/2369e456',
+                'Игра 1018 — 3 игрока — https://black-ice.up.railway.app/play/d4a51a3c',
+                'Игра 1017 — 2 игрока — https://black-ice.up.railway.app/play/8b2b8c6a',
+                'Игра 1016 — 5 игроков — https://black-ice.up.railway.app/play/e45f5149',
+                'Игра 1015 — 4 игрока — https://black-ice.up.railway.app/play/930c7e6c',
+                'Игра 1014 — 3 игрока — https://black-ice.up.railway.app/play/96215b58',
+                'Игра 1013 — 2 игрока — https://black-ice.up.railway.app/play/144595e4',
+                'Игра 1012 — 5 игроков — https://black-ice.up.railway.app/play/410bd0f2',
+                'Игра 1011 — 4 игрока — https://black-ice.up.railway.app/play/fa5903ce',
+                'Игра 1010 — 3 игрока — https://black-ice.up.railway.app/play/d986b428',
+                'Игра 1009 — 2 игрока — https://black-ice.up.railway.app/play/a13de44e',
+                'Игра 1008 — 5 игроков — https://black-ice.up.railway.app/play/a8081592',
+                'Игра 1007 — 4 игрока — https://black-ice.up.railway.app/play/0a4b94d6',
+                'Игра 1006 — 3 игрока — https://black-ice.up.railway.app/play/860abff5',
+                'Игра 1005 — 2 игрока — https://black-ice.up.railway.app/play/0f6dcf91',
+                'Игра 1004 — 5 игроков — https://black-ice.up.railway.app/play/f74cf693',
+                'Игра 1003 — 4 игрока — https://black-ice.up.railway.app/play/144b3c7b',
+                'Игра 1002 — 3 игрока — https://black-ice.up.railway.app/play/8f146f94',
+                'Игра 1001 — 2 игрока — https://black-ice.up.railway.app/play/9f26702d'
               ]
             }
           ]
